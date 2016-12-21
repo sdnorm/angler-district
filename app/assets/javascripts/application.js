@@ -18,6 +18,8 @@
 
 $(function(){ $(document).foundation(); });
 
+var elem = new Foundation.Magellan(element, options);
+
 $(window).bind("load", function () {
    var footer = $("#footer");
    var pos = footer.position();
