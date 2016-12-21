@@ -48,7 +48,7 @@ body {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    // transition: 0.5s;
     padding-top: 60px;
 }
 
@@ -58,7 +58,7 @@ body {
   font-size: 25px;
   color: #818181;
   display: block;
-  transition: 0.3s
+  // transition: 0.3s
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -161,4 +161,5 @@ body {
 
 .title-bar {
   width: 100%;
+  padding: 0
 }
