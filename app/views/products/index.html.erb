@@ -1,65 +1,66 @@
 <div class="custom-row">
   <p id="notice"><%= notice %></p>
-  <h1>Products</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td><%= product.name %></td>
-          <td><%= product.description %></td>
-          <td><%= product.price %></td>
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br/>
-  <%= link_to 'New Product', new_product_path %>
-  <br/>
-  <p>
-    Bacon ipsum dolor amet cupim cow picanha ribeye, chuck tri-tip alcatra andouille pork chop sausage venison. Ham fatback frankfurter burgdoggen chicken tenderloin. Flank sirloin ball tip biltong shank. Rump chicken boudin kielbasa swine ball tip. Kevin strip steak beef ribs sausage, alcatra fatback shank jowl pork chop. Pork belly t-bone brisket shoulder pastrami fatback ball tip short loin drumstick jerky rump tenderloin.
-  </p>
-  <p>
-    Capicola ham hock burgdoggen kielbasa jowl ball tip chuck flank ground round filet mignon sirloin beef boudin shank shankle. Spare ribs pastrami ham short ribs alcatra t-bone shank, bresaola venison. Tail venison t-bone turducken chicken, salami pig meatball beef drumstick bresaola. Swine meatball pork chop chicken sirloin pancetta. Tongue chicken pancetta chuck. Flank alcatra pastrami salami landjaeger shank capicola bacon.
-  </p>
-  <p>
-    Tri-tip meatloaf ribeye biltong salami short ribs venison fatback burgdoggen doner pastrami t-bone pig. Spare ribs biltong salami burgdoggen pork belly tenderloin tail beef ribs pig sirloin leberkas ham hock. Bacon beef filet mignon boudin sirloin. Cupim frankfurter meatball venison leberkas flank sirloin chuck short ribs landjaeger ribeye tongue capicola cow shank.
-  </p>
-  <p>
-    Boudin ham meatball spare ribs swine. Swine landjaeger sausage salami, chuck burgdoggen cow short ribs doner andouille venison corned beef filet mignon leberkas. Shoulder pork prosciutto beef beef ribs. Beef ribs doner salami tenderloin, tail sausage short loin shoulder kielbasa turducken pork ribeye pastrami cow meatball. Cupim pastrami brisket turducken cow. Meatloaf shankle pork tenderloin short loin, tail ground round cow alcatra pork belly doner pork chop.
-  </p>
-  <p>
-    Bacon ipsum dolor amet cupim cow picanha ribeye, chuck tri-tip alcatra andouille pork chop sausage venison. Ham fatback frankfurter burgdoggen chicken tenderloin. Flank sirloin ball tip biltong shank. Rump chicken boudin kielbasa swine ball tip. Kevin strip steak beef ribs sausage, alcatra fatback shank jowl pork chop. Pork belly t-bone brisket shoulder pastrami fatback ball tip short loin drumstick jerky rump tenderloin.
-  </p>
-  <p>
-    Capicola ham hock burgdoggen kielbasa jowl ball tip chuck flank ground round filet mignon sirloin beef boudin shank shankle. Spare ribs pastrami ham short ribs alcatra t-bone shank, bresaola venison. Tail venison t-bone turducken chicken, salami pig meatball beef drumstick bresaola. Swine meatball pork chop chicken sirloin pancetta. Tongue chicken pancetta chuck. Flank alcatra pastrami salami landjaeger shank capicola bacon.
-  </p>
-  <p>
-    Tri-tip meatloaf ribeye biltong salami short ribs venison fatback burgdoggen doner pastrami t-bone pig. Spare ribs biltong salami burgdoggen pork belly tenderloin tail beef ribs pig sirloin leberkas ham hock. Bacon beef filet mignon boudin sirloin. Cupim frankfurter meatball venison leberkas flank sirloin chuck short ribs landjaeger ribeye tongue capicola cow shank.
-  </p>
-  <p>
-    Boudin ham meatball spare ribs swine. Swine landjaeger sausage salami, chuck burgdoggen cow short ribs doner andouille venison corned beef filet mignon leberkas. Shoulder pork prosciutto beef beef ribs. Beef ribs doner salami tenderloin, tail sausage short loin shoulder kielbasa turducken pork ribeye pastrami cow meatball. Cupim pastrami brisket turducken cow. Meatloaf shankle pork tenderloin short loin, tail ground round cow alcatra pork belly doner pork chop.
-  </p>
-  <p>
-    Bacon ipsum dolor amet cupim cow picanha ribeye, chuck tri-tip alcatra andouille pork chop sausage venison. Ham fatback frankfurter burgdoggen chicken tenderloin. Flank sirloin ball tip biltong shank. Rump chicken boudin kielbasa swine ball tip. Kevin strip steak beef ribs sausage, alcatra fatback shank jowl pork chop. Pork belly t-bone brisket shoulder pastrami fatback ball tip short loin drumstick jerky rump tenderloin.
-  </p>
-  <p>
-    Capicola ham hock burgdoggen kielbasa jowl ball tip chuck flank ground round filet mignon sirloin beef boudin shank shankle. Spare ribs pastrami ham short ribs alcatra t-bone shank, bresaola venison. Tail venison t-bone turducken chicken, salami pig meatball beef drumstick bresaola. Swine meatball pork chop chicken sirloin pancetta. Tongue chicken pancetta chuck. Flank alcatra pastrami salami landjaeger shank capicola bacon.
-  </p>
-  <p>
-    Tri-tip meatloaf ribeye biltong salami short ribs venison fatback burgdoggen doner pastrami t-bone pig. Spare ribs biltong salami burgdoggen pork belly tenderloin tail beef ribs pig sirloin leberkas ham hock. Bacon beef filet mignon boudin sirloin. Cupim frankfurter meatball venison leberkas flank sirloin chuck short ribs landjaeger ribeye tongue capicola cow shank.
-  </p>
-  <p>
-    Boudin ham meatball spare ribs swine. Swine landjaeger sausage salami, chuck burgdoggen cow short ribs doner andouille venison corned beef filet mignon leberkas. Shoulder pork prosciutto beef beef ribs. Beef ribs doner salami tenderloin, tail sausage short loin shoulder kielbasa turducken pork ribeye pastrami cow meatball. Cupim pastrami brisket turducken cow. Meatloaf shankle pork tenderloin short loin, tail ground round cow alcatra pork belly doner pork chop.
-  </p>
+  <div class="medium-12 columns">
+    <div class="medium-3 columns hide-for-small-only">
+      <p>
+        Bacon ipsum dolor amet salami chicken capicola bacon ham hock pork belly swine boudin. Corned beef cow flank venison pork loin short loin jerky brisket chicken biltong burgdoggen. Ham swine kevin, pork loin landjaeger flank tongue. Pork salami beef jerky strip steak spare ribs. Beef ribs pork chop shoulder sausage t-bone. Sirloin brisket pancetta, beef pork jowl t-bone jerky frankfurter ball tip.
+      </p>
+      <p>
+        Filet mignon ribeye jerky venison andouille doner beef ribs ham shankle fatback. T-bone ground round brisket, pork chop tri-tip sirloin boudin ribeye picanha corned beef pancetta burgdoggen rump pork jowl. Kielbasa burgdoggen capicola boudin pork belly. T-bone porchetta corned beef, meatball kielbasa shankle biltong meatloaf tri-tip.
+      </p>
+      <p>
+        Ball tip ham hock capicola, kevin landjaeger meatball fatback rump sirloin frankfurter kielbasa shoulder bacon. Chuck sausage capicola, pig meatball landjaeger sirloin ground round shankle fatback. Tenderloin cow pastrami venison ground round, short loin salami picanha prosciutto. Ribeye turducken corned beef salami, alcatra sausage bresaola. Corned beef turducken shankle tail shank shoulder, pig ham hock biltong. Pork chop ham tenderloin cow.
+      </p>
+      <p>
+        Corned beef shoulder pancetta pork loin sausage, brisket pig. Swine bresaola doner turkey turducken pork belly. Tongue shank drumstick, strip steak t-bone prosciutto landjaeger jerky boudin pork belly spare ribs kevin burgdoggen kielbasa. Pork loin hamburger spare ribs meatball, strip steak fatback shankle venison.
+      </p>
+    </div>
+    <div class="hide-for-small-only medium-9 columns">
+      <ul class="wrapper">
+        <% @products.each do |product| %>
+          <li class="item">
+            <%= link_to product do %>
+              <div class="card">
+                <div class="image">
+                  <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
+                  <!-- https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=325&h=225 -->
+                  <!-- <%= image_tag("abu-garcia-revo-ltx-brakes.jpeg") %> -->
+                </div>
+                <div class="content">
+                  <strong>
+                    <p>
+                      $<%= Money.new(product.price) * 100 %>
+                    </p>
+                  </strong>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="show-for-small-only small-12 columns">
+      <ul class="mobile-wrapper">
+        <% @products.each do |product| %>
+          <li class="item">
+            <%= link_to product do %>
+              <div class="card">
+                <div class="image">
+                  <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
+                </div>
+                <div class="content">
+                  <strong>
+                    <p>
+                      $<%= Money.new(product.price) * 100 %>
+                      <%= ["325x225", "325x350"].sample %>
+                    </p>
+                  </strong>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

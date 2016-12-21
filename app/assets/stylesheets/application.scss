@@ -16,9 +16,141 @@
 
  */
 
+@import "foundation_and_overrides";
+
+@import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body, html {
+  height: auto;
+}
+
+body {
+  margin-bottom: 6em;
+  //footer//
+  display: block;
+}
+
+// #mySidenav {
+//   visibility: hidden;
+// }
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.logo-menu {
+  font-size:30px;
+  cursor:pointer;
+}
+
+#logo-name {
+  padding-left: .75rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 6em;
+  background-color: #b0b0b0;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0px 0px 10px 10px;
+}
+
+.wrapper .masonryColumn {
+  float: left;
+  width: 33%;
+}
+
+.wrapper .item {
+   background: #ccc;
+   display: block;
+   margin: 10px 10px 0px 0px;
+   padding: 20px;
+}
+
+// .navbar-search {
+//   margin-bottom: 0;
+// }
+
+.mobile-wrapper {
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0px 0px 10px 10px;
+}
+
+// .mobile-wrapper .masonryColumn {
+//   float: left;
+//   width: 33%;
+// }
+
+.mobile-wrapper .item {
+   background: #ccc;
+   display: block;
+   margin-bottom: 10px;
+   padding: 10px;
+}
+
 .custom-row {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.off-canvas-content {
+  padding-bottom: 0;
 }
 
 .general-footer {
@@ -29,16 +161,4 @@
 
 .title-bar {
   width: 100%;
-}
-
-
-.sticky {
-  position: absolute;
-  z-index: 0;
-  transform: translate3d(0, 0, 0);
-}
-
-.sticky.is-stuck {
-  position: fixed;
-  z-index: 5;
 }

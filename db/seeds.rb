@@ -9,5 +9,17 @@
 Product.create([
   {name: "Lew's Speed Spool", description: "like new, buy this thing", price: 100.50},
   {name: "Shimano Citica", description: "like new, buy this thing", price: 150.50},
-  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 2000.50},
+  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 200.50},
+  {name: "Lew's Speed Spool", description: "like new, buy this thing", price: 100.50},
+  {name: "Shimano Citica", description: "like new, buy this thing", price: 150.50},
+  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 200.50},
+  {name: "Lew's Speed Spool", description: "like new, buy this thing", price: 100.50},
+  {name: "Shimano Citica", description: "like new, buy this thing", price: 150.50},
+  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 200.50},
+  {name: "Lew's Speed Spool", description: "like new, buy this thing", price: 100.50},
+  {name: "Shimano Citica", description: "like new, buy this thing", price: 150.50},
+  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 200.50},
+  {name: "Lew's Speed Spool", description: "like new, buy this thing", price: 100.50},
+  {name: "Shimano Citica", description: "like new, buy this thing", price: 150.50},
+  {name: "Abu Garcia Revo", description: "like new, buy this thing", price: 200.50}
 ])
