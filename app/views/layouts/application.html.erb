@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Angler District - The best place to find and sell used fishing tackle." %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -12,10 +12,45 @@
   </head>
 
   <body>
-
-    <%= render 'side_nav' %>
-
-    <%= yield %>
-
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <div class="off-canvas position-left" id="offCanvasLeftSPlit1" data-off-canvas>
+          <ul class="vertical menu" data-drilldown><!-- start of the drilldown multi level menu -->
+            <li>
+              <a>Item 1</a>
+              <ul class="vertical menu">
+                <li><a href="#">Item 1A</a></li>
+                <li><a href="#">Item 1B</a></li>
+                <li><a href="#">Item 1C</a></li>
+                <li><a href="#">Item 1D</a></li>
+                <li><a href="#">Item 1E</a></li>
+              </ul>
+            </li>
+            <li>
+              <a>Item 2</a>
+              <ul class="vertical menu">
+                <li><a href="#">Item 2A</a></li>
+                <li><a href="#">Item 2B</a></li>
+                <li><a href="#">Item 2C</a></li>
+                <li><a href="#">Item 2D</a></li>
+                <li><a href="#">Item 2E</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="off-canvas-content" data-off-canvas-content>
+          <div data-sticky-container>
+            <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%">
+              <div class="title-bar-left">
+                <button class="menu-icon" type="button" data-open="offCanvasLeftSPlit1"></button>
+                <span class="title-bar-title">Angler District</span>
+              </div>
+            </div>
+          </div>
+          <%= yield %>
+          <%= render 'layouts/general_footer' %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
