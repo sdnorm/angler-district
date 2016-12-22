@@ -4,7 +4,9 @@
       <div id="main">
         <span class="logo-menu" id="ham-menu" onclick="openNav()">&#9776;</span>
         <span style="font-size:45px;cursor:pointer;display:none" id="close-menu" onclick="closeNav()">&times;</span>
-        <span class="logo-menu" id="logo-name">Angler District</span>
+        <%= link_to root_path do %>
+          <span class="logo-menu" id="logo-name">Angler District</span>
+        <% end %>
       </div>
     </div>
   </div>
