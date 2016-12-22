@@ -1,24 +1,18 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
- */
+*/
 
 @import "foundation_and_overrides";
 
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
+
+// colors???????
+// #2c3e50
+// #d35400
+// #7f8c8d
+// #ecf0f1
 
 html {
   position: relative;
@@ -35,117 +29,12 @@ body {
   display: block;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  // transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  // transition: 0.3s
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.logo-menu {
-  font-size:30px;
-  cursor:pointer;
-}
-
-#logo-name {
-  padding-left: .75rem;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 6em;
-  background-color: #b0b0b0;
-}
-
-.wrapper {
-  width: 100%;
-  margin: 0px auto;
-  position: relative;
-  overflow: hidden;
-  padding: 0px 0px 10px 10px;
-}
-
-.wrapper .masonryColumn {
-  float: left;
-  width: 33%;
-}
-
-.wrapper .item {
-   background: #ccc;
-   display: block;
-   margin: 10px 10px 0px 0px;
-   padding: 20px;
-}
-
-// .navbar-search {
-//   margin-bottom: 0;
-// }
-
-.mobile-wrapper {
-  width: 100%;
-  margin: 0px auto;
-  position: relative;
-  overflow: hidden;
-  padding: 0px 0px 10px 10px;
-}
-
-// .mobile-wrapper .masonryColumn {
-//   float: left;
-//   width: 33%;
-// }
-
-.mobile-wrapper .item {
-   background: #ccc;
-   display: block;
-   margin-bottom: 10px;
-   padding: 10px;
+.title-bar {
+  background: #2c3e50;
+  color: #ecf0f1;
 }
 
 .custom-row {
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.title-bar {
-  width: 100%;
-  padding: 0
 }
