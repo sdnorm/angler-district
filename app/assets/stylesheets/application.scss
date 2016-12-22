@@ -24,9 +24,10 @@ body, html {
 }
 
 body {
-  margin-bottom: 6em;
+  margin-bottom: 22rem;
   //footer//
   display: block;
+  background-color: #ecf0f1;
 }
 
 .title-bar {
@@ -41,10 +42,26 @@ body {
 .custom-row {
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 6em;
 }
 
 .footer-space {
   height: 6em;
   background-color: white;
+}
+
+.cat-image {
+  max-width: 338px;
+  max-height: 300px;
+}
+
+.callout.secondary {
+  background-color: #2199E8;
+}
+
+.general-footer {
+  background-color: #2c3e50;
+}
+
+.callout {
+  border-radius: 10px;
 }

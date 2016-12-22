@@ -15,8 +15,11 @@
   <body>
     <%= render 'layouts/side_nav' %>
     <%= render 'layouts/logo_menu' %>
-    <%= yield %>
+    <div class="custom-row">
+      <%= yield %>
+    </div>
   </body>
+  <%= render 'layouts/top_footer' %>
   <%= render 'layouts/general_footer' %>
 
 </html>

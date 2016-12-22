@@ -1,66 +1,65 @@
-<div class="custom-row">
-  <p id="notice"><%= notice %></p>
-  <div class="medium-12 columns">
-    <div class="medium-3 columns hide-for-small-only">
-      <p>
-        Bacon ipsum dolor amet salami chicken capicola bacon ham hock pork belly swine boudin. Corned beef cow flank venison pork loin short loin jerky brisket chicken biltong burgdoggen. Ham swine kevin, pork loin landjaeger flank tongue. Pork salami beef jerky strip steak spare ribs. Beef ribs pork chop shoulder sausage t-bone. Sirloin brisket pancetta, beef pork jowl t-bone jerky frankfurter ball tip.
-      </p>
-      <p>
-        Filet mignon ribeye jerky venison andouille doner beef ribs ham shankle fatback. T-bone ground round brisket, pork chop tri-tip sirloin boudin ribeye picanha corned beef pancetta burgdoggen rump pork jowl. Kielbasa burgdoggen capicola boudin pork belly. T-bone porchetta corned beef, meatball kielbasa shankle biltong meatloaf tri-tip.
-      </p>
-      <p>
-        Ball tip ham hock capicola, kevin landjaeger meatball fatback rump sirloin frankfurter kielbasa shoulder bacon. Chuck sausage capicola, pig meatball landjaeger sirloin ground round shankle fatback. Tenderloin cow pastrami venison ground round, short loin salami picanha prosciutto. Ribeye turducken corned beef salami, alcatra sausage bresaola. Corned beef turducken shankle tail shank shoulder, pig ham hock biltong. Pork chop ham tenderloin cow.
-      </p>
-      <p>
-        Corned beef shoulder pancetta pork loin sausage, brisket pig. Swine bresaola doner turkey turducken pork belly. Tongue shank drumstick, strip steak t-bone prosciutto landjaeger jerky boudin pork belly spare ribs kevin burgdoggen kielbasa. Pork loin hamburger spare ribs meatball, strip steak fatback shankle venison.
-      </p>
-    </div>
-    <div class="hide-for-small-only medium-9 columns">
-      <ul class="wrapper">
-        <% @products.each do |product| %>
-          <li class="item">
-            <%= link_to product do %>
-              <div class="card">
-                <div class="image">
-                  <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
-                  <!-- https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=325&h=225 -->
-                  <!-- <%= image_tag("abu-garcia-revo-ltx-brakes.jpeg") %> -->
-                </div>
-                <div class="content">
-                  <strong>
-                    <p>
-                      $<%= Money.new(product.price) * 100 %>
-                    </p>
-                  </strong>
-                </div>
+
+<p id="notice"><%= notice %></p>
+<div class="medium-12 columns">
+  <div class="medium-3 columns hide-for-small-only">
+    <p>
+      Bacon ipsum dolor amet salami chicken capicola bacon ham hock pork belly swine boudin. Corned beef cow flank venison pork loin short loin jerky brisket chicken biltong burgdoggen. Ham swine kevin, pork loin landjaeger flank tongue. Pork salami beef jerky strip steak spare ribs. Beef ribs pork chop shoulder sausage t-bone. Sirloin brisket pancetta, beef pork jowl t-bone jerky frankfurter ball tip.
+    </p>
+    <p>
+      Filet mignon ribeye jerky venison andouille doner beef ribs ham shankle fatback. T-bone ground round brisket, pork chop tri-tip sirloin boudin ribeye picanha corned beef pancetta burgdoggen rump pork jowl. Kielbasa burgdoggen capicola boudin pork belly. T-bone porchetta corned beef, meatball kielbasa shankle biltong meatloaf tri-tip.
+    </p>
+    <p>
+      Ball tip ham hock capicola, kevin landjaeger meatball fatback rump sirloin frankfurter kielbasa shoulder bacon. Chuck sausage capicola, pig meatball landjaeger sirloin ground round shankle fatback. Tenderloin cow pastrami venison ground round, short loin salami picanha prosciutto. Ribeye turducken corned beef salami, alcatra sausage bresaola. Corned beef turducken shankle tail shank shoulder, pig ham hock biltong. Pork chop ham tenderloin cow.
+    </p>
+    <p>
+      Corned beef shoulder pancetta pork loin sausage, brisket pig. Swine bresaola doner turkey turducken pork belly. Tongue shank drumstick, strip steak t-bone prosciutto landjaeger jerky boudin pork belly spare ribs kevin burgdoggen kielbasa. Pork loin hamburger spare ribs meatball, strip steak fatback shankle venison.
+    </p>
+  </div>
+  <div class="hide-for-small-only medium-9 columns">
+    <ul class="wrapper">
+      <% @products.each do |product| %>
+        <li class="item">
+          <%= link_to product do %>
+            <div class="card">
+              <div class="image">
+                <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
+                <!-- https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=325&h=225 -->
+                <!-- <%= image_tag("abu-garcia-revo-ltx-brakes.jpeg") %> -->
               </div>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="show-for-small-only small-12 columns">
-      <ul class="mobile-wrapper">
-        <% @products.each do |product| %>
-          <li class="item">
-            <%= link_to product do %>
-              <div class="card">
-                <div class="image">
-                  <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
-                </div>
-                <div class="content">
-                  <strong>
-                    <p>
-                      $<%= Money.new(product.price) * 100 %>
-                      <%= ["325x225", "325x350"].sample %>
-                    </p>
-                  </strong>
-                </div>
+              <div class="content">
+                <strong>
+                  <p>
+                    $<%= Money.new(product.price) * 100 %>
+                  </p>
+                </strong>
               </div>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="show-for-small-only small-12 columns">
+    <ul class="mobile-wrapper">
+      <% @products.each do |product| %>
+        <li class="item">
+          <%= link_to product do %>
+            <div class="card">
+              <div class="image">
+                <%= image_tag("http://placehold.it/#{['325x225', '325x350'].sample}") %>
+              </div>
+              <div class="content">
+                <strong>
+                  <p>
+                    $<%= Money.new(product.price) * 100 %>
+                    <%= ["325x225", "325x350"].sample %>
+                  </p>
+                </strong>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

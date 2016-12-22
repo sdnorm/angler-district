@@ -1,3 +1,77 @@
-<h1>
-  Home
-</h1>
+<br />
+<div class="custom-row">
+  <div class="medium-7 large-8 columns">
+    <h1>Sell Your Tackle Fast</h1>
+    <h1>Find New Tackle Easily</h1>
+    <p class="subheader">
+      Angler District is a community built by anglers for anglers.
+      We know that fishermen all across the world buy used tackle and sell their own tackle.
+      Secondary tackle is a great way to try different brands and models out as well as obtain expensive tackle for less than retail.
+      We want to cultivate a community for anglers to buy, sell, and learn.
+      So sell your tackle faster than ever and try more tackle out easier than ever.
+    </p>
+    <%= link_to "Find Tackle", products_path, class: "button" %>
+    <%= link_to "Sell Your Tackle", products_path, class: "button" %>
+  </div>
+  <div class="medium-5 large-4 columns">
+    <div class="callout secondary">
+      <form>
+        <div class="row">
+          <div class="small-12 columns" style="background-color: white;">
+            <label>Search for Tackle
+              <input type="number" placeholder="Find Fishing Tackle ...">
+            </label>
+            <button type="submit" class="button">Find Tackle</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row column">
+  <hr>
+</div>
+<div class="row small-up-1 medium-up-2 large-up-3">
+  <div class="column">
+    <div class="callout">
+      <p>Freshwater Fishing</p>
+      <p><%= image_tag("freshwater-cat2.jpeg", alt: "Freshwater Fishing", class: "cat-image") %></p>
+      <p class="subheader">Find tackle specifically for freshwater fishing. All species of freshwater fish included.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Inshore Fishing</p>
+      <p><%= image_tag("inshorefishing-cat.jpeg", alt: "Inshore Fishing", class: "cat-image") %></p>
+      <p class="subheader">Find tackle for your inshore fishing needs, from reds and specs and more.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Saltwater Fishing</p>
+      <p><%= image_tag("saltwater-cat.jpeg", alt: "Saltwater Fishing", class: "cat-image") %></p>
+      <p class="subheader">Find tackle specifically for saltwater fishing. All species of saltwater fish included.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Fly Fishing</p>
+      <p><%= image_tag("flyfishing-cat.jpg", alt: "Fly Fishing", class: "cat-image") %></p>
+      <p class="subheader">Find tackle specifically for freshwater fishing. All species of fresh water fish included.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>General Gear</p>
+      <p><%= image_tag("generalgear-cat.jpeg", alt: "General Fishing", class: "cat-image") %></p>
+      <p class="subheader">Find different kinds of gear for any type of fishing you want. From kayaks to ice fishing accessories.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Electronics</p>
+      <p><%= image_tag("electronics-cat.jpg", alt: "Fishing Electronics", class: "cat-image") %></p>
+      <p class="subheader">Find electronics for all of your fishing needs.</p>
+    </div>
+  </div>
+</div>
