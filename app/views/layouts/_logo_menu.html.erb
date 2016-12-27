@@ -1,12 +1,10 @@
-<div data-sticky-container>
+<!--<div data-sticky-container>
   <div class="title-bar" data-sticky data-options="marginTop: 0; stickyOn: small;">
     <div class="title-bar-left">
       <div id="main">
-        <span class="logo-menu" id="ham-menu" onclick="openNav()">&#9776;</span>
-        <span style="font-size:45px;cursor:pointer;display:none" id="close-menu" onclick="closeNav()">&times;</span>
-        <%= link_to root_path do %>
-          <span class="logo-menu" id="logo-name">Angler District</span>
-        <% end %>
+        <span class="logo-menu show-for-mobile-only" id="ham-menu" onclick="openNav()">&#9776;</span>
+        <span class="show-for-mobile-only" style="font-size:45px;cursor:pointer;display:none" id="close-menu" onclick="closeNav()">&times;</span>
+        <span class="logo-menu" id="logo-name"><%= link_to "Angler District", root_path %></span>
       </div>
     </div>
     <div class="title-bar-right">
@@ -15,5 +13,26 @@
         <li><a class="button">Login</a></li>
       </ul>
     </div>
+    <%= link_to "Find Tackle", products_path, class: "button" %>
+    <%= link_to "Sell Your Tackle", products_path, class: "button" %>
+  </div>
+</div> -->
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <!-- <li class="menu-text">Site Title</li> -->
+      <%= link_to root_path do %>
+        <%= image_tag("Logo-01-red.png", class: "nav-logo") %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+
+        <li><div class="nav-link"><a href="#" class="words">My Account</a></div></li>
+
+      <li><a class="button main-button">Login</a></li>
+    </ul>
   </div>
 </div>

@@ -7,12 +7,14 @@
 @import "foundation_and_overrides";
 
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 
 // colors???????
 // #2c3e50
-// #d35400
+// #D0011B
 // #7f8c8d
 // #ecf0f1
+// #BDC3C7
 
 html {
   position: relative;
@@ -21,6 +23,7 @@ html {
 
 body, html {
   height: auto;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 body {
@@ -30,13 +33,52 @@ body {
   background-color: #ecf0f1;
 }
 
-.title-bar {
+.top-bar, .top-bar-right, .top-bar-left, .menu {
   background: #2c3e50;
+  color: #ecf0f1;
+  font-weight: bold;
+}
+
+.top-bar a {
   color: #ecf0f1;
 }
 
-.title-bar a {
-  color: #ecf0f1;
+// .main-button a:hover {
+//   color: #ecf0f1;
+// }
+
+.nav-link a:hover {
+  color: #D0011B;
+}
+
+.nav-link {
+  margin-right: .5rem;
+}
+
+.words, .menu-text {
+  background: #2c3e50;
+}
+
+.nav-logo {
+  background: #2c3e50;
+  max-height: 38px;
+  width: 38px;
+}
+
+.logo {
+  height: 100%;
+  width: 100%
+}
+
+.main-button {
+  border: 2px solid;
+  border-radius: 5px;
+  background: #2c3e50;
+  border-color: #D0011B;
+}
+
+.menu > li {
+  background: #2c3e50;
 }
 
 .custom-row {
