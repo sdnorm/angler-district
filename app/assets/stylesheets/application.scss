@@ -4,6 +4,7 @@
  *= require foundation_and_overrides
 */
 @import "foundation_and_overrides";
+@import "font-awesome";
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
@@ -30,6 +31,37 @@ body {
   //footer//
   display: block;
   background-color: #ecf0f1;
+}
+
+.search-bar-button {
+  margin: 0;
+  background: #7f8c8d;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: #7f8c8d;
+  padding: 10px;
+  $background-hover: #2c3e50;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.input-group input {
+  margin-bottom: 0;
+}
+
+// @include button-style($background, $background-hover, $color);
+
+.home-search-button {
+  background: #2c3e50;
+  margin: 0;
+  width: 100%;
+  padding: .255rem;
+  height: 100%;
+  border-radius: 0px 6px 6px 0px;
+}
+
+.home-search-input {
+  border-radius: 6px 0px 0px 6px;
 }
 
 .top-bar, .top-bar-right, .top-bar-left, .menu {

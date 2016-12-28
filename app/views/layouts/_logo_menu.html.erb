@@ -17,20 +17,21 @@
     <%= link_to "Sell Your Tackle", products_path, class: "button" %>
   </div>
 </div> -->
-
 <div class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <!-- <li class="menu-text">Site Title</li> -->
-      <%= link_to root_path do %>
-        <%= image_tag("Logo-01-red.png", class: "nav-logo") %>
-      <% end %>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><div class="nav-link"><a href="#" class="words">My Account</a></div></li>
-      <li><a class="button main-button">Login</a></li>
-    </ul>
+  <div class="row expanded">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <!-- <li class="menu-text">Site Title</li> -->
+        <%= link_to root_path do %>
+          <%= image_tag("Logo-01-red.png", class: "nav-logo") %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><div class="nav-link"><a href="#" class="words">Sign Up</a></div></li>
+        <li><a class="button main-button">Login</a></li>
+      </ul>
+    </div>
   </div>
 </div>

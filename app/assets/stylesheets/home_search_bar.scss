@@ -1,0 +1,13 @@
+.home-search-bar {
+  background: #D0011B;
+  margin: 0;
+  padding-top: .4rem;
+  padding-bottom: .4rem;
+}
+
+.home-search-bar input {
+  margin: 0;
+}
+
+$button-background: #2c3e50;
+$button-background-hover: scale-color($button-background, $lightness: -15%);
