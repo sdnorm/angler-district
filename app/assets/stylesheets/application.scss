@@ -62,9 +62,13 @@ body {
 
 .home-search-input {
   border-radius: 6px 0px 0px 6px;
+}
+
+.home-search-input input[type=text] {
   -webkit-appearance: none;
   -webkit-border-radius: 6px 0px 0px 6px;
 }
+
 
 .top-bar, .top-bar-right, .top-bar-left, .menu {
   background: #2c3e50;
