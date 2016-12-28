@@ -3,23 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "Angler District - The best place to find and sell used fishing tackle." %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'Logo-01.png' %>
   </head>
-
   <body>
     <%= render 'layouts/side_nav' %>
     <%= render 'layouts/logo_menu' %>
-    <div class="custom-row">
+    <div class="row expanded">
       <%= yield %>
     </div>
   </body>
-  <%= render 'layouts/top_footer' %>
-  <%= render 'layouts/general_footer' %>
-
+  <%= render 'layouts/footer' %>
 </html>

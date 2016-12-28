@@ -3,6 +3,45 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top-home-nav {
-  height: 100px;
+  height: 100%;
   background-color: #2c3e50;
+  padding: 0;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.top-home-nav h1, h2, h3, h4, h5 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.top-home-nav h1 {
+  color: #ecf0f1;
+  font-size: 600%;
+  margin-bottom: 0;
+  margin-top: -1;
+}
+
+.top-home-nav h5 {
+  color: #D0011B;
+  font-size: 200%;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.home-nav-buttons > .main-button {
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+.home-nav-find-button {
+  padding: 1.5rem;
+}
+
+#find-button {
+  margin-right: .75rem;
+  padding: 1rem;
+}
+
+#sell-button {
+  margin-leftt: .75rem;
+  padding: 1rem;
 }
