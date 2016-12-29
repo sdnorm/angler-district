@@ -5,9 +5,25 @@
 */
 @import "foundation_and_overrides";
 @import "font-awesome";
-@import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
+
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
+
+@import url('https://fonts.googleapis.com/css?family=Vast+Shadow');
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+// font-family: 'Raleway', sans-serif;
+
+// #9DC7B9
+
+// #FFFFEC
+
+@font-face {
+  font-family: "Vast Shadow Regular";
+  src: url(/assets/fonts/VastShadow-Regular.ttf) format("truetype");
+}
 
 // colors???????
 // #2c3e50
@@ -23,7 +39,14 @@ html {
 
 body, html {
   height: auto;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+body h3, h4, h5, p {
+  font-family: 'Raleway', sans-serif;
+}
+
+body h1 {
+  font-family: 'Vast Shadow', cursive;
 }
 
 body {
@@ -31,6 +54,40 @@ body {
   //footer//
   display: block;
   background-color: #ecf0f1;
+}
+
+.home-top {
+  background-image: image-url("home-image2.png");
+  width: 100%;
+  height: 400px;
+}
+
+hr.style2 {
+	border-top: 3px double #9DC7B9;
+}
+
+.angler-district {
+  color: #9DC7B9;
+  font-size: 450%;
+}
+
+.home-top, .angler-district h1 {
+  color: #9DC7B9;
+  font-size: 450%;
+}
+
+.home-top, .angler-district span h1 {
+  font-size: 450%;
+}
+
+.tag-line {
+  color: #FFFFEC;
+  padding: .5rem;
+}
+
+.tag-line h3 span {
+  background-color: #9DC7B9;
+  padding: 4px;
 }
 
 .search-bar-button {

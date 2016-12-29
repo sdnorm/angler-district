@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
   get '/about', to: 'pages#about', as: :about
 
   get '/terms_and_policies', to: 'pages#terms_and_policies', as: :terms_and_policies
@@ -12,5 +11,12 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :products
+
+  devise_for :users
+
+  resources :products do
+    resources :orders
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -3,9 +3,9 @@
     <div class="large-12 columns">
 
       <div class="large-4 columns text-right home-bar-buttons hide-for-small-only hide-for-medium-only">
-        <a class="button search-bar-button" id="sb-cat-button">Freshwater</a>
-        <a class="button search-bar-button" id="sb-cat-button">Saltwater</a>
-        <a class="button search-bar-button" id="sb-cat-button">Inshore</a>
+        <%= link_to "Freshwater", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
+        <%= link_to "Saltwater", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
+        <%= link_to "Inshore", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
       </div>
 
       <div class="large-4 medium-12 columns">
@@ -22,9 +22,9 @@
       </div>
 
       <div class="large-4 columns text-left home-bar-buttons hide-for-small-only hide-for-medium-only">
-        <a class="button search-bar-button" id="sb-cat-button">Fly</a>
-        <a class="button search-bar-button" id="sb-cat-button">Accesories</a>
-        <a class="button search-bar-button" id="sb-cat-button">Electronics</a>
+        <%= link_to "Fly", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
+        <%= link_to "Accesories", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
+        <%= link_to "Electronics", products_path, class: "button search-bar-button", id: "sb-cat-button" %>
       </div>
 
     </div>
