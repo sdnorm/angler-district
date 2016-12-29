@@ -11,6 +11,9 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'redis'
 gem 'hiredis'
+gem 'braintree'
+gem 'figaro'
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

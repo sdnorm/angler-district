@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'transactions/new'
+
   get 'carts/show'
 
   get '/about', to: 'pages#about', as: :about
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
     put 'add/:product_id', to: 'carts#add', as: :add_to
     put 'remove/:product_id', to: 'carts#remove', as: :remove_from
   end
+
+  resources :transactions, only: [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
