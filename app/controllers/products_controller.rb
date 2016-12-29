@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cart_action = @product.cart_action current_user.try :id
   end
 
   # GET /products/new
@@ -80,4 +81,5 @@ class ProductsController < ApplicationController
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
+
 end
