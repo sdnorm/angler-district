@@ -34,32 +34,32 @@ function closeNav() {
   document.getElementById("close-menu").style.display = "none";
 }
 
-$(function($){
-  $.fn.masonry = function(params){
-    var defaults = {
-      columns: 3
-    };
-
-    var options = $.extend(defaults, params),
-        container = this,
-        items = container.find('.item'),
-        colCount = 0,
-        columns = $(Array(options.columns + 1).join('<div></div>')).addClass('masonryColumn').appendTo(container);
-    for(var c = 0; c < items.length; c++){
-      items.eq(c).appendTo(columns.eq(colCount));
-      colCount = (colCount + 1 > (options.columns - 1)) ? 0 : colCount + 1;
-    }
-  }
-}(jQuery));
-
-$(function(){
-  $('.wrapper').masonry({
-    columns: 3
-  });
-});
-
-$(function(){
-  $('.mobile-wrapper').masonry({
-    columns: 1
-  });
-});
+// $(function($){
+//   $.fn.masonry = function(params){
+//     var defaults = {
+//       columns: 3
+//     };
+//
+//     var options = $.extend(defaults, params),
+//         container = this,
+//         items = container.find('.item'),
+//         colCount = 0,
+//         columns = $(Array(options.columns + 1).join('<div></div>')).addClass('masonryColumn').appendTo(container);
+//     for(var c = 0; c < items.length; c++){
+//       items.eq(c).appendTo(columns.eq(colCount));
+//       colCount = (colCount + 1 > (options.columns - 1)) ? 0 : colCount + 1;
+//     }
+//   }
+// }(jQuery));
+//
+// $(function(){
+//   $('.wrapper').masonry({
+//     columns: 3
+//   });
+// });
+//
+// $(function(){
+//   $('.mobile-wrapper').masonry({
+//     columns: 1
+//   });
+// });
