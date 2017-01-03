@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get 'my-products', to: 'user_products#index', as: :all_user_products
+  get 'edit-product/product/:id', to: 'products#edit', as: :edit_user_product
+
   resources :products do
     resources :orders
   end

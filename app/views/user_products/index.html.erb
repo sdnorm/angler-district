@@ -1,0 +1,11 @@
+<div class="row">
+  <h1>All Products Listed</h1>
+  <h1><%= @user %></h1>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <%= link_to product.name, edit_product_path(product) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

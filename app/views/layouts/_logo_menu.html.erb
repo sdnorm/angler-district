@@ -65,6 +65,9 @@
           <ul class="menu">
             <%if signed_in?%>
               <li>
+                <%= link_to "My Products", all_user_products_path %>
+              </li>
+              <li>
                 <%= link_to cart_path do%>
                   <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
                   My Cart
@@ -93,6 +96,12 @@
       <div class="top-bar-right">
         <ul class="menu">
           <%if signed_in?%>
+            <li>
+              <%= link_to "My Products", all_user_products_path %>
+            </li>
+            <li>
+              <%= link_to "My Orders", all_user_products_path %>
+            </li>
             <li>
               <%= link_to cart_path do%>
                 <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>

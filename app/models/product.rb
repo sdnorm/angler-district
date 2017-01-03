@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :orders
 
+  scope :user_products, -> (user) { where(user_id: user) }
+
   def cart_action(current_user_id)
     if $redis.sismember "cart#{current_user_id}", id
       "Remove from"

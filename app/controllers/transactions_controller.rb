@@ -8,6 +8,16 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    # obtain shipping information on a form
+    # create the paypal payment acceptance
+    # if the return from the payment is successful
+      # a) initiate the paypal payout
+      # b) email / show the shipping information to the seller && and alert them
+
+    # have the seller update tracking info and shipped notice to notify the buyer
+
+    # check for updates on order that have been processed 
+
     @result = Braintree::Transaction.sale(
               amount: current_user.cart_total_price,
               payment_method_nonce: params[:payment_method_nonce])
