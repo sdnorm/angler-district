@@ -1,10 +1,13 @@
 <div class="row">
   <h1>All Products Listed</h1>
-  <h1><%= @user %></h1>
+
+  <%= link_to "New Product Listing", new_product_path, class: "button" %>
+
   <ul>
     <% @products.each do |product| %>
       <li>
         <%= link_to product.name, edit_product_path(product) %>
+        <%= image_tag(product.display_image.display)%>
       </li>
     <% end %>
   </ul>

@@ -8,12 +8,16 @@ end
 gem 'rails_12factor'
 gem 'money'
 gem 'devise'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'redis'
 gem 'hiredis'
 gem 'braintree'
 gem 'figaro'
 gem 'gon'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+# gem "fog"
 
 gem 'paypal-sdk-rest'
 

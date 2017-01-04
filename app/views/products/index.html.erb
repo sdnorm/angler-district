@@ -24,9 +24,12 @@
               <%= link_to product do %>
                 <div class="card">
                   <div class="image">
-                    <%= image_tag("https://placeholdit.imgix.net/~text?txtsize=33&txt=450%C3%97350&w=450&h=350") %>
+                    <% if product.display_image == "" %>
+                      <%= image_tag("https://placeholdit.imgix.net/~text?txtsize=33&txt=450%C3%97350&w=450&h=350") %>
                     <!-- https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=325&h=225 -->
-                    <!-- <%= image_tag("abu-garcia-revo-ltx-brakes.jpeg") %> -->
+                    <% else %>
+                      <%= image_tag(product.display_image.display) %>
+                    <% end %>
                   </div>
                   <div class="content">
                     <strong>

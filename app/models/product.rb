@@ -1,5 +1,11 @@
 class Product < ApplicationRecord
 
+  mount_uploader :image, ProductImageUploader
+  mount_uploader :image2, ProductImageUploader
+  mount_uploader :image3, ProductImageUploader
+  mount_uploader :image4, ProductImageUploader
+  mount_uploader :display_image, DisplayProductImageUploader
+
   validates :name, :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
 
