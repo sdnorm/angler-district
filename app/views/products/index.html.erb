@@ -17,32 +17,29 @@
           Corned beef shoulder pancetta pork loin sausage, brisket pig. Swine bresaola doner turkey turducken pork belly. Tongue shank drumstick, strip steak t-bone prosciutto landjaeger jerky boudin pork belly spare ribs kevin burgdoggen kielbasa. Pork loin hamburger spare ribs meatball, strip steak fatback shankle venison.
         </p>
       </div>
-      <div class="hide-for-small-only medium-9 columns">
+      <div class="medium-9 small-12 columns">
         <ul class="wrapper">
           <% @products.each do |product| %>
-            <li class="item medium-4 columns">
+            <li class="item">
               <%= link_to product do %>
-                <div class="card">
-                  <div class="image">
-                    <% if product.display_image == "" %>
-                      <%= image_tag("https://placeholdit.imgix.net/~text?txtsize=33&txt=450%C3%97350&w=450&h=350") %>
-                    <!-- https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=325&h=225 -->
-                    <% else %>
-                      <%= image_tag(product.display_image.display) %>
-                    <% end %>
-                  </div>
-                  <div class="content">
-                    <strong>
-                      <p>
-                        $<%= Money.new(product.price) * 100 %>
-                      </p>
-                    </strong>
-                  </div>
-                </div>
+                <h4 class="text-center"><%= product.name %></h4>
+                <%= image_tag(product.display_image.display) %>
+                <h5 class="home-page-product">$<%= Money.new(product.price) * 100 %></h5>
               <% end %>
             </li>
           <% end %>
         </ul>
+        <!-- <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 33% }'>
+          <% @products.each do |product| %>
+            <%= link_to product do %>
+              <div class="grid-item">
+                  <h4 class="text-center"><%= product.name %></h4>
+                  <%= image_tag(product.display_image.display) %>
+                  <h5 class="home-page-product">$<%= Money.new(product.price) * 100 %></h5>
+              </div>
+            <% end %>
+          <% end %>
+        </div> -->
       </div>
     </div>
   </div>

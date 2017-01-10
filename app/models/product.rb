@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
   mount_uploader :image, ProductImageUploader
   mount_uploader :image2, ProductImageUploader
   mount_uploader :image3, ProductImageUploader
@@ -12,14 +11,17 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :orders
 
-  scope :user_products, -> (user) { where(user_id: user) }
+  scope :user_products, -> (user) {
+    where(user_id: user).order('created_at DESC')
+  }
+
+  scope :ordered, -> { all.order('created_at DESC') }
 
   def cart_action(current_user_id)
     if $redis.sismember "cart#{current_user_id}", id
-      "Remove from"
+      'Remove from'
     else
-      "Add to"
+      'Add to'
     end
   end
-
 end

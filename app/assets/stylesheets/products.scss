@@ -1,3 +1,23 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper {
+  width: 33%;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0px 0px 10px 10px;
+}
+
+.wrapper .masonryColumn {
+  float: left;
+  width: 100%;
+}
+
+.wrapper .item {
+   background: #ccc;
+   display: block;
+   margin: 10px 10px 0px 0px;
+   padding: 20px;
+}

@@ -17,7 +17,8 @@ gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
-# gem "fog"
+
+gem 'jquery-masonry-rails'
 
 gem 'paypal-sdk-rest'
 

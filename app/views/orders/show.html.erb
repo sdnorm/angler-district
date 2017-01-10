@@ -15,5 +15,13 @@
   <%= @order.state %>
 </p>
 
+<ul>
+  <% @cart_products.each do |product| %>
+    <li>
+      <%= product.name %> - $<%= Money.new(product.price) * 100 %>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

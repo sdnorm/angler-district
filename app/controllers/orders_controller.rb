@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @cart_products = Products.where(id: params[:cart_product_ids])
   end
 
   # GET /orders/new
