@@ -12,6 +12,7 @@
 #       $this.closest('.cart-movie').slideUp()
 
 
+
 $(window).load ->
   $('a[data-target]').click (e) ->
     e.preventDefault()

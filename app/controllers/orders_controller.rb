@@ -28,13 +28,18 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-    @product = Product.find(params[:product_id])
-    @seller = @product.user
-
-    @order.product_id = @product.id
-    @order.buyer_id = current_user.id
-    @order.seller_id = @seller.id
+    @cart_ids = $redis.smembers current_user_cart
+    puts "count - - - - - #{@cart_ids}"
+    @cart_ids.each do |id|
+      @order = Order.new(order_params)
+      @product = Product.find(id)
+      @seller = @product.user
+      @order.product_id = @product.id
+      @order.buyer_id = current_user.id
+      @order.seller_id = @seller.id
+      @order.save
+      remove_from_cart @product.id
+    end
 
     respond_to do |format|
       if @order.save
@@ -80,6 +85,14 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:address, :city, :state)
+    end
+
+    def current_user_cart
+      "cart#{current_user.id}"
+    end
+
+    def remove_from_cart product_id
+      $redis.srem current_user_cart, product_id
     end
 
     def current_user_cart
