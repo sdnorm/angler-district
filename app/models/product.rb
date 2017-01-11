@@ -15,6 +15,8 @@ class Product < ApplicationRecord
     where(user_id: user).order('created_at DESC')
   }
 
+  scope :positive_inventory, -> { where("inventory > ?", 0) }
+
   scope :ordered, -> { all.order('created_at DESC') }
 
   def cart_action(current_user_id)
@@ -23,5 +25,17 @@ class Product < ApplicationRecord
     else
       'Add to'
     end
+  end
+
+  def set_inventory_to_zero
+    self.update(inventory: 0)
+  end
+
+  class << self
+
+    def ordered_and_instock
+      positive_inventory.ordered
+    end
+
   end
 end

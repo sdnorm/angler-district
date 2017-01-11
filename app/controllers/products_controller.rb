@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.ordered
+    @products = Product.ordered_and_instock
   end
 
   # GET /products/1

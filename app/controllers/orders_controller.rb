@@ -11,8 +11,9 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    cart_ids = $redis.smembers current_user_cart
-    @cart_products = Product.find(cart_ids)
+    # cart_ids = $redis.smembers current_user_cart
+    # @cart_products = Product.find(cart_ids)
+    @product = Product.find(@order.product_id)
   end
 
   # GET /orders/new
@@ -29,16 +30,32 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @cart_ids = $redis.smembers current_user_cart
-    puts "count - - - - - #{@cart_ids}"
-    @cart_ids.each do |id|
+    if @cart_ids.count == 1
       @order = Order.new(order_params)
-      @product = Product.find(id)
-      @seller = @product.user
+      @product = Product.find(@cart_ids).first
+      @seller = User.find(@product.user_id)
       @order.product_id = @product.id
       @order.buyer_id = current_user.id
       @order.seller_id = @seller.id
       @order.save
+      if @order.save
+        @product.set_inventory_to_zero
+      end
       remove_from_cart @product.id
+    else
+      @cart_ids.each do |id|
+        @order = Order.new(order_params)
+        @product = Product.find(id)
+        @seller = @product.user
+        @order.product_id = @product.id
+        @order.buyer_id = current_user.id
+        @order.seller_id = @seller.id
+        @order.save
+        if @order.save
+          @product.set_inventory_to_zero
+        end
+        remove_from_cart @product.id
+      end
     end
 
     respond_to do |format|
