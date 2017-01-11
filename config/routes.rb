@@ -21,11 +21,13 @@ Rails.application.routes.draw do
   get 'my-products', to: 'user_products#index', as: :all_user_products
   get 'edit-product/product/:id', to: 'products#edit', as: :edit_user_product
 
-  resources :products do
-    resources :orders
-  end
+  # resources :products do
+  #   resources :orders
+  # end
 
-  resource :cart, only: [:show] do
+  resources :orders
+
+  resource :cart do
     put 'add/:product_id', to: 'carts#add', as: :add_to
     put 'remove/:product_id', to: 'carts#remove', as: :remove_from
   end

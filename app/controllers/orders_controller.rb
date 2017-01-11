@@ -11,13 +11,14 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @cart_products = Products.where(id: params[:cart_product_ids])
+    cart_ids = $redis.smembers current_user_cart
+    @cart_products = Product.find(cart_ids)
   end
 
   # GET /orders/new
   def new
     @order = Order.new
-    @product = Product.find(params[:product_id])
+    # @product = Product.find(params[:product_id])
   end
 
   # GET /orders/1/edit
@@ -79,5 +80,9 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:address, :city, :state)
+    end
+
+    def current_user_cart
+      "cart#{current_user.id}"
     end
 end
