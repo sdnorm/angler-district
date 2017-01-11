@@ -28,14 +28,13 @@ class Product < ApplicationRecord
   end
 
   def set_inventory_to_zero
-    self.update(inventory: 0)
+    reset_number = self.inventory - 1
+    self.update(inventory: reset_number)
   end
 
   class << self
-
     def ordered_and_instock
       positive_inventory.ordered
     end
-
   end
 end
