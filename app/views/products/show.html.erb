@@ -16,8 +16,12 @@
     <%= @product.price %>
   </p>
 
-  <%if signed_in?%>
-    <%=link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do%>
+  <%if signed_in? && current_user.id == @product.user_id %>
+    <%= link_to 'Edit', edit_product_path(@product) %>
+  <% elsif signed_in? %>
+    <%= link_to "", class: "button", data: {target: @cart_action,
+        addUrl: add_to_cart_path(@product),
+        removeUrl: remove_from_cart_path(@product)} do %>
       <% if @cart_action == 'Remove from' %>
         <i class="fa fa-times"></i>
       <% else %>
@@ -26,8 +30,4 @@
       <span><%=@cart_action%></span> Cart
     <%end%>
   <%end%>
-
-  <%if signed_in?%>
-    <%= link_to 'Edit', edit_product_path(@product) %>
-  <% end %>
 </div>
