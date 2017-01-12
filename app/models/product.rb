@@ -8,6 +8,13 @@ class Product < ApplicationRecord
   validates :name, :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
 
+  include PgSearch
+  pg_search_scope :search,
+                :against => [:name],
+                :using => {
+                  :tsearch => {:dictionary => "english"}
+                } 
+
   belongs_to :user
   has_many :orders
 

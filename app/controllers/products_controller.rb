@@ -8,7 +8,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.ordered_and_instock
+    if params[:search_text].present?
+      @products = Product.search(params[:search_text]).ordered_and_instock
+    else
+      @products = Product.ordered_and_instock
+    end
+    # @products = Product.ordered_and_instock
   end
 
   # GET /products/1

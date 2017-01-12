@@ -18,6 +18,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 
+gem 'pg_search'
+
 gem 'jquery-masonry-rails'
 
 gem 'paypal-sdk-rest'

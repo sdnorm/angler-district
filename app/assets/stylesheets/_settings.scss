@@ -68,7 +68,7 @@ $global-margin: 1rem;
 $global-padding: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+// $global-radius: 0;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
@@ -164,7 +164,7 @@ $keystroke-font: $font-family-monospace;
 $keystroke-color: $black;
 $keystroke-background: $light-gray;
 $keystroke-padding: rem-calc(2 4 0);
-$keystroke-radius: $global-radius;
+// $keystroke-radius: $global-radius;
 $abbr-underline: 1px dotted $black;
 
 // 5. Typography Helpers
@@ -240,7 +240,7 @@ $button-background: #D0011B;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
-$button-radius: $global-radius;
+// $button-radius: $global-radius;
 $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
@@ -269,7 +269,7 @@ $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
-$callout-radius: $global-radius;
+// $callout-radius: $global-radius;
 $callout-link-tint: 30%;
 
 // 14. Close Button
@@ -298,7 +298,7 @@ $dropdown-padding: 1rem;
 $dropdown-border: 1px solid $medium-gray;
 $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
-$dropdown-radius: $global-radius;
+// $dropdown-radius: $global-radius;
 $dropdown-sizes: (
   tiny: 100px,
   small: 200px,
@@ -342,7 +342,7 @@ $form-label-font-weight: $global-weight-normal;
 $form-label-line-height: 1.8;
 $select-background: $white;
 $select-triangle-color: $dark-gray;
-$select-radius: $global-radius;
+// $select-radius: $global-radius;
 $input-color: $black;
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
@@ -357,8 +357,8 @@ $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
-$input-radius: $global-radius;
-$button-radius: $global-radius;
+// $input-radius: $global-radius;
+// $button-radius: $global-radius;
 
 // 20. Label
 // ---------
@@ -367,7 +367,7 @@ $label-background: $primary-color;
 $label-color: foreground($label-background);
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
-$label-radius: $global-radius;
+// $label-radius: $global-radius;
 
 // 21. Media Object
 // ----------------
@@ -390,7 +390,7 @@ $menu-icon-spacing: 0.25rem;
 // ---------
 
 $meter-height: 1rem;
-$meter-radius: $global-radius;
+// $meter-radius: $global-radius;
 $meter-background: $medium-gray;
 $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
@@ -432,7 +432,7 @@ $pagination-margin-bottom: $global-margin;
 $pagination-item-color: $black;
 $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
-$pagination-radius: $global-radius;
+// $pagination-radius: $global-radius;
 $pagination-item-background-hover: $light-gray;
 $pagination-item-background-current: $primary-color;
 $pagination-item-color-current: foreground($pagination-item-background-current);
@@ -449,7 +449,7 @@ $progress-height: 1rem;
 $progress-background: $medium-gray;
 $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
-$progress-radius: $global-radius;
+// $progress-radius: $global-radius;
 
 // 28. Reveal
 // ----------
@@ -459,7 +459,7 @@ $reveal-width: 600px;
 $reveal-max-width: $global-width;
 $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;
-$reveal-radius: $global-radius;
+// $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);
 
@@ -475,7 +475,7 @@ $slider-handle-height: 1.4rem;
 $slider-handle-width: 1.4rem;
 $slider-handle-background: $primary-color;
 $slider-opacity-disabled: 0.25;
-$slider-radius: $global-radius;
+// $slider-radius: $global-radius;
 
 // 30. Switch
 // ----------
@@ -486,11 +486,11 @@ $switch-height: 2rem;
 $switch-height-tiny: 1.5rem;
 $switch-height-small: 1.75rem;
 $switch-height-large: 2.5rem;
-$switch-radius: $global-radius;
+// $switch-radius: $global-radius;
 $switch-margin: $global-margin;
 $switch-paddle-background: $white;
 $switch-paddle-offset: 0.25rem;
-$switch-paddle-radius: $global-radius;
+// $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 
 // 31. Table
@@ -536,7 +536,7 @@ $thumbnail-margin-bottom: $global-margin;
 $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
-$thumbnail-radius: $global-radius;
+// $thumbnail-radius: $global-radius;
 
 // 34. Title Bar
 // -------------
@@ -560,7 +560,7 @@ $tooltip-padding: 0.75rem;
 $tooltip-font-size: $small-font-size;
 $tooltip-pip-width: 0.75rem;
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
-$tooltip-radius: $global-radius;
+// $tooltip-radius: $global-radius;
 
 // 36. Top Bar
 // -----------

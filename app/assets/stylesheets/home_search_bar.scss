@@ -5,9 +5,22 @@
   padding-bottom: .4rem;
 }
 
-.home-search-bar input {
-  margin: 0;
+.home-search-bar-input {
+  height: 40px;
 }
 
-$button-background: #2c3e50;
-$button-background-hover: scale-color($button-background, $lightness: -15%);
+.search-button {
+  $background-hover: #D0011B;
+}
+
+#search-button {
+  border-radius: 0px 5px 5px 0px;
+  background: #2c3e50;
+}
+
+#search-input {
+  border-radius: 5px 0px 0px 5px;
+}
+
+// $button-background: #2c3e50;
+// $button-background-hover: scale-color($button-background, $lightness: -15%);
