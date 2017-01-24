@@ -22,6 +22,7 @@ gem 'pg_search'
 
 gem 'jquery-masonry-rails'
 
+gem 'paypal-sdk-adaptivepayments'
 gem 'paypal-sdk-rest'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

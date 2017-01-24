@@ -30,6 +30,12 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @cart_ids = $redis.smembers current_user_cart
+    # check to make sure the item is still in stock before all of this
+    # only process items that are in stock 
+    # process payment
+    # if success do the below
+    # if not do not create the order(s)
+    # redirect back to cart page with message of what happened
     if @cart_ids.count == 1
       @order = Order.new(order_params)
       @product = Product.find(@cart_ids).first
@@ -67,6 +73,10 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def purchase
+
   end
 
   # PATCH/PUT /orders/1

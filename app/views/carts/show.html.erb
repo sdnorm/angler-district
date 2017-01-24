@@ -25,20 +25,21 @@
       </div>
     </div>
   <%end%>
+  <div id="purchase-button" class="large-12 large-centered column">
+    <%if signed_in?%>
+      <%= link_to 'Purchase Order', new_order_path(@product), class: "button success" %>
+    <% end %>
+  </div>
 </div>
 
-<%if signed_in?%>
-  <%= link_to 'Purchase Order', new_order_path(@product) %>
-<% end %>
-
-<% form_for :order do |f| %>
+<!-- <% form_for :order do |f| %>
   <% @cart_products.each do |product| %>
     <%= f.hidden_field :cart_product_ids, :multiple => true, :value => product.id %>
   <% end %>
   <div class="actions">
     <%= f.submit "Checkout", class: "button" %>
   </div>
-<% end %>
+<% end %> -->
 <!--<%=
     link_to "Checkout",
     new_transaction_path,

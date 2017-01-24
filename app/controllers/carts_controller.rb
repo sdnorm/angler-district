@@ -4,7 +4,10 @@ class CartsController < ApplicationController
 
   def show
     cart_ids = $redis.smembers current_user_cart
+    # check for product inventory amount, disable if 0
+    # @pre_cart_products =
     @cart_products = Product.find(cart_ids)
+    # @disabled_cart_products = 
     # @cart_action = @cart_products.cart_action
   end
 
