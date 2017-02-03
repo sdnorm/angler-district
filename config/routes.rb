@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
+  get 'paypal/success', to: 'pages#paypal_success', as: :paypal_success
+
+  get 'paypal/failure', to: 'pages#paypal_failure', as: :paypal_failure
+
+  get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
+
   resources :products
 
   devise_for :users

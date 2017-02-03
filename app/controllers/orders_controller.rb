@@ -31,11 +31,53 @@ class OrdersController < ApplicationController
   def create
     @cart_ids = $redis.smembers current_user_cart
     # check to make sure the item is still in stock before all of this
-    # only process items that are in stock 
+    # only process items that are in stock
     # process payment
     # if success do the below
     # if not do not create the order(s)
     # redirect back to cart page with message of what happened
+
+    #######################
+    @api = PayPal::SDK::AdaptivePayments.new
+    puts "right here --------"
+    puts "------------ paypal api #{@api.inspect}"
+    # Build request object
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl => "http://localhost:3000/paypal/failure",
+      :currencyCode => "USD",
+      :feesPayer => "SENDER",
+      :ipnNotificationUrl => "http://localhost:3000/paypal/ipn",
+      :receiverList => {
+        :receiver => [
+          {
+            :amount => 1.0,
+            :email => "spencerdnorman-facilitator@gmail.com"
+          }
+        ]
+      },
+      :returnUrl => "http://localhost:3000/paypal/success" })
+
+    # Make API call & get response
+    @response = @api.pay(@pay)
+    puts "---- PayPal response ---- #{@response.inspect}"
+    puts "---- bitches"
+
+    # Access response
+    if @response.success? && @response.payment_exec_status != "ERROR"
+      @response.payKey
+      puts "----------"
+      puts @response.payKey
+      puts @api.payment_url(@response)
+      puts "----------"
+      @api.payment_url(@response)  # Url to complete payment
+    else
+      puts "erroring - - - - - - "
+      puts @response.error[0].message
+      puts "- - - - - - - - "
+    end
+    #######################
+
     if @cart_ids.count == 1
       @order = Order.new(order_params)
       @product = Product.find(@cart_ids).first
@@ -64,15 +106,15 @@ class OrdersController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @order.save
+    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def purchase
