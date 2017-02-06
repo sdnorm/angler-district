@@ -21,6 +21,6 @@
 # Ignore application configuration
 /config/application.yml
 
-paypal.yml
+/config/paypal.yml
 
 .env
