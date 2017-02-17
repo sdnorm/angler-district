@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'omniauth_callbacks/stripe_connect'
+
   get 'transactions/new'
 
   get 'carts/show'
