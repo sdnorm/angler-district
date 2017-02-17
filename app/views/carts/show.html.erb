@@ -28,6 +28,8 @@
   <div id="purchase-button" class="large-12 large-centered column">
     <%if signed_in?%>
       <%= link_to 'Purchase Order', new_order_path(@product), class: "button success" %>
+      <!--<div id="paypal-button"></div>
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo"> -->
     <% end %>
   </div>
 </div>
@@ -45,3 +47,20 @@
     new_transaction_path,
     class: "button" unless current_user.get_cart_products.blank?
 %>-->
+<!--<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+    paypal.Button.render({
+
+        env: 'sandbox', // Specify 'sandbox' for the test environment :: 'production'
+
+        payment: function() {
+            // Set up the payment here, when the buyer clicks on the button
+        },
+
+        onAuthorize: function(data, actions) {
+            // Execute the payment here, when the buyer approves the transaction
+       }
+
+    }, '#paypal-button');
+</script>00>

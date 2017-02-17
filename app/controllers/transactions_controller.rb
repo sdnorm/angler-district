@@ -18,11 +18,18 @@ class TransactionsController < ApplicationController
 
     # check for updates on order that have been processed
 
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to @order.paypal_url(registration_path(@order))
+    else
+      render :new
+    end
+
     @products = params[:products]
 
-    @result = Braintree::Transaction.sale(
-              amount: current_user.cart_total_price,
-              payment_method_nonce: params[:payment_method_nonce])
+    # @result = Braintree::Transaction.sale(
+    #           amount: current_user.cart_total_price,
+    #           payment_method_nonce: params[:payment_method_nonce])
     if @result.success?
       current_user.purchase_cart_products!
       redirect_to root_url, notice: "Congraulations! Your order has been successfully processed!"
