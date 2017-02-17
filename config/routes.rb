@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user_profile/index', to: 'user_profile#index', as: :user_profile
+
   get 'omniauth_callbacks/stripe_connect'
 
   get 'transactions/new'

@@ -1,0 +1,9 @@
+<h1>UserProfile#index</h1>
+<p>Find me in app/views/user_profile/index.html.erb</p>
+
+<%= @user.email %>
+
+<!--<%= link_to image_tag('STRIPE_IMAGE_URL'), user_stripe_connect_omniauth_authorize_path(:stripe_connect) %>-->
+<%= link_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{ENV["STRIPE_CONNECT_CLIENT_ID"]}&scope=read_write", class: "stripe-connect dark" do %>
+  <span>Connect with Stripe</span>
+<% end %>

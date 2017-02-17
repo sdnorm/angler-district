@@ -97,6 +97,9 @@
         <ul class="menu">
           <%if signed_in?%>
             <li>
+              <%= link_to "My Profile", user_profile_path %>
+            </li>
+            <li>
               <%= link_to "My Products", all_user_products_path %>
             </li>
             <li>
