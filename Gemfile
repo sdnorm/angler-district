@@ -24,6 +24,9 @@ gem 'pg_search'
 
 gem 'jquery-masonry-rails'
 
+# stripe
+gem 'omniauth-stripe-connect'
+
 # gem 'paypal-sdk-adaptivepayments'
 # gem 'paypal-sdk-rest'
 
