@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   resources :products
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   get 'my-products', to: 'user_products#index', as: :all_user_products
   get 'edit-product/product/:id', to: 'products#edit', as: :edit_user_product
