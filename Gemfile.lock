@@ -99,6 +99,8 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gon (6.1.0)
@@ -259,6 +261,7 @@ DEPENDENCIES
   fog-aws
   font-awesome-rails
   foundation-rails
+  friendly_id
   gon
   hiredis
   jbuilder (~> 2.5)

@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 
+gem 'friendly_id'
+
 gem 'pg_search'
 
 gem 'jquery-masonry-rails'

@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:stripe_connect]
 
   validates :email, presence: true
+  validates :profile_name, presence: true
+
+  extend FriendlyId
+  friendly_id :profile_name, use: :slugged
 
   has_many :products, dependent: :destroy
   has_many :sales, class_name: "Order", foreign_key: "seller_id"
