@@ -8,6 +8,6 @@
   <span>Connect with Stripe</span>-->
 <% end %>
 
-<%= link_to user_stripe_connect_omniauth_authorize_path, class: "stripe-connect dark" do %>
+<%= link_to user_stripe_connect_omniauth_authorize_path('stripe_user[email]' => @user.email, 'stripe_user[first_name]' => @user.first_name, 'stripe_user[url]' => 'http://www.anglerdistrict.com'), class: "stripe-connect dark" do %>
   <span>Connect with Stripe</span>
 <% end %>

@@ -8,7 +8,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key
     })
       # anything else you need to do in response..
-      sign_in_and_redirect @user, :event => :authentication
+      # sign_in_and_redirect @user, :event => :authentication
+      redirect_to user_profile_url
       set_flash_message(:notice, :success, :kind => "Stripe") if is_navigational_format?
     else
       session["devise.stripe_connect_data"] = request.env["omniauth.auth"]
