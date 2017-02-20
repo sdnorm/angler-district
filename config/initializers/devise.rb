@@ -3,10 +3,10 @@
 Devise.setup do |config|
 
   config.omniauth :stripe_connect,
-      ENV['STRIPE_CONNECT_CLIENT_ID'],
-      ENV['STRIPE_SECRET_KEY'],
-      :scope => 'read_write',
-      :stripe_landing => 'register'
+    ENV['STRIPE_CONNECT_CLIENT_ID'],
+    ENV['STRIPE_SECRET_KEY'],
+    :scope => 'read_write',
+    :stripe_landing => 'register'
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

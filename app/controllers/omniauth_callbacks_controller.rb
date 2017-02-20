@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < ApplicationController
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def stripe_connect
     @user = current_user
     if @user.update_attributes({
@@ -12,7 +12,7 @@ class OmniauthCallbacksController < ApplicationController
       set_flash_message(:notice, :success, :kind => "Stripe") if is_navigational_format?
     else
       session["devise.stripe_connect_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to user_profile
     end
   end
 end
