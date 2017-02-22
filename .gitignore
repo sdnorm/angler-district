@@ -24,3 +24,5 @@
 # /config/secrets.yml
 
 .env
+
+dump.rdb

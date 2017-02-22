@@ -28,6 +28,7 @@ gem 'jquery-masonry-rails'
 
 # stripe
 gem 'omniauth-stripe-connect'
+gem 'stripe'
 
 # gem 'paypal-sdk-adaptivepayments'
 # gem 'paypal-sdk-rest'

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :charges
+
   get 'user_profile', to: 'user_profile#show', as: :user_profile
 
   get 'user/:id', to: 'user_profile#index', as: :public_user_profile
