@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
       @order.grouped_orders_id = @grouped_order.id
       @product.grouped_orders_id = @grouped_order.id
       @order.save
-      @product.order_product = @order.id
+      # @product.order_product = @order.id
     else
       @cart_ids.each do |id|
         @order = Order.new
@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
         @order.grouped_orders_id = @grouped_order.id
         @product.grouped_orders_id = @grouped_order.id
         @order.save
-        @product.order_product = @order.id
+        # @product.order_product = @order.id
       end
     end
     # @product = Product.find(params[:product_id])

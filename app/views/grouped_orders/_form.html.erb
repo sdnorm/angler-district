@@ -1,0 +1,39 @@
+<div class="row">
+  <%= form_for @grouped_order do |f| %>
+    <% if grouped_order.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(grouepd_order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+        <% grouepd_order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :address1 %>
+      <%= f.text_field :address1, value: current_user.address1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address2 %>
+      <%= f.text_field :address2, value: current_user.address2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city %>
+      <%= f.text_field :city, value: current_user.city %>
+    </div>
+
+    <div class="field">
+      <%= f.label :state %>
+      <%= f.text_field :state, value: current_user.state %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

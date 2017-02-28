@@ -24,10 +24,15 @@
         <%end%>
       </div>
     </div>
+    <hr />
   <%end%>
   <div id="purchase-button" class="large-12 large-centered column">
     <%if signed_in?%>
-      <%= link_to 'Purchase Order', new_grouped_order_path(@product), class: "button success" %>
+      <% if @cart_ids.count == 1 %>
+        <%= link_to 'Purchase Order', new_order_path, class: "button success" %>
+      <% else %>
+        <%= link_to 'Purchase Grouped Order', new_grouped_order_path, class: "button success" %>
+      <% end %>
       <!--<div id="paypal-button"></div>
       <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo"> -->
     <% end %>

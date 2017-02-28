@@ -32,3 +32,8 @@ $(window).load ->
       $this.find('span').html(new_target)
       $this.find('i').addClass(new_icon).removeClass(old_icon)
       $this.data('target', new_target)
+    # $.ajax url: url, type: 'put', success: (data) ->
+    #   $('.cart-count').html(data)
+    #   $this.find('span').html(new_target)
+    #   $this.find('i').addClass(new_icon).removeClass(old_icon)
+    #   $this.data('target', new_target)

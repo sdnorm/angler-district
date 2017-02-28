@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228025225) do
+ActiveRecord::Schema.define(version: 20170228143902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170228025225) do
   create_table "grouped_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "buyer_id"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -103,6 +111,11 @@ ActiveRecord::Schema.define(version: 20170228025225) do
     t.string   "slug"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["profile_name"], name: "index_users_on_profile_name", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

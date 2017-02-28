@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :sales, class_name: "Order", foreign_key: "seller_id"
   has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
+  has_many :grouped_purchases, class_name: "GroupedOrder", foreign_key: "buyer_id"
 
   def cart_count
     $redis.scard "cart#{id}"
