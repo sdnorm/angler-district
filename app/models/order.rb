@@ -5,6 +5,11 @@ class Order < ApplicationRecord
   belongs_to :product
   belongs_to :buyer, class_name: "User"
   belongs_to :seller, class_name: "User"
+  belongs_to :grouped_order
+
+  has_many :products, through: :order_products
+
+  scope :buyer_orders, -> (buyer_id) { where(buyer_id: buyer_id.id) }
 
   # def paypal_url(return_path, seller_email, seller_amount, ad_amount)
   #   values = [

@@ -13,10 +13,11 @@ class Product < ApplicationRecord
                 :against => [:name],
                 :using => {
                   :tsearch => {:dictionary => "english"}
-                } 
+                }
 
   belongs_to :user
-  has_many :orders
+  belongs_to :grouped_order
+  has_many :order, through: :order_products
 
   scope :user_products, -> (user) {
     where(user_id: user).order('created_at DESC')
