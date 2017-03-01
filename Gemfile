@@ -30,6 +30,8 @@ gem 'jquery-masonry-rails'
 gem 'omniauth-stripe-connect'
 gem 'stripe'
 
+gem 'money'
+
 # gem 'paypal-sdk-adaptivepayments'
 # gem 'paypal-sdk-rest'
 

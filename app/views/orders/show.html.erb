@@ -2,8 +2,8 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Address:</strong>
-    <%= @order.address %>
+    <strong>Address1:</strong>
+    <%= @order.address1 %>
   </p>
 
   <p>
@@ -17,8 +17,12 @@
   </p>
 
   <p>
-    <%= @product.name %>
+    <strong>Total:</strong>
+    <%= @order.total %>
   </p>
 
-  <%= link_to 'Edit', edit_order_path(@order) %>
+  <p>
+    <strong>Seller:</strong>
+    <%= @order.seller.profile_name %>
+  </p>
 </div>

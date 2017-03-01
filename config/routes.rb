@@ -30,6 +30,10 @@ Rails.application.routes.draw do
 
   get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
 
+  get 'complete-order/:id', to: 'orders#purchase', as: :complete_order
+
+  get 'charged-order/:id', to: 'orders#charged', as: :charged_order
+
   resources :products
 
   resources :grouped_orders

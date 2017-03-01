@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  validates :address, :city, :state, presence: true
+  validates :address1, :city, :state, presence: true
 
   belongs_to :product
   belongs_to :buyer, class_name: "User"
@@ -10,6 +10,16 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
 
   scope :buyer_orders, -> (buyer_id) { where(buyer_id: buyer_id.id) }
+
+  scope :paid, -> { where(charged: true) }
+
+  scope :buyer_orders, -> (current_user) { where(buyer_id: current_user) }
+
+  class << self
+    def charged user
+      paid.buyer_orders(user)
+    end
+  end
 
   # def paypal_url(return_path, seller_email, seller_amount, ad_amount)
   #   values = [

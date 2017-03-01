@@ -1,0 +1,48 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Address1:</strong>
+    <%= @order.address1 %>
+  </p>
+
+  <p>
+    <strong>City:</strong>
+    <%= @order.city %>
+  </p>
+
+  <p>
+    <strong>State:</strong>
+    <%= @order.state %>
+  </p>
+
+  <p>
+    <strong>Total:</strong>
+    $<%= Money.new(@order.total*100, "USD") %>
+  </p>
+
+  <p>
+    <strong>Seller:</strong>
+    <%= @order.seller.profile_name %>
+  </p>
+
+  <%= form_tag charges_path(order: @order.id) do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>$<%= Money.new(@order.total*100, "USD") %></span>
+      </label>
+    </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Tackle!"
+            data-amount=<%= @order.total*100 %>
+            data-locale="auto"></script>
+  <% end %>
+
+  <%= link_to 'Edit', edit_order_path(@order) %>
+</div>

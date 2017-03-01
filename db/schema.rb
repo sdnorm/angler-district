@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228143902) do
+ActiveRecord::Schema.define(version: 20170301040848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,17 +40,8 @@ ActiveRecord::Schema.define(version: 20170228143902) do
     t.integer  "buyer_id"
   end
 
-  create_table "order_products", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_products_on_order_id", using: :btree
-    t.index ["product_id"], name: "index_order_products_on_product_id", using: :btree
-  end
-
   create_table "orders", force: :cascade do |t|
-    t.string   "address"
+    t.string   "address1"
     t.string   "city"
     t.string   "state"
     t.datetime "created_at",        null: false
@@ -59,6 +50,9 @@ ActiveRecord::Schema.define(version: 20170228143902) do
     t.integer  "buyer_id"
     t.integer  "seller_id"
     t.integer  "grouped_orders_id"
+    t.string   "address2"
+    t.float    "total"
+    t.boolean  "charged"
     t.index ["grouped_orders_id"], name: "index_orders_on_grouped_orders_id", using: :btree
   end
 
@@ -66,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170228143902) do
     t.string   "name"
     t.text     "description"
     t.float    "price"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "image"
     t.integer  "user_id"
     t.integer  "shop_id"
@@ -75,9 +69,7 @@ ActiveRecord::Schema.define(version: 20170228143902) do
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.integer  "inventory",         default: 1
-    t.integer  "grouped_orders_id"
-    t.index ["grouped_orders_id"], name: "index_products_on_grouped_orders_id", using: :btree
+    t.integer  "inventory",     default: 1
     t.index ["shop_id"], name: "index_products_on_shop_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
@@ -122,10 +114,7 @@ ActiveRecord::Schema.define(version: 20170228143902) do
     t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
-  add_foreign_key "order_products", "orders"
-  add_foreign_key "order_products", "products"
   add_foreign_key "orders", "grouped_orders", column: "grouped_orders_id"
-  add_foreign_key "products", "grouped_orders", column: "grouped_orders_id"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
   add_foreign_key "shops", "users"
