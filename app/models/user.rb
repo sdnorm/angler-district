@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:stripe_connect]
 
   validates :email, presence: true
-  validates :profile_name, presence: true
+  # validates :profile_name, presence: true
 
   extend FriendlyId
   friendly_id :profile_name, use: :slugged
