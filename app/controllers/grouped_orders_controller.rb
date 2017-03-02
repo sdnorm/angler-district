@@ -42,7 +42,7 @@ class GroupedOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @grouped_order.update(grouped_order_params)
-        format.html { redirect_to @grouped_order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @grouped_order, flash[:notice] = 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @grouped_order }
       else
         format.html { render :edit }

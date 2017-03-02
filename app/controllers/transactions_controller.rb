@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
     #           payment_method_nonce: params[:payment_method_nonce])
     if @result.success?
       current_user.purchase_cart_products!
-      redirect_to root_url, notice: "Congraulations! Your order has been successfully processed!"
+      redirect_to root_url, flash[:notice] = "Congraulations! Your order has been successfully processed!"
       @order = Order.new(order_params)
       @order.buyer_id = current_user.id
       @order.seller_id = product.user_id

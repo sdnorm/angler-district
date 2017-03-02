@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   get 'user/:id', to: 'user_profile#index', as: :public_user_profile
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    omniauth_callbacks: "omniauth_callbacks"
+  }
 
   # get 'omniauth_callbacks/stripe_connect'
 
