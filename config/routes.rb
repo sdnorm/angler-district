@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # get 'omniauth_callbacks/stripe_connect'
 
+  get 'route_order', to: 'route_order#route_order', as: :route_order
+
   get 'transactions/new'
 
   get 'carts/show'
@@ -33,9 +35,13 @@ Rails.application.routes.draw do
 
   get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
 
+
+  #orders and grouped orders stuff
   get 'complete-order/:id', to: 'orders#purchase', as: :complete_order
+  get 'complete-grouporder/:id', to: 'grouped_orders#purchase', as: :complete_grouporder
 
   get 'charged-order/:id', to: 'orders#charged', as: :charged_order
+  get 'charged-grouporder/:id', to: 'grouped_orders#charged', as: :charged_orderorder
 
   resources :products
 

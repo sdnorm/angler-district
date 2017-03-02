@@ -2,7 +2,7 @@
   <%= form_for @grouped_order do |f| %>
     <% if grouped_order.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(grouepd_order.errors.count, "error") %> prohibited this order from being saved:</h2>
+        <h2><%= pluralize(grouped_order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
         <ul>
         <% grouepd_order.errors.full_messages.each do |message| %>
@@ -13,23 +13,38 @@
     <% end %>
 
     <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, value: ApplicationHelper.value(@grouped_order.first_name, current_user.first_name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, value: ApplicationHelper.value(@grouped_order.last_name, current_user.last_name) %>
+    </div>
+
+    <div class="field">
       <%= f.label :address1 %>
-      <%= f.text_field :address1, value: current_user.address1 %>
+      <%= f.text_field :address1, value: ApplicationHelper.value(@grouped_order.address1, current_user.address1) %>
     </div>
 
     <div class="field">
       <%= f.label :address2 %>
-      <%= f.text_field :address2, value: current_user.address2 %>
+      <%= f.text_field :address2, value: ApplicationHelper.value(@grouped_order.address2, current_user.address2) %>
     </div>
 
     <div class="field">
       <%= f.label :city %>
-      <%= f.text_field :city, value: current_user.city %>
+      <%= f.text_field :city, value: ApplicationHelper.value(@grouped_order.city, current_user.city) %>
     </div>
 
     <div class="field">
       <%= f.label :state %>
-      <%= f.text_field :state, value: current_user.state %>
+      <%= f.text_field :state, value: ApplicationHelper.value(@grouped_order.state, current_user.state) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code, value: ApplicationHelper.value(@grouped_order.zip_code, current_user.zip_code) %>
     </div>
 
     <div class="actions">

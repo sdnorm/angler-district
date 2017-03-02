@@ -1,6 +1,11 @@
 <h1>New Order</h1>
 
-<%= @total %>
-<%= @product.name %>
+<p>
+  Total - $<%= Money.new(@total*100, "USD") %>
+</p>
+
+<p>
+  Item Count - <%= @cart_ids.count %>
+</p>
 
 <%= render 'form', grouped_order: @grouped_order %>

@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         format.html {
           redirect_to action: "purchase", id: @order.id, notice: 'Order was successfully created.'
         }
-        format.json { render :show, status: :created, location: @order }
+        format.json { render :purchase, status: :created, location: @order }
       else
         format.html { render :new }
         format.json {

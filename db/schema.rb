@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301040848) do
+ActiveRecord::Schema.define(version: 20170302164127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170301040848) do
     t.string   "state"
     t.integer  "zip_code"
     t.integer  "buyer_id"
+    t.float    "total"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -53,6 +54,9 @@ ActiveRecord::Schema.define(version: 20170301040848) do
     t.string   "address2"
     t.float    "total"
     t.boolean  "charged"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "zip_code"
     t.index ["grouped_orders_id"], name: "index_orders_on_grouped_orders_id", using: :btree
   end
 
