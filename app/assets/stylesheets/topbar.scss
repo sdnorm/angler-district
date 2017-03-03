@@ -32,6 +32,7 @@
 
 .top-bar, .top-bar ul {
   background: #2c3e50;
+  border: none;
 }
 
 .top-bar, .has-submenu a:hover {
@@ -84,9 +85,10 @@
 
 .nav-drop a:hover {
   border: none;
+  background: #ecf0f1;
+  color: #2c3e50;
 }
 
-.nav-drop {
-  border: none;
-  background: yellow;
+#drop-main-item {
+  background: #D0011B;
 }
