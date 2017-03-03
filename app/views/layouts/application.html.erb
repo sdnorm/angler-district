@@ -3,23 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Angler District - The best place to find and sell used fishing tackle." %></title>
-    <%= Gon::Base.render_data %>
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'Logo-01.png' %>
   </head>
+
   <body>
-    <%= render 'layouts/side_nav' %>
-    <%= render 'layouts/logo_menu' %>
-    <div class="row expanded">
-      <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
-      <% end %>
-      <%= yield %>
-    </div>
+    <%= render 'layouts/topbar' %>
+    <%= yield %>
+
   </body>
-  <%= render 'layouts/footer' %>
 </html>

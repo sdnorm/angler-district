@@ -1,10 +1,15 @@
 /*
  *= require_tree .
  *= require_self
+//= require foundation_and_overrides
+
  *= require foundation_and_overrides
 */
 @import "foundation_and_overrides";
 @import "font-awesome";
+
+@import "topbar";
+
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
 
@@ -124,16 +129,6 @@ hr.style2 {
 input[type=search] {
   -webkit-appearance: none;
   -webkit-border-radius: 6px 0px 0px 6px;
-}
-
-.top-bar, .top-bar-right, .top-bar-left, .menu {
-  background: #2c3e50;
-  color: #ecf0f1;
-  font-weight: bold;
-}
-
-.top-bar, .top-bar ul {
-  background: #2c3e50;
 }
 
 .top-bar a {

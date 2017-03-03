@@ -1,0 +1,46 @@
+<div class="top-bar">
+  <div class="top-bar-title">
+    <strong><%= link_to "Angler District", root_path, class: "title-link" %></strong>
+    <span class="menu-hamburger" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+    </span>
+  </div>
+  <div id="responsive-menu">
+    <div class="top-bar-right">
+      <ul class="dropdown vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown"  data-parent-link="true" data-back-button="<li class='js-drilldown-back'><a tabindex='0'>Back</a></li>">
+        <%if signed_in?%>
+          <li class="has-submenu">
+            <a href="#">My Stuff</a>
+            <ul class="submenu menu vertical nav-drop" data-submenu>
+              <li>
+                <a href="#">Orders</a>
+                <ul class="menu">
+                  <li id="nav-drop-item"><%= link_to "Purchased", orders_path %></li>
+                  <li id="nav-drop-item"><%= link_to "Received", orders_path %></li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to "Profile", user_profile_path %>
+              </li>
+              <li>
+                <%= link_to "Listed Products", all_user_products_path %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to cart_path do%>
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+              My Cart
+              (<span class="cart-count"><%=current_user.cart_count%></span>)
+            <%end%>
+          </li>
+          <li><%=link_to current_user.email, edit_user_registration_path%></li>
+          <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
+        <%else%>
+          <li><div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, class: "words" %></div></li>
+          <li><%= link_to "Log In", new_user_session_path, class: "button main-button" %></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+#nav-drop-item {
+  background: #FFF;
+}
+
+#nav-drop-item a {
+  color: #2c3e50;
+}
+
+#nav-drop-item a:hover {
+  color: gold;
+  background: purple;
+}
+
+.top-bar-title  {
+  @media only screen and (max-width: 40em) {
+    width: 100%
+  }
+}
+
+.top-bar a:hover {
+  background: #D0011B;
+  border: 1px solid;
+  border-color: #ecf0f1;
+  // border-radius: 5px;
+}
+
+.top-bar, .top-bar-right, .top-bar-left, .menu {
+  background: #2c3e50;
+  color: #ecf0f1;
+  font-weight: bold;
+}
+
+.top-bar, .top-bar ul {
+  background: #2c3e50;
+}
+
+.top-bar, .has-submenu a:hover {
+  border: none;
+}
+
+.nav-drop ul {
+  border: none;
+  border-radius: 5px;
+  background: #D0011B;
+}
+
+.menu-hamburger {
+  @media only screen and (max-width: 40em) {
+    padding: .2rem;
+  }
+  float:right;
+  .menu-text{
+    color: white;
+  }
+}
+
+.dropdown.menu>li.is-dropdown-submenu-parent>a:after{
+  border-color: #fff transparent transparent;
+}
+
+.dropdown.vertical.medium-horizontal.menu>li.is-dropdown-submenu-parent>a:after{
+  border-color: #fff transparent transparent;
+}
+
+.is-drilldown-submenu-parent>a::after, .is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after{
+  border-color: transparent transparent transparent #fff;
+}
+
+.js-drilldown-back>a:before, .is-dropdown-submenu .is-dropdown-submenu-parent.opens-left>a:after{
+  border-color: transparent #fff transparent transparent;
+}
+
+.top-bar-title a:hover {
+  padding: .35rem;
+  color: #D0011B;
+  background: #2c3e50;
+  border: none;
+  text-decoration: underline;
+}
+
+.top-bar-title strong {
+  font-size: larger;
+}
+
+.nav-drop a:hover {
+  border: none;
+}
+
+.nav-drop {
+  border: none;
+  background: yellow;
+}

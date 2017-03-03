@@ -1,23 +1,4 @@
-<!--<div data-sticky-container>
-  <div class="title-bar" data-sticky data-options="marginTop: 0; stickyOn: small;">
-    <div class="title-bar-left">
-      <div id="main">
-        <span class="logo-menu show-for-mobile-only" id="ham-menu" onclick="openNav()">&#9776;</span>
-        <span class="show-for-mobile-only" style="font-size:45px;cursor:pointer;display:none" id="close-menu" onclick="closeNav()">&times;</span>
-        <span class="logo-menu" id="logo-name"><%= link_to "Angler District", root_path %></span>
-      </div>
-    </div>
-    <div class="title-bar-right">
-      <ul class="menu">
-        <li><a href="#">My Account</a></li>
-        <li><a class="button">Login</a></li>
-      </ul>
-    </div>
-    <%= link_to "Find Tackle", products_path, class: "button" %>
-    <%= link_to "Sell Your Tackle", products_path, class: "button" %>
-  </div>
-</div>
-<div class="top-bar">
+<!--<div class="top-bar">
   <div class="top-bar-title">
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button class="menu-icon dark" type="button" data-toggle></button>
@@ -84,17 +65,17 @@
         </div>
       </div>
     </div>
-    <div class="large-12 small-12 columns hide-for-small-only">
-      <div class="top-bar-left ">
+    <!--<div class="large-12 small-12 columns hide-for-small-only">
+      <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <!-- <li class="menu-text">Site Title</li> -->
+          <li class="menu-text">Site Title</li>
           <%= link_to root_path do %>
             <%= image_tag("Logo-01-red.png", class: "nav-logo") %>
           <% end %>
         </ul>
       </div>
       <div class="top-bar-right">
-        <ul class="menu">
+        <ul class="dropdown menu" data-dropdown-menu>
           <%if signed_in?%>
             <li>
               <%= link_to "My Profile", user_profile_path %>
@@ -103,7 +84,11 @@
               <%= link_to "My Products", all_user_products_path %>
             </li>
             <li>
-              <%= link_to "My Orders", orders_path %>
+              <a href="#">My Orders</a>
+              <ul class="menu">
+                <li><%= link_to "Purchased", orders_path %></li>
+                <li><%= link_to "Received", orders_path %></li>
+              </ul>
             </li>
             <li>
               <%= link_to cart_path do%>
@@ -120,6 +105,6 @@
           <%end%>
         </ul>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>

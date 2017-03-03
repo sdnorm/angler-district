@@ -95,7 +95,7 @@ GEM
     font-awesome-rails (4.7.0.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
-    foundation-rails (6.2.4.0)
+    foundation-rails (6.3.0.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
@@ -262,7 +262,7 @@ DEPENDENCIES
   figaro
   fog-aws
   font-awesome-rails
-  foundation-rails
+  foundation-rails (~> 6.3.0)
   friendly_id
   gon
   hiredis
@@ -288,4 +288,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.12.5
+   1.14.5
