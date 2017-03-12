@@ -1,33 +1,3 @@
-<!--<div class="top-bar">
-  <div class="top-bar-title">
-    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <button class="menu-icon dark" type="button" data-toggle></button>
-    </span>
-    <strong>Site Title</strong>
-  </div>
-  <div id="responsive-menu">
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-          <a href="#">One</a>
-          <ul class="menu vertical">
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
-      </ul>
-    </div>
-  </div>
-</div>-->
 <div class="top-bar">
   <div class="row expanded">
     <div class="small-12 columns show-for-small-only">
@@ -65,46 +35,5 @@
         </div>
       </div>
     </div>
-    <!--<div class="large-12 small-12 columns hide-for-small-only">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Site Title</li>
-          <%= link_to root_path do %>
-            <%= image_tag("Logo-01-red.png", class: "nav-logo") %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <%if signed_in?%>
-            <li>
-              <%= link_to "My Profile", user_profile_path %>
-            </li>
-            <li>
-              <%= link_to "My Products", all_user_products_path %>
-            </li>
-            <li>
-              <a href="#">My Orders</a>
-              <ul class="menu">
-                <li><%= link_to "Purchased", orders_path %></li>
-                <li><%= link_to "Received", orders_path %></li>
-              </ul>
-            </li>
-            <li>
-              <%= link_to cart_path do%>
-                <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-                My Cart
-                (<span class="cart-count"><%=current_user.cart_count%></span>)
-              <%end%>
-            </li>
-            <li><%=link_to current_user.email, edit_user_registration_path%></li>
-            <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
-          <%else%>
-            <li><div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, class: "words" %></div></li>
-            <li><%= link_to "Log In", new_user_session_path, class: "button main-button" %></li>
-          <%end%>
-        </ul>
-      </div>
-    </div>-->
   </div>
 </div>

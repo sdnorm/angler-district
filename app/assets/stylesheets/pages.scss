@@ -32,20 +32,30 @@
   font-size: 5rem;
 }
 
-#find-button, #sell-button {
-  padding: 1rem;
+.custom-button {
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background: #2c3e50;
+  border-color: #D0011B;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
-.main-button {
-  color: yellow;
+.custom-button:hover {
+  background: #D0011B;
+  border: none;
 }
 
-#find-button {
-  $button-background-hover: yellow;
-  margin-right: .75rem;
+#main-btn {
+  color: white;
+  margin: .72rem;
 }
 
-#sell-button {
-  margin-left: .75rem;
+#main-btn:hover {
+  color: #2c3e50;;
 }
