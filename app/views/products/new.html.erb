@@ -1,7 +1,11 @@
+<div class="row text-center">
+  <h1>Add a New Product Listing</h1>
+</div>
+
 <div class="row">
-  <h1>New Product</h1>
-
   <%= render 'form', product: @product %>
+</div>
 
-  <%= link_to 'Back', products_path %>
+<div class="row">
+  <%= link_to 'Back To My Listed Products', all_user_products_path, class:"button" %>
 </div>
