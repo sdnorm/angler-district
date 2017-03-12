@@ -15,19 +15,22 @@
     <%= render 'pages/topbar' %>
     <div class="expanded row">
       <%- flash.each do |name, msg| -%>
-        <% case name %>
-        <% when "alert" %>
-          <div class="flash-at text-center">
-            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-          </div>
-        <% when "notice" %>
-          <div class="flash-nt text-center">
-            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-          </div>
+        <% if msg == "Product was successfully updated." || msg == "Order was successfully updated." %>
         <% else %>
-          <div class="text-center">
-            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-          </div>
+          <% case name %>
+          <% when "alert" %>
+            <div class="flash-at text-center">
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            </div>
+          <% when "notice" %>
+            <div class="flash-nt text-center">
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            </div>
+          <% else %>
+            <div class="text-center">
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            </div>
+          <% end %>
         <% end %>
       <%- end -%>
       <%= yield %>
