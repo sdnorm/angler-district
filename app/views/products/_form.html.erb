@@ -28,62 +28,64 @@
     </div>
 
     <div class="large-6 small-12 columns text-center">
-      <div class="field file">
-        <div class="files-wr" data-count-files="1">
-          <div class="one-file">
-            <label for="product_display_image">Attach Display Image</label>
-            <input name="product[display_image]" id="product_display_image" type="file">
-            <div class="file-item hide-btn">
-              <span class="file-name"></span>
-              <span class="btn btn-del-file">x</span>
+      <div class="file">
+        <div class="field">
+          <div class="files-wr" data-count-files="1">
+            <div class="one-file">
+              <%= f.label :display_image %>
+              <%= f.file_field :display_image %>
+              <div class="file-item hide-btn">
+                <span class="file-name"></span>
+                <span class="btn btn-del-file">x</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="field file">
-        <div class="files-wr" data-count-files="1">
-          <div class="one-file">
-            <label for="product_image">Attach Image 1</label>
-            <input name="product[image]" id="product_image" type="file">
-            <div class="file-item hide-btn">
-              <span class="file-name"></span>
-              <span class="btn btn-del-file">x</span>
+        <div class="field">
+          <div class="files-wr" data-count-files="1">
+            <div class="one-file">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+              <div class="file-item hide-btn">
+                <span class="file-name"></span>
+                <span class="btn btn-del-file">x</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="field file">
-        <div class="files-wr" data-count-files="1">
-          <div class="one-file">
-            <label for="product_image2">Attach Image 2</label>
-            <input name="product[image2]" id="product_image2" type="file">
-            <div class="file-item hide-btn">
-              <span class="file-name"></span>
-              <span class="btn btn-del-file">x</span>
+        <div class="field">
+          <div class="files-wr" data-count-files="1">
+            <div class="one-file">
+              <%= f.label :image2 %>
+              <%= f.file_field :image2 %>
+              <div class="file-item hide-btn">
+                <span class="file-name"></span>
+                <span class="btn btn-del-file">x</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="field file">
-        <div class="files-wr" data-count-files="1">
-          <div class="one-file">
-            <label for="product_image3">Attach Image 3</label>
-            <input name="product[image3]" id="product_image3" type="file">
-            <div class="file-item hide-btn">
-              <span class="file-name"></span>
-              <span class="btn btn-del-file">x</span>
+        <div class="field">
+          <div class="files-wr" data-count-files="1">
+            <div class="one-file">
+              <%= f.label :image3 %>
+              <%= f.file_field :image3 %>
+              <div class="file-item hide-btn">
+                <span class="file-name"></span>
+                <span class="btn btn-del-file">x</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="field file">
-        <div class="files-wr" data-count-files="1">
-          <div class="one-file">
-            <label for="product_image4">Attach Image 4</label>
-            <input name="product[image4]" id="product_image4" type="file">
-            <div class="file-item hide-btn">
-              <span class="file-name"></span>
-              <span class="btn btn-del-file">x</span>
+        <div class="field">
+          <div class="files-wr" data-count-files="1">
+            <div class="one-file">
+              <%= f.label :image4 %>
+              <%= f.file_field :image4 %>
+              <div class="file-item hide-btn">
+                <span class="file-name"></span>
+                <span class="btn btn-del-file">x</span>
+              </div>
             </div>
           </div>
         </div>
@@ -93,7 +95,7 @@
 
   <div class="row text-center">
     <div class="actions">
-      <%= f.submit class:"button" %>
+      <%= f.submit %>
     </div>
   </div>
 <% end %>
