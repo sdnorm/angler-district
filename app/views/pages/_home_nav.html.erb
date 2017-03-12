@@ -11,8 +11,10 @@
   </div>
   <div class="row">
     <div class="large-12 columns">
-      <%= link_to "Find Tackle", products_path, class: "button main-button home-nav-fine-button", id: "find-button" %>
-      <%= link_to "Sell Tackle", products_path, class: "button main-button home-nav-fine-button", id: "sell-button" %>
+      <div class="home-find-sell">
+        <%= link_to "Find Tackle", products_path, class: "button main-button", id: "find-button" %>
+        <%= link_to "Sell Tackle", products_path, class: "button main-button", id: "sell-button" %>
+      </div>
     </div>
   </div>
   <br />

@@ -32,16 +32,20 @@
   font-size: 5rem;
 }
 
-.home-nav-find-button {
-  padding: 1.5rem;
+#find-button, #sell-button {
+  padding: 1rem;
+  color: white;
+}
+
+.main-button {
+  color: yellow;
 }
 
 #find-button {
+  $button-background-hover: yellow;
   margin-right: .75rem;
-  padding: 1rem;
 }
 
 #sell-button {
-  margin-leftt: .75rem;
-  padding: 1rem;
+  margin-left: .75rem;
 }
