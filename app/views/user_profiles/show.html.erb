@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="large6 small-12 colummns">
+    <h1><%= @user.profile_name %>'s Profile</h1>
+
+    <p>
+      Profile Name: <%= @user.profile_name %>
+    </p>
+
+    <p>
+      First Name: <%= @user.first_name %>
+    </p>
+
+    <p>
+      Last Name: <%= @user.last_name %>
+    </p>
+
+    <p>
+      Email: <%= @user.email %>
+    </p>
+
+    <p>
+      Address: <%= @user.address1 %> <%= @user.address2 %>
+    </p>
+
+    <p>
+      City: <%= @user.city %>
+    </p>
+
+    <p>
+      State: <%= @user.state %>
+    </p>
+
+    <p>
+      Zip Code: <%= @user.zip_code %>
+    </p>
+
+
+    <!--<%= link_to image_tag('STRIPE_IMAGE_URL'), user_stripe_connect_omniauth_authorize_path(:stripe_connect) %>-->
+    <!--<%= link_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{ENV["STRIPE_CONNECT_CLIENT_ID"]}&scope=read_write", class: "stripe-connect dark" do %>
+      <span>Connect with Stripe</span>
+    <% end %>-->
+
+    <% if @user.provider == "stripe_connect" %>
+      <i class="fa fa-check-square" aria-hidden="true"><span class="str-con">Stripe Account Connected!</span></i>
+    <% else %>
+      <%= link_to user_stripe_connect_omniauth_authorize_path('stripe_user[email]' => @user.email, 'stripe_user[first_name]' => @user.first_name, 'stripe_user[url]' => 'http://www.anglerdistrict.com'), class: "stripe-connect dark" do %>
+        <span>Connect with Stripe</span>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="large-6 small-12 columns">
+    <%= link_to "Edit Profile", edit_user_profile_path(@user) %>
+  </div>
+</div>

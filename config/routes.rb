@@ -2,9 +2,15 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  get 'user_profile', to: 'user_profile#show', as: :user_profile
+  get 'user_profile', to: 'user_profiles#show', as: :user_profile
 
-  get 'user/:id', to: 'user_profile#index', as: :public_user_profile
+  get 'user/:id', to: 'user_profiles#index', as: :public_user_profile
+
+  get '/user_profile/:id/edit', to: 'user_profiles#edit', as: :edit_user_profile
+
+  patch 'user_profile/:id', to: 'user_profiles#update'
+  put 'user_profile/:id', to: 'user_profiles#update'
+  delete 'user_profile/:id', to: 'user_profiles#destroy'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
