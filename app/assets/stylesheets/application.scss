@@ -223,3 +223,28 @@ input[type=search] {
 #purchase-button {
   text-align: center;
 }
+
+.flash-at {
+  width: 100%;
+  background: #ECF0F1;
+}
+
+.flash-nt {
+  width: 100%;
+  background: #2c3e50;
+}
+
+#flash_notice, #flash_alert {
+  max-width: 75%;
+  margin: auto;
+  color: gold;
+  background: #D0011B;
+  padding: 8px;
+  font-size: 108%;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#flash_alert {
+  margin-top: 3px;
+}
