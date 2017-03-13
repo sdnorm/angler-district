@@ -50,7 +50,7 @@
 }
 
 #main-btn:hover {
-  color: #2c3e50;;
+  color: #2c3e50;
 }
 
 .home-logo-img {
@@ -59,4 +59,10 @@
 
 #sb-cat-button {
   color: #ecf0f1;
+}
+
+.nav-link a:hover {
+  text-decoration: underline;
+  color: #f1c40f;
+  background: #2c3e50;
 }
