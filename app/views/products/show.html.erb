@@ -25,43 +25,44 @@
             <figcaption class="orbit-caption">Encapsulating</figcaption>
           </li>
         <% end %>
-        <% if @product.image3 != nil %>
+        <% if @product.image3 == "" %>
           <li class="orbit-slide text-center">
             <%= image_tag(@product.image3.large) %>
             <figcaption class="orbit-caption">Outta This World</figcaption>
           </li>
         <% end %>
-        <% if @product.image4 != nil %>
+        <% if @product.image4.thumb != nil %>
           <li class="orbit-slide text-center">
+            <%= @product.image4.thumb %>
             <%= image_tag(@product.image4.large) %>
             <figcaption class="orbit-caption">222222222</figcaption>
           </li>
         <% end %>
       </ul>
       <nav class="orbit-bullets">
-        <% if @product.display_image != nil %>
+        <% unless @product.display_image.file.nil? %>
           <button class="is-active" data-slide="0" id="pr-img-bullet">
             <span class="show-for-sr">First slide details.</span>
             <span class="show-for-sr">Current Slide</span>
             <%= image_tag(@product.display_image.thumb) %>
           </button>
         <% end %>
-        <% if @product.image != nil %>
+        <% unless @product.image.file.nil? %>
           <button data-slide="1" id="pr-img-bullet"><span class="show-for-sr">Second slide details.</span>
             <%= image_tag(@product.image.thumb) %>
           </button>
         <% end %>
-        <% if @product.image2 != nil %>
+        <% unless @product.image2.file.nil? %>
           <button data-slide="2" id="pr-img-bullet"><span class="show-for-sr">Third slide details.</span>
             <%= image_tag(@product.image2.thumb) %>
           </button>
         <% end %>
-        <% if @product.image3 != nil %>
+        <% unless @product.image3.file.nil? %>
           <button data-slide="3" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
             <%= image_tag(@product.image3.thumb) %>
           </button>
         <% end %>
-        <% if @product.image4 != nil %>
+        <% unless @product.image4.file.nil? %>
           <button data-slide="4" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
             <%= image_tag(@product.image4.thumb) %>
           </button>
