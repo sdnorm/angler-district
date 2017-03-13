@@ -1,10 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="large-6 columns text-right">
-    <%= image_tag(@product.display_image.display) %>
+  <div class="large-7 columns text-right">
+
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-auto-play="false">
+      <ul class="orbit-container">
+        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+        <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+        <li class="is-active orbit-slide text-center">
+          <%= image_tag(@product.image.large) %>
+          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+        </li>
+        <li class="orbit-slide text-center">
+          <%= image_tag(@product.image.large) %>
+          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+        </li>
+        <li class="orbit-slide text-center">
+          <%= image_tag(@product.image.large) %>
+          <figcaption class="orbit-caption">Encapsulating</figcaption>
+        </li>
+        <li class="orbit-slide text-center">
+          <%= image_tag(@product.image.large) %>
+          <figcaption class="orbit-caption">Outta This World</figcaption>
+        </li>
+      </ul>
+      <nav class="orbit-bullets">
+        <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+        <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+      </nav>
+    </div>
+
+
   </div>
-  <div class="large-6 columns">
+  <div class="large-5 columns">
     <p>
       <strong>Name:</strong>
       <%= @product.name %>
