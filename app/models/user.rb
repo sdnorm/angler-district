@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   def get_cart_products
     cart_ids = $redis.smembers "cart#{id}"
-    Product.find(cart_ids)
+    Product.where(slug: cart_ids)
   end
 
   def purchase_cart_products!

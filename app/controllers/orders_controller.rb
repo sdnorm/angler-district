@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @cart_ids = $redis.smembers current_user_cart
-    @product = Product.find(@cart_ids).first
+    @product = Product.where(slug: @cart_ids).first
     @seller = User.find(@product.user_id)
     @total = @product.price
   end
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @cart_ids = $redis.smembers current_user_cart
-    @product = Product.find(@cart_ids).first
+    @product = Product.where(slug: @cart_ids).first
     @seller = User.find(@product.user_id)
     @order.total = @product.price
     @order.product_id = @product.id
@@ -103,7 +103,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address1, :address2, :city, :state)
+      params.require(:order).permit(:address1, :address2, :city, :state, :first_name, :last_name, :zip_code)
     end
 
     def current_user_cart

@@ -39,7 +39,7 @@ class ChargesController < ApplicationController
       product = Product.find(@order.product_id)
       @order.charged = true
       product.set_inventory_to_zero
-      remove_from_cart product.id
+      remove_from_cart product.slug
     rescue Stripe::CardError => e
       error = e.json_body[:error][:message]
       flash[:error] = "Charge failed! #{error}"

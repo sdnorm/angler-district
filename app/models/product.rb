@@ -8,6 +8,9 @@ class Product < ApplicationRecord
   validates :name, :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   include PgSearch
   pg_search_scope :search,
                 :against => [:name],
@@ -28,7 +31,7 @@ class Product < ApplicationRecord
   scope :ordered, -> { all.order('created_at DESC') }
 
   def cart_action(current_user_id)
-    if $redis.sismember "cart#{current_user_id}", id
+    if $redis.sismember "cart#{current_user_id}", slug
       'Remove from'
     else
       'Add to'
