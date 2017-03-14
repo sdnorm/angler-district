@@ -1,5 +1,6 @@
 .step {
   background: #bdc3c7;
+  padding-bottom: 5rem;
 }
 
 .step h2 {
@@ -13,10 +14,20 @@
   position:relative;
   padding: 0;
 
-  // img {
-  //   width: 300px;
-  //   height: auto;
-  // }
+  img {
+    max-width: 85%;
+    height: auto;
+    opacity: .6;
+  }
+
+  #main  {
+    span {
+      font-size: xx-large;
+      font-weight: bold;
+      display: block;
+    }
+
+  }
 
   #inner-box {
     opacity: .9;
