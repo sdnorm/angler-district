@@ -48,7 +48,7 @@ body h1, h2 {
 }
 
 body {
-  margin-bottom: 22rem;
+  // margin-bottom: 22rem;
   //footer//
   display: block;
   background-color: #ecf0f1;
@@ -242,4 +242,13 @@ input[type=search] {
 
 #flash_alert {
   margin-top: 3px;
+}
+
+.nav-logo {
+  width: 120px;
+  margin-top: 4px;
+}
+
+.top-bar-title {
+  padding: 0;
 }

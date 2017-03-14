@@ -1,0 +1,54 @@
+.step {
+  background: #bdc3c7;
+}
+
+.step h2 {
+  color: #2c3e50;
+}
+
+#outer-box {
+  // width: 300px;
+  // height: 200px;
+  display:block;
+  position:relative;
+  padding: 0;
+
+  // img {
+  //   width: 300px;
+  //   height: auto;
+  // }
+
+  #inner-box {
+    opacity: .9;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 0;
+    text-align: center;
+    // transition: opacity .5s;
+    margin-top: 90px;
+    text-align: center;
+    p {
+      color: #2c3e50;
+      // line-height: 150px;
+      // font-family: 'arial';
+      text-align: center;
+    }
+  }
+
+}
+
+.number-icon {
+  font-size: 1700%;
+  opacity: .6;
+  color: #f1c40f;
+}
+
+.step-item {
+  // margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.how-to-title {
+  margin-top: 2.5rem;
+}

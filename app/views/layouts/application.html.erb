@@ -12,7 +12,12 @@
   </head>
 
   <body>
-    <%= render 'pages/topbar' %>
+
+    <% if content_for?(:navbar) %>
+      <%= yield(:navbar) %>
+    <% else %>
+      <%= render 'pages/topbar' %>
+    <% end %>
     <div class="expanded row">
       <%- flash.each do |name, msg| -%>
         <% if msg == "Product was successfully updated." || msg == "Order was successfully updated." %>
