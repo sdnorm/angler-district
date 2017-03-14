@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'categories/index'
+
   resources :charges
 
   get 'user_profile', to: 'user_profiles#show', as: :user_profile

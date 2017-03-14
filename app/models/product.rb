@@ -21,6 +21,7 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :grouped_order
   has_many :order, through: :order_products
+  belongs_to :category
 
   scope :user_products, -> (user) {
     where(user_id: user).order('created_at DESC')
