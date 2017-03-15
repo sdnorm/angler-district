@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'categories/index'
+  get 'categories', to: 'categories#index', as: :categories
 
   resources :charges
 
@@ -73,6 +73,15 @@ Rails.application.routes.draw do
   end
 
   resources :transactions, only: [:new, :create]
+
+  # at the bottom because I want the URL to read anglerdistrict.com/reels
+  get 'rods', to: 'categories#rods', as: :rods
+  get 'reels', to: 'categories#reels', as: :reels
+  get 'lures', to: 'categories#lures', as: :lures
+  get 'apparel', to: 'categories#apparel', as: :apparel
+  get 'boating', to: 'categories#boating', as: :boating
+  get 'electronics', to: 'categories#electronics', as: :electronics
+  get 'general', to: 'categories#general', as: :general
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
