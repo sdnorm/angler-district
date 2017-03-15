@@ -1,3 +1,27 @@
+<% content_for :title do %>
+  <%= @product.name %> for sale! - AnglerDistrict.com
+<% end %>
+
+<% content_for :description do %>
+  <%= @product.name %> for sale! - Find and sell tackle with ease. - AnlgerDistrict.com
+<% end %>
+
+<% content_for :og_title do %>
+  <%= @product.name %> for sale! - AnglerDistrict.com
+<% end %>
+
+<% content_for :og_description do %>
+  <%= @product.name %> for sale! - Find and sell tackle with ease. - AnlgerDistrict.com
+<% end %>
+
+<% content_for :og_image do %>
+  <%= image_tag(@product.display_image.large) %>
+<% end %>
+
+<% content_for :og_url do %>
+  <%= request.url %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">

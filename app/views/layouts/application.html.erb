@@ -3,8 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Angler District - The best place to find and sell used fishing tackle." %></title>
     <%= Gon::Base.render_data %>
+    <title><%= content_for?(:title) ? yield(:title) : "Angler District - Find Tackle Easy. Sell Tackle Fast." %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "AnglerDistrict.com - The best place to find and sell used fishing tackle." %>">
+    <%= tag :meta, property: 'og:image', content: image_url('AD - logo - Yellow-01.png') %>
+    <meta property="og:url" content="<%= content_for?(:og_url) ? yield(:og_url) : 'https://www.anglerdistrict.com' %>"  />
+    <meta property="og:title" content="<%= content_for?(:og_title) ? yield(:og_title) : "AnglerDistrict.com - Find Tackle Easy. Sell Tackle Fast." %>"  />
+    <meta property="og:description" content="<%= content_for?(:og_description) ? yield(:og_description) : "Angler District - The best place to find and sell used fishing tackle." %>"  />
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
