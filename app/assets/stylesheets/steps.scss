@@ -1,6 +1,6 @@
 .step {
   background: #bdc3c7;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 }
 
 .step h2 {
@@ -20,21 +20,9 @@
 
   img {
     max-width: 85%;
-    height: 275px !important;
+    height: 255px !important;
     height: auto;
-    opacity: .6;
-  }
-
-  #main  {
-    span {
-      font-size: large;
-      font-weight: bold;
-      display: block;
-    }
-  }
-
-  #second-line {
-    font-size: larger;
+    opacity: .5;
   }
 
   #inner-box {
@@ -45,22 +33,42 @@
     padding: 0;
     text-align: center;
     // transition: opacity .5s;
-    margin-top: 90px;
+    margin-top: 60px;
     text-align: center;
     p {
       color: #2c3e50;
-      line-height: .9;
-      // font-family: 'arial';
+      line-height: .87;
       text-align: center;
     }
   }
-
 }
 
-.number-icon {
-  font-size: 1700%;
-  opacity: .6;
-  color: #f1c40f;
+.step-font {
+  span {
+    font-family: 'Cooper Hewitt Bold';
+  }
+  p {
+    font-family: 'Cooper Hewitt Medium';
+  }
+}
+
+#main  {
+  span {
+    font-size: large;
+    font-weight: bold;
+    display: block;
+  }
+  p {
+    font-family: 'Cooper Hewitt Bold';
+  }
+}
+
+#second-line {
+  font-size: larger;
+  font-weight: 500;
+  p {
+    font-family: 'Cooper Hewitt Medium';
+  }
 }
 
 .step-item {
@@ -70,4 +78,5 @@
 
 .how-to-title {
   margin-top: 2.5rem;
+  font-family: 'Cooper Hewitt Heavy';
 }

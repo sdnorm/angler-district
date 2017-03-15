@@ -1,34 +1,46 @@
 /*
  *= require_tree .
  *= require_self
-//= require foundation_and_overrides
-
  *= require foundation_and_overrides
 */
+
 @import "foundation_and_overrides";
 @import "font-awesome";
-
 @import "topbar";
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
-
-
-// #9DC7B9
-
-// #FFFFEC
-
 @font-face {
-  font-family: "Vast Shadow Regular";
-  src: url(/assets/fonts/VastShadow-Regular.ttf) format("truetype");
+  font-family: "Cooper Hewitt Bold";
+  src: font-url('CooperHewitt-Bold.otf') format("opentype");
+}
+@font-face {
+  font-family: "Cooper Hewitt Heavy";
+  src: font-url('CooperHewitt-Heavy.otf') format("opentype");
+}
+@font-face {
+  font-family: "Cooper Hewitt Light";
+  src: font-url('CooperHewitt-Light.otf') format("opentype");
+}
+@font-face {
+  font-family: "Cooper Hewitt Medium";
+  src: font-url('CooperHewitt-Medium.otf') format("opentype");
+}
+@font-face {
+  font-family: "Cooper Hewitt Semibold";
+  src: font-url('CooperHewitt-Semibold.otf') format("opentype");
+}
+@font-face {
+  font-family: "Cooper Hewitt Thin";
+  src: font-url('CooperHewitt-Thin.otf') format("opentype");
 }
 
 // colors
-// #2c3e50
-// #D0011B
-// #7f8c8d
-// #ecf0f1
-// #BDC3C7
+$midnight-blue: #2c3e50;
+$red: #D0011B;
+$dark-gray: #7f8c8d;
+$kinda-white: #ecf0f1;
+$light-gray: #BDC3C7;
 
 html {
   position: relative;
@@ -39,7 +51,15 @@ body, html {
   height: auto;
 }
 
-body h3, h4, h5, p {
+body p {
+  font-family: 'Cooper Hewitt Semibold';
+}
+
+body a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body h3, h4, h5 {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -49,33 +69,10 @@ body h1, h2 {
 
 body {
   // margin-bottom: 22rem;
-  //footer//
+  // footer//
   display: block;
-  background-color: #ecf0f1;
-}
-
-.home-top {
-  background-image: image-url("home-image2.png");
-  width: 100%;
-  height: 400px;
-}
-
-hr.style2 {
-	border-top: 3px double #9DC7B9;
-}
-
-.angler-district {
-  color: #9DC7B9;
-  font-size: 450%;
-}
-
-.home-top, .angler-district h1 {
-  color: #9DC7B9;
-  font-size: 450%;
-}
-
-.home-top, .angler-district span h1 {
-  font-size: 450%;
+  background-color: $kinda-white;
+  margin-bottom: 9.5rem;
 }
 
 .tag-line {
