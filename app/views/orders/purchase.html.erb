@@ -37,11 +37,17 @@
         <span>$<%= Money.new(@order.total*100, "USD") %></span>
       </label>
     </article>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Tackle!"
-            data-amount=<%= @order.total*100 %>
-            data-locale="auto"></script>
+    <div class="stripe-button">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Tackle!"
+              data-amount=<%= @order.total*100 %>
+              data-locale="auto">
+      </script>
+    </div>
+    <div class="paypal-button">
+      <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), root_path, id:"paypal-button" %>
+    </div>
   <% end %>
 
   <%= link_to 'Edit', edit_order_path(@order) %>

@@ -24,46 +24,12 @@
         <%end%>
       </div>
     </div>
-    <hr />
   <%end%>
   <div id="purchase-button" class="large-12 large-centered column">
     <%if signed_in?%>
       <% if @cart_ids.count >= 1 %>
         <%= link_to 'Purchase Order', route_order_path, class: "button success" %>
       <% end %>
-      <!--<div id="paypal-button"></div>
-      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo"> -->
     <% end %>
   </div>
 </div>
-
-<!-- <% form_for :order do |f| %>
-  <% @cart_products.each do |product| %>
-    <%= f.hidden_field :cart_product_ids, :multiple => true, :value => product.id %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit "Checkout", class: "button" %>
-  </div>
-<% end %> -->
-<!--<%=
-    link_to "Checkout",
-    new_transaction_path,
-    class: "button" unless current_user.get_cart_products.blank?
-%>-->
-<!--<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-<script>
-    paypal.Button.render({
-
-        env: 'sandbox', // Specify 'sandbox' for the test environment :: 'production'
-
-        payment: function() {
-            // Set up the payment here, when the buyer clicks on the button
-        },
-
-        onAuthorize: function(data, actions) {
-            // Execute the payment here, when the buyer approves the transaction
-       }
-
-    }, '#paypal-button');
-</script>00>

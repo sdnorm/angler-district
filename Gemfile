@@ -13,25 +13,21 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'redis'
 gem 'hiredis'
-# gem 'braintree'
 gem 'figaro'
 gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
-
 gem 'friendly_id'
-
 gem 'pg_search'
-
 gem 'jquery-masonry-rails'
 
 # stripe
 gem 'omniauth-stripe-connect'
 gem 'stripe'
 
-# gem 'paypal-sdk-adaptivepayments'
-# gem 'paypal-sdk-rest'
+# paypal
+gem 'activemerchant'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

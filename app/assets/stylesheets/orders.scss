@@ -1,3 +1,11 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.stripe-button:hover {
+  opacity: .8;
+}
+
+.stripe-button {
+  margin: 4px;
+}
+
+.paypal-button {
+  margin: 4px;
+}

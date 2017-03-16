@@ -1,7 +1,7 @@
 class UserProfilesController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  # before_action :authenticate_user!, only: [:show]
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!, only: [
     :show, :edit, :update, :destroy
@@ -21,6 +21,7 @@ class UserProfilesController < ApplicationController
   end
 
   def update
+    @user = current_user
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to :back, notice: 'User Profile was successfully updated.' }
