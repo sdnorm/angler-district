@@ -89,20 +89,19 @@ body {
 .search-bar-button {
   margin: 0;
   background: #7f8c8d;
-  border: 2px solid;
-  border-radius: 5px;
-  border-color: #7f8c8d;
-  padding: 10px;
-  $background-hover: #2c3e50;
+  padding: 12px;
   margin-left: 8px;
   margin-right: 8px;
+  border-radius: 5px;
+}
+
+.search-bar-button:hover {
+  background: #14679E;
 }
 
 .input-group input {
   margin-bottom: 0;
 }
-
-// @include button-style($background, $background-hover, $color);
 
 .home-search-button {
   background: #2c3e50;
