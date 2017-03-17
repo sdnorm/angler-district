@@ -1,0 +1,32 @@
+buyer-ad@email.com
+  p: 123456789
+
+  Credit Card Number:
+  4032031846498029
+  Credit Card Type:
+  VISA
+  Expiration Date:
+  02/2022
+
+  Account Number:
+  976294
+  Routing Number:
+  325272063
+
+
+seller-ad@email.com
+  p: 123456789
+
+  Phone Number: 4084790293
+
+  Account Number:
+  7348354
+  Routing Number:
+  325272063
+
+  Credit Card Number:
+  4032030457793033
+  Credit Card Type:
+  VISA
+  Expiration Date:
+  02/2022

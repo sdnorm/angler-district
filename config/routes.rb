@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/order/:id/paypal_charge', to: 'paypal_charge#express', as: :paypal_express
+
   get 'categories', to: 'categories#index', as: :categories
 
   resources :charges
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
 
   get 'transactions/new'
 
-  get 'carts/show'
+  get 'carts/show', to: 'carts#show', as: :cart
 
   get '/about', to: 'pages#about', as: :about
 

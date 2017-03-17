@@ -26,6 +26,17 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      mode: "sandbox",
+      login: ENV["PAYPAL_USERNAME"],
+      password: ENV["PAYPAL_PASSWORD"],
+      signature: ENV["PAYPAL_SIGNATURE"]
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
