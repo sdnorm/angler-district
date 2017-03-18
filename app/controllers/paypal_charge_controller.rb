@@ -19,8 +19,8 @@ class PaypalChargeController < ApplicationController
           quantity: "1",
           amount: 900,#@product.price - fee,
           description: "Purchased #{@product.name}",
-          category: "Digital",
-          seller_paypal_account_id: "seller-ad@email.com"#@seller.paypal_email
+          category: "Digital"
+          # seller_paypal_account_id: "seller-ad@email.com"#@seller.paypal_email
         },
         {
           name: "Fee",
@@ -28,8 +28,8 @@ class PaypalChargeController < ApplicationController
           quantity: "1",
           amount: fee,
           description: "Angler District, LLC fee for selling product - #{@product.name}",
-          category: "Digital",
-          seller_paypal_account_id: "spencerdnorman-facilitator@gmail.com"#ENV["collect_paypal_email"]
+          category: "Digital"
+          # seller_paypal_account_id: "spencerdnorman-facilitator@gmail.com"#ENV["collect_paypal_email"]
         }
       ]
     )
