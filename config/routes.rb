@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'order/:id/paypal_order', to: 'paypal_order#index', as: :paypal_index
+
+  get 'paypal_order/:id/create', to: 'paypal_order#create', as: :paypal_create
+
+  get 'order/:id/paypal_charged', to: 'paypal_order#show', as: :paypal_show
+
   get '/order/:id/paypal_charge', to: 'paypal_charge#express', as: :paypal_express
 
   get 'categories', to: 'categories#index', as: :categories

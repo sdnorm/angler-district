@@ -7,7 +7,7 @@ curl https://api-3t.sandbox.paypal.com/nvp \
   -d METHOD=SetExpressCheckout                   # API operation \
   -d RETURNURL=http://example.com/success.html   # URL displayed to buyer after authorizing transaction \
   -d CANCELURL=http://example.com/canceled.html  # URL displayed to buyer after canceling transaction \
-  -d VERSION=93                                  # API version \
+  -d VERSION=93                                # API version \
 
   -d PAYMENTREQUEST_0_CURRENCYCODE=USD \
   -d PAYMENTREQUEST_0_AMT=250                    # total amount of first payment \

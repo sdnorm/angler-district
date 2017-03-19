@@ -24,6 +24,7 @@
   <p>
     <strong>Seller:</strong>
     <%= @order.seller.profile_name %>
+    <%= @order.first_name %>
   </p>
 
   <%= form_tag charges_path(order: @order.id) do %>
@@ -46,8 +47,9 @@
       </script>
     </div>
     <div class="paypal-button">
-      <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_express_path, id:"paypal-button" %>
-      <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), root_path, id:"paypal-button" %>
+      <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@order), id:"paypal-button" %>
+      <!-- <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_express_path, id:"paypal-button" %> -->
+      <!-- <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), root_path, id:"paypal-button" %> -->
     </div>
   <% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318005217) do
+ActiveRecord::Schema.define(version: 20170318021139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(version: 20170318005217) do
     t.integer  "zip_code"
     t.string   "express_token"
     t.string   "express_payer_id"
+    t.string   "paypal_first_name"
+    t.string   "paypal_last_name"
+    t.boolean  "purchased"
+    t.datetime "purchased_at"
+    t.string   "ip_address"
     t.index ["grouped_orders_id"], name: "index_orders_on_grouped_orders_id", using: :btree
   end
 
