@@ -13,6 +13,11 @@ class UserProfilesController < ApplicationController
 
   def show
     @user = current_user
+    if @user.paypal_email_the_same == true
+      @paypal_email = @user.email
+    else
+      @paypal_email = @user.paypal_email
+    end
   end
 
   def edit
@@ -24,7 +29,7 @@ class UserProfilesController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to :back, notice: 'User Profile was successfully updated.' }
+        format.html {redirect_to({action: 'edit', id: @user.slug}, notice: 'User Profile was successfully updated.') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -62,7 +67,9 @@ class UserProfilesController < ApplicationController
         :address2,
         :city,
         :state,
-        :zip_code
+        :zip_code,
+        :paypal_email,
+        :paypal_email_the_same
       )
     end
 

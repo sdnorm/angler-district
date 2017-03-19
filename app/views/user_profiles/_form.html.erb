@@ -2,7 +2,6 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user profile from being saved:</h2>
-
       <ul>
       <% user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,7 +10,7 @@
     </div>
   <% end %>
 
-  <div class="large-6 small-12 columns">
+  <div class="large-4 small-12 columns">
     <div class="field">
       <%= f.label :profile_name %>
       <%= f.text_field :profile_name %>
@@ -19,7 +18,7 @@
 
     <div class="field">
       <%= f.label :first_name %>
-      <%= f.text_area :first_name %>
+      <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
@@ -31,9 +30,29 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
+
+    <p>PayPal account email the same as above?</p>
+    <div class="switch large">
+      <% if @user.paypal_email_the_same == true %>
+        <input class="switch-input" id="paypal_email_the_same" type="checkbox" name="user[paypal_email_the_same]" value="false">
+        <label class="switch-paddle" for="paypal_email_the_same">
+          <span class="show-for-sr">PayPal email?</span>
+          <span class="switch-inactive" aria-hidden="true">Yes</span>
+          <span class="switch-active" aria-hidden="true">No</span>
+          </label>
+      <% else %>
+        <input class="switch-input" id="paypal_email_the_same" type="checkbox" name="user[paypal_email_the_same]" value="true">
+        <label class="switch-paddle" for="paypal_email_the_same">
+          <span class="show-for-sr">PayPal email?</span>
+          <span class="switch-active" aria-hidden="true">Yes</span>
+          <span class="switch-inactive" aria-hidden="true">No</span>
+        </label>
+      <% end %>
+    </div>
+
   </div>
 
-  <div class="large-6 small-12 columns">
+  <div class="large-4 small-12 columns">
     <div class="field">
       <%= f.label :address1 %>
       <%= f.text_field :address1 %>
@@ -60,9 +79,11 @@
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit class:"button" %>
-  </div>
+  <div class="large-4 small-12 columns text-center">
+    <div class="actions">
+      <%= f.submit class:"button", id: "profile-button" %>
+    </div>
 
-  <%= link_to "Back to My Profile", user_profile_path, class:"button" %>
+    <%= link_to "Back to My Profile", user_profile_path, class:"button", id: "profile-button" %>
+  </div>
 <% end %>

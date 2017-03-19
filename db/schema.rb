@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318021139) do
+ActiveRecord::Schema.define(version: 20170319151822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,12 +96,27 @@ ActiveRecord::Schema.define(version: 20170318021139) do
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
+  create_table "referral_codes", force: :cascade do |t|
+    t.string   "code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "count"
+    t.integer  "count_limit"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shops_on_user_id", using: :btree
+  end
+
+  create_table "user_referral_codes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "referral_code_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,6 +145,8 @@ ActiveRecord::Schema.define(version: 20170318021139) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip_code"
+    t.string   "paypal_email"
+    t.boolean  "paypal_email_the_same"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["profile_name"], name: "index_users_on_profile_name", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

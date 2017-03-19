@@ -26,16 +26,16 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
-    paypal_options = {
-      mode: "sandbox",
-      login: ENV["PAYPAL_USERNAME"],
-      password: ENV["PAYPAL_PASSWORD"],
-      signature: ENV["PAYPAL_SIGNATURE"]
-    }
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  end
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'anglerdistrict.com',
+    user_name:            ENV["EMAIL_USERNAME"],
+    password:             ENV["EMAIL_USERNAME"],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
