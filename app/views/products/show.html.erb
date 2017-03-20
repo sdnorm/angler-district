@@ -34,31 +34,26 @@
         <% unless @product.display_image.file.nil? %>
           <li class="is-active orbit-slide text-center">
             <%= image_tag(@product.display_image.large) %>
-            <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
           </li>
         <% end %>
         <% unless @product.image.file.nil? %>
           <li class="orbit-slide text-center">
             <%= image_tag(@product.image.large) %>
-            <figcaption class="orbit-caption">Lets Rocket!</figcaption>
           </li>
         <% end %>
         <% unless @product.image2.file.nil? %>
           <li class="orbit-slide text-center">
             <%= image_tag(@product.image2.large) %>
-            <figcaption class="orbit-caption">Encapsulating</figcaption>
           </li>
         <% end %>
         <% unless @product.image3.file.nil? %>
           <li class="orbit-slide text-center">
             <%= image_tag(@product.image3.large) %>
-            <figcaption class="orbit-caption">Outta This World</figcaption>
           </li>
         <% end %>
         <% unless @product.image4.file.nil? %>
           <li class="orbit-slide text-center">
             <%= image_tag(@product.image4.large) %>
-            <figcaption class="orbit-caption">222222222</figcaption>
           </li>
         <% end %>
       </ul>
