@@ -23,7 +23,7 @@ class User < ApplicationRecord
     $redis.scard "cart#{id}"
   end
 
-  def average_rank
+  def average_rating
     total = self.ratings.sum(:score)
     count = self.ratings.count
     average = total / count

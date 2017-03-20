@@ -22,7 +22,11 @@ class ProductsController < ApplicationController
     @cart_action = @product.cart_action current_user.try :id
     seller = User.find(@product.user_id)
     @seller = seller
-    @reputation = seller.average_rank
+    if seller.ratings.count > 0
+      @reputation = seller.average_rating
+    else
+      @reputation = "No ratings yet"
+    end
   end
 
   # GET /products/new
