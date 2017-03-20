@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319151822) do
+ActiveRecord::Schema.define(version: 20170320013832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,10 +90,24 @@ ActiveRecord::Schema.define(version: 20170319151822) do
     t.integer  "inventory",     default: 1
     t.string   "slug"
     t.integer  "category_id"
+    t.string   "condition"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["shop_id"], name: "index_products_on_shop_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
+  end
+
+  create_table "ranks", force: :cascade do |t|
+    t.integer  "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "score"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "referral_codes", force: :cascade do |t|
@@ -110,6 +124,20 @@ ActiveRecord::Schema.define(version: 20170319151822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shops_on_user_id", using: :btree
+  end
+
+  create_table "user_ranks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "rank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_ratings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "rating_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_referral_codes", force: :cascade do |t|

@@ -46,9 +46,3 @@ $(function(){
     columns: 4
   });
 });
-
-// $(function(){
-//   $('.mobile-wrapper').masonry({
-//     columns: 1
-//   });
-// });

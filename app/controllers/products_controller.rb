@@ -20,6 +20,9 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @cart_action = @product.cart_action current_user.try :id
+    seller = User.find(@product.user_id)
+    @seller = seller
+    @reputation = seller.average_rank
   end
 
   # GET /products/new

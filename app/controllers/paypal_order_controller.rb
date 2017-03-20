@@ -51,7 +51,7 @@ class PaypalOrderController < ApplicationController
     end
     paypal_return = ParsePaypal.run(response.body)
     if paypal_return["ACK"] == "Success"
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{paypal_return["TOKEN"]}"
+      redirect_to "#{ENV["PAYPAL_URL"]}#{paypal_return["TOKEN"]}"
     else
       flash[:notice] = "There was a problem initiating the PayPal transaction. Please try again or use a different payment method. Thanks."
     end

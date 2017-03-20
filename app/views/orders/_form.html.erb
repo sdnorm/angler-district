@@ -1,4 +1,4 @@
-<div class="row">
+<div class="new-order-form">
   <%= form_for(order) do |f| %>
     <% if order.errors.any? %>
       <div id="error_explanation">
@@ -47,7 +47,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: "button" %>
     </div>
   <% end %>
 </div>

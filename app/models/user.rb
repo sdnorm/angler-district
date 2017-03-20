@@ -16,9 +16,18 @@ class User < ApplicationRecord
   has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
   has_many :grouped_purchases, class_name: "GroupedOrder", foreign_key: "buyer_id"
   has_many :referral_codes, through: :referral_codes
+  has_many :user_ratings
+  has_many :ratings, through: :user_ratings
 
   def cart_count
     $redis.scard "cart#{id}"
+  end
+
+  def average_rank
+    total = self.ratings.sum(:score)
+    count = self.ratings.count
+    average = total / count
+    return average
   end
 
   def cart_total_price

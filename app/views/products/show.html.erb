@@ -97,25 +97,47 @@
 
   </div>
   <div class="large-5 columns">
-    <p>
-      <strong>Name:</strong>
-      <%= @product.name %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @product.description %>
-    </p>
-
-    <p>
-      <strong>Price:</strong>
-      <%= number_to_currency(@product.price) %>
-    </p>
-
+    <div class="large-12 columns text-right">
+      <i class="fa fa-2x fa-pinterest" aria-hidden="true"></i>
+    </div>
+    <div class="large-12 columns">
+      <h1><%= @product.name %></h1>
+    </div>
+    <div class="large-12 columns">
+      <h3 class='product-price'><%= number_to_currency(@product.price) %></h3>
+    </div>
+    <div class="large-12 columns">
+      <p>
+        <strong>Sold by:</strong>
+        <span id="product-text">
+          <%= @seller.profile_name %> | <%= @reputation %>
+        </span>
+      </p>
+    </div>
+    <div class="large-12 columns">
+      <p>
+        <strong>Description:</strong>
+        <span id="product-text">
+          <%= @product.description %>
+        </span>
+      </p>
+    </div>
+    <div class="large-12 columns">
+      <div class="large-6 columns" style="padding: 0;">
+        <p>
+          Shipping: <span id="product-text"></span>
+        </p>
+      </div>
+      <div class="large-6 columns" style="padding: 0;">
+        <p>
+          Condition: <span id="product-text"><%= @product.condition %></span>
+        </p>
+      </div>
+    </div>
     <%if signed_in? && current_user.id == @product.user_id %>
       <%= link_to 'Edit', edit_product_path(@product) %>
     <% elsif signed_in? %>
-      <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+      <%= link_to "", class: "button purchae_button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
         <% if @cart_action == 'Remove from' %>
           <i class="fa fa-times"></i>
         <% else %>
@@ -128,8 +150,7 @@
         <%= link_to "Want to add it to your cart or purchase?", new_user_session_path %>
       </p>
     <%end%>
-
-    <p>
+    <p class="products-path">
       <%= link_to "Back To all Products", products_path %>
     </p>
   </div>
