@@ -19,7 +19,7 @@
 <% end %>
 
 <% content_for :og_image do %>
-  <%= image_url(@product.display_image.large) %>
+  <%= image_url(@product.display_image.thumb) %>
 <% end %>
 
 <% content_for :og_url do %>
@@ -42,7 +42,6 @@
 
 <div class="row">
   <div class="large-7 columns text-right">
-
     <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-auto-play="false">
       <ul class="orbit-container">
         <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></button>
@@ -103,11 +102,6 @@
         <% end %>
       </nav>
     </div>
-
-    <a href="">
-    <img src="http://assets.pinterest.com/images/PinExt.png">
-    </a>
-
   </div>
   <div class="large-5 columns">
     <div class="large-12 columns text-right product-social">
@@ -117,7 +111,7 @@
       <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}", formtarget: "_blank" do %>
         <i class="fa fa-2x fa-facebook-official" id="product-social" aria-hidden="true"></i>
       <% end %>
-      <%= link_to "http://pinterest.com/pin/create/button/?url=#{product_url(@product)}&media=#{}&description=Buy #{@product.name} at www.AnglerDistrict.com", formtarget: "_blank" do %>
+      <%= link_to "https://twitter.com/home?status=Selling520this%20#{@product.name}%20through%20AnglerDistrict.com%20#{product_url(@product)}", formtarget: "_blank" do%>
         <i class="fa fa-2x fa-twitter" id="product-social" aria-hidden="true"></i>
       <% end %>
     </div>
