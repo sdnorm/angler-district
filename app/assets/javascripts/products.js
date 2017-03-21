@@ -26,3 +26,23 @@ $(window).load(function() {
     });
   });
 });
+
+$(function(){
+  $(".show-category-list").click(function(){
+    $("#category-list").toggle(200);
+  });
+  $(".show-freshwater-list").click(function(){
+    $("#freshwater-list").toggle(200);
+  });
+  $(".show-saltwater-list").click(function(){
+    $("#saltwater-list").toggle(200);
+  });
+});
+
+$(function(){
+  $(".close-list").click(function(){
+    $("#category-list").hide(200);
+    $("#freshwater-list").hide(200);
+    $("#saltwater-list").hide(200);
+  });
+});
