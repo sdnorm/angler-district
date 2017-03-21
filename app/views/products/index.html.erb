@@ -1,33 +1,114 @@
 <p id="notice"><%= notice %></p>
 <div class="row expanded columns">
   <div class="medium-12 columns">
-    <div class="row">
       <div class="medium-3 columns hide-for-small-only">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Site Title</li>
-          <li>
-            <a href="#">One</a>
-            <ul class="menu vertical">
-              <li><a href="#">One</a></li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-        <p>
-          Bacon ipsum dolor amet salami chicken capicola bacon ham hock pork belly swine boudin. Corned beef cow flank venison pork loin short loin jerky brisket chicken biltong burgdoggen. Ham swine kevin, pork loin landjaeger flank tongue. Pork salami beef jerky strip steak spare ribs. Beef ribs pork chop shoulder sausage t-bone. Sirloin brisket pancetta, beef pork jowl t-bone jerky frankfurter ball tip.
-        </p>
-        <p>
-          Filet mignon ribeye jerky venison andouille doner beef ribs ham shankle fatback. T-bone ground round brisket, pork chop tri-tip sirloin boudin ribeye picanha corned beef pancetta burgdoggen rump pork jowl. Kielbasa burgdoggen capicola boudin pork belly. T-bone porchetta corned beef, meatball kielbasa shankle biltong meatloaf tri-tip.
-        </p>
-        <p>
-          Ball tip ham hock capicola, kevin landjaeger meatball fatback rump sirloin frankfurter kielbasa shoulder bacon. Chuck sausage capicola, pig meatball landjaeger sirloin ground round shankle fatback. Tenderloin cow pastrami venison ground round, short loin salami picanha prosciutto. Ribeye turducken corned beef salami, alcatra sausage bresaola. Corned beef turducken shankle tail shank shoulder, pig ham hock biltong. Pork chop ham tenderloin cow.
-        </p>
-        <p>
-          Corned beef shoulder pancetta pork loin sausage, brisket pig. Swine bresaola doner turkey turducken pork belly. Tongue shank drumstick, strip steak t-bone prosciutto landjaeger jerky boudin pork belly spare ribs kevin burgdoggen kielbasa. Pork loin hamburger spare ribs meatball, strip steak fatback shankle venison.
-        </p>
+        <div class="large-12 columns home-search-bar-input" data-sticky-container>
+          <div class="sticky" data-sticky data-margin-top="0">
+            <%= form_tag products_path, method: :get do %>
+              <div class="input-group">
+                <%= text_field_tag :search_text, "", placeholder: "Find Tackle", class:"input-group-field", id: "search-input" %>
+                <div class="input-group-button">
+                  <%= button_tag(type: "submit", class: "button search-button", id: "search-button") do %>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="large-12 columns text-center side-cats">
+          <ul class="no-bullet">
+            <li class="footer-title hide-for-small-only">
+              Categories
+            </li>
+            <li>
+              <%= link_to "Reels", reels_path %>
+            </li>
+            <li>
+              <%= link_to "Rods", rods_path %>
+            </li>
+            <li>
+              <%= link_to "Lures", lures_path %>
+            </li>
+            <li>
+              <%= link_to "General", general_path %>
+            </li>
+            <li>
+              <%= link_to "Apparel", apparel_path %>
+            </li>
+            <li>
+              <%= link_to "Boating", boating_path %>
+            </li>
+            <li>
+              <%= link_to "Electronics", electronics_path %>
+            </li>
+          </ul>
+          <ul class="no-bullet">
+            <li class="footer-title hide-for-small-only">
+              Popular Brands
+            </li>
+            <li>
+              <%= link_to "13 Fishing", reels_path %>
+            </li>
+            <li>
+              <%= link_to "Abu Garcia", rods_path %>
+            </li>
+            <li>
+              <%= link_to "Ardent", lures_path %>
+            </li>
+            <li>
+              <%= link_to "Berkley", general_path %>
+            </li>
+            <li>
+              <%= link_to "Castaway", apparel_path %>
+            </li>
+            <li>
+              <%= link_to "Daiwa", boating_path %>
+            </li>
+            <li>
+              <%= link_to "Denali Rods", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Dobyns Rods", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Duckett Fishing", reels_path %>
+            </li>
+            <li>
+              <%= link_to "Falcon", rods_path %>
+            </li>
+            <li>
+              <%= link_to "Fenwick", lures_path %>
+            </li>
+            <li>
+              <%= link_to "G. Loomis", general_path %>
+            </li>
+            <li>
+              <%= link_to "Halo Fishing", apparel_path %>
+            </li>
+            <li>
+              <%= link_to "Jackall", boating_path %>
+            </li>
+            <li>
+              <%= link_to "Lew's", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Megabass", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Okuma", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Quantum", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "St. Croix", electronics_path %>
+            </li>
+            <li>
+              <%= link_to "Other", electronics_path %>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="medium-9 small-12 columns">
         <% @products.each do |product| %>
@@ -41,7 +122,9 @@
             </div>
           </div>
         <% end %>
+        <div class="large-12 columns text-center pagination">
+          <%= will_paginate @products, :previous_label => 'Previous', :next_label => 'Next', renderer: FoundationPagination::Rails %>
+        </div>
       </div>
-    </div>
   </div>
 </div>

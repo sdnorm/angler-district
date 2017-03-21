@@ -2,9 +2,9 @@
     <div class="top-footer">
       <div class="row">
         <div class="large-12 columns">
-          <div class="large-3 large-offset-2 columns">
+          <div class="large-3 large-offset-2 small-2 columns">
             <ul class="no-bullet">
-              <li class="footer-title">
+              <li class="footer-title hide-for-small-only">
                 Categories
               </li>
               <li>
@@ -30,8 +30,8 @@
               </li>
             </ul>
           </div>
-          <div class="large-3 large-offset-1 columns">
-            <div class="large-10 columns text-right">
+          <div class="large-3 large-offset-1 small-10 columns">
+            <div class="large-10 columns small-9 text-right">
               <ul class="no-bullet">
                 <li class="footer-title">
                   Angler District Links
@@ -53,7 +53,7 @@
                 </li>
               </ul>
             </div>
-            <div class="large-2 columns text-left">
+            <div class="large-2 columns small-3 text-left">
               <ul class="no-bullet social">
                 <li>
                   <%= link_to "https://www.instagram.com/anglerdistrict/" do %>
@@ -78,14 +78,13 @@
               </ul>
             </div>
           </div>
-          <div class="large-1 columns">
-
+          <div class="large-1 columns hide-for-small-only">
           </div>
         </div>
       </div>
     </div>
     <div class="bottom-footer">
-      <div class="row">
+      <div class="row hide-for-small-only">
         <div class="large-5 columns text-left text-footer">
           <span><%= link_to "Terms & Policies", terms_and_policies_path %></span>
         </div>
@@ -93,6 +92,17 @@
           <%= image_tag('Angler - logo - Yellow-01.png', class: "nav-logo") %>
         </div>
         <div class="large-5 columns text-right text-footer">
+          <span>&copy; <%= Date.today.year %> Angler District, LLC</span>
+        </div>
+      </div>
+      <div class="row show-for-small-only">
+        <div class="small-12 columns text-center">
+          <%= image_tag('Angler - logo - Yellow-01.png', class: "nav-logo") %>
+        </div>
+        <div class="small-12 columns text-center">
+          <span><%= link_to "Terms & Policies", terms_and_policies_path %></span>
+        </div>
+        <div class="small-12 columns text-center">
           <span>&copy; <%= Date.today.year %> Angler District, LLC</span>
         </div>
       </div>

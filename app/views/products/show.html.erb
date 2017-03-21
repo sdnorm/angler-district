@@ -6,6 +6,10 @@
   <%= @product.name %> for sale! - Find and sell tackle with ease. - AnlgerDistrict.com
 <% end %>
 
+<% content_for :og_type do %>
+  website
+<% end %>
+
 <% content_for :og_title do %>
   <%= @product.name %> for sale! - AnglerDistrict.com
 <% end %>
@@ -15,11 +19,23 @@
 <% end %>
 
 <% content_for :og_image do %>
-  <%= image_tag(@product.display_image.large) %>
+  <%= image_url(@product.display_image.large) %>
 <% end %>
 
 <% content_for :og_url do %>
   <%= request.url %>
+<% end %>
+
+<% content_for :twitter_title do %>
+  <%=  %>
+<% end %>
+
+<% content_for :twitter_description do %>
+  <%= request.url %>
+<% end %>
+
+<% content_for :twitter_image do %>
+  <%= image_url(@product.display_image.thumb) %>
 <% end %>
 
 <p id="notice"><%= notice %></p>
@@ -88,11 +104,22 @@
       </nav>
     </div>
 
+    <a href="">
+    <img src="http://assets.pinterest.com/images/PinExt.png">
+    </a>
 
   </div>
   <div class="large-5 columns">
-    <div class="large-12 columns text-right">
-      <i class="fa fa-2x fa-pinterest" aria-hidden="true"></i>
+    <div class="large-12 columns text-right product-social">
+      <%= link_to "http://pinterest.com/pin/create/button/?url=#{product_url(@product)}&media=#{}&description=Buy #{@product.name} at www.AnglerDistrict.com", formtarget: "_blank" do %>
+        <i class="fa fa-2x fa-pinterest" id="product-social" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}", formtarget: "_blank" do %>
+        <i class="fa fa-2x fa-facebook-official" id="product-social" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to "http://pinterest.com/pin/create/button/?url=#{product_url(@product)}&media=#{}&description=Buy #{@product.name} at www.AnglerDistrict.com", formtarget: "_blank" do %>
+        <i class="fa fa-2x fa-twitter" id="product-social" aria-hidden="true"></i>
+      <% end %>
     </div>
     <div class="large-12 columns">
       <h1><%= @product.name %></h1>
@@ -102,7 +129,7 @@
     </div>
     <div class="large-12 columns">
       <p>
-        <strong>Sold by:</strong>
+        <span id="product-text-title">Sold by: </span>
         <span id="product-text">
           <%= @seller.profile_name %> | <%= @reputation %>
         </span>
@@ -110,7 +137,7 @@
     </div>
     <div class="large-12 columns">
       <p>
-        <strong>Description:</strong>
+        <span id="product-text-title">Description: </span>
         <span id="product-text">
           <%= @product.description %>
         </span>
@@ -119,33 +146,38 @@
     <div class="large-12 columns">
       <div class="large-6 columns" style="padding: 0;">
         <p>
-          Shipping: <span id="product-text"></span>
+          <span id="product-text-title">Shipping: </span><span id="product-text"></span>
         </p>
       </div>
       <div class="large-6 columns" style="padding: 0;">
         <p>
-          Condition: <span id="product-text"><%= @product.condition %></span>
+          <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition %></span>
         </p>
       </div>
     </div>
-    <%if signed_in? && current_user.id == @product.user_id %>
-      <%= link_to 'Edit', edit_product_path(@product) %>
-    <% elsif signed_in? %>
-      <%= link_to "", class: "button purchae_button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
-        <% if @cart_action == 'Remove from' %>
-          <i class="fa fa-times"></i>
-        <% else %>
-          <i class="fa fa-shopping-cart"></i>
-        <% end %>
-        <span><%=@cart_action%></span> Cart
+    <div class="large-12 columns purchase-options">
+      <%if signed_in? && current_user.id == @product.user_id %>
+        <%= link_to 'Edit', edit_product_path(@product) %>
+      <% elsif signed_in? %>
+        <%= link_to "", class: "purchase-button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+          <% if @cart_action == 'Remove from' %>
+            <i class="fa fa-times"></i>
+            <span><%=@cart_action%></span> Cart
+          <% else %>
+            <i class="fa fa-shopping-cart"></i>
+            <span><%=@cart_action%></span> Cart
+          <% end %>
+        <%end%>
+      <% else %>
+        <p>
+          <%= link_to "Want to add it to your cart or purchase?", new_user_session_path %>
+        </p>
       <%end%>
-    <% else %>
-      <p>
-        <%= link_to "Want to add it to your cart or purchase?", new_user_session_path %>
+    </div>
+    <div class="large-12 columns">
+      <p class="products-path">
+        <%= link_to "Back To all Products", products_path %>
       </p>
-    <%end%>
-    <p class="products-path">
-      <%= link_to "Back To all Products", products_path %>
-    </p>
+    </div>
   </div>
 </div>
