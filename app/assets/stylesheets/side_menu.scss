@@ -50,6 +50,13 @@
 .side-bar {
   button {
     width: 100%;
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-radius: 5px;
+  }
+  button:hover {
+    background: #f1c40f;
+    color: #ecf0f1;
   }
   margin-top: 1rem;
 }
