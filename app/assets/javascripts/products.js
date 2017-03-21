@@ -29,20 +29,26 @@ $(window).load(function() {
 
 $(function(){
   $(".show-category-list").click(function(){
-    $("#category-list").toggle(200);
+    $("#category-list").slideToggle(200);
+    $("#freshwater-list").hide(200);
+    $("#saltwater-list").hide(200);
   });
   $(".show-freshwater-list").click(function(){
-    $("#freshwater-list").toggle(200);
+    $("#freshwater-list").slideToggle(200);
+    $("#category-list").slideUp(200);
+    $("#saltwater-list").slideUp(200);
   });
   $(".show-saltwater-list").click(function(){
-    $("#saltwater-list").toggle(200);
+    $("#saltwater-list").slideToggle(200);
+    $("#category-list").slideUp(200);
+    $("#freshwater-list").slideUp(200);
   });
 });
 
 $(function(){
   $(".close-list").click(function(){
-    $("#category-list").hide(200);
-    $("#freshwater-list").hide(200);
-    $("#saltwater-list").hide(200);
+    $("#category-list").slideUp(200);
+    $("#freshwater-list").slideUp(200);
+    $("#saltwater-list").slideUp(200);
   });
 });
