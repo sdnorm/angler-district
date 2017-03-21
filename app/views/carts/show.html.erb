@@ -12,7 +12,7 @@
         <%end%>
       </div>
       <div class="column large-7 glassy-bg text-center" data-equalizer-watch>
-          <p class="scale ptm"> <%= product.name %> </p>
+        <h5 class="scale">$ <%= product.price %></h5>
       </div>
       <div class="column large-3 primary-bg text-center radius-r1" data-equalizer-watch>
         <%if signed_in?%>
@@ -20,7 +20,6 @@
             <i class="fa fa-times"></i>
             <span><%=product.cart_action(current_user.try :id)%></span> Cart
           <%end%>
-          <h5 class="scale">$ <%= product.price %></h5>
         <%end%>
       </div>
     </div>

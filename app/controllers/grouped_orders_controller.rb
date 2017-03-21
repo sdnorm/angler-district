@@ -12,7 +12,7 @@ class GroupedOrdersController < ApplicationController
   def new
     @grouped_order = GroupedOrder.new
     @cart_ids = $redis.smembers current_user_cart
-    @products = Product.where(id: [@cart_ids])
+    @products = Product.where(slug: [@cart_ids])
     @total = @products.sum {|price| price.price}
   end
 

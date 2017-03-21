@@ -1,7 +1,9 @@
+<
+
 <h1>New Order</h1>
 
 <p>
-  Total - $<%= Money.new(@total*100, "USD") %>
+  Total - <%= number_to_currency(@total) %>
 </p>
 
 <p>
