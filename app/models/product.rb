@@ -22,6 +22,7 @@ class Product < ApplicationRecord
   belongs_to :grouped_order
   has_many :order, through: :order_products
   belongs_to :category
+  belongs_to :brand
 
   scope :user_products, -> (user) {
     where(user_id: user).order('created_at DESC')
@@ -30,6 +31,8 @@ class Product < ApplicationRecord
   scope :positive_inventory, -> { where("inventory > ?", 0) }
 
   scope :ordered, -> { all.order('created_at DESC') }
+
+  scope :freshwater_brand, -> (brand) { where(category_id: 8, brand_id: brand ) }
 
   def cart_action(current_user_id)
     if $redis.sismember "cart#{current_user_id}", slug

@@ -32,63 +32,11 @@
       <button class="button">Popular Freshwater Brands</button>
     </div>
     <ul class="no-bullet" id="freshwater-list" style="display: none;">
+      <% @brands.each do |brand| %>
       <li>
-        <%= link_to "13 Fishing", reels_path %>
+        <%= link_to brand.name, fresh_brands_path(brand) %>
       </li>
-      <li>
-        <%= link_to "Abu Garcia", rods_path %>
-      </li>
-      <li>
-        <%= link_to "Ardent", lures_path %>
-      </li>
-      <li>
-        <%= link_to "Berkley", general_path %>
-      </li>
-      <li>
-        <%= link_to "Castaway", apparel_path %>
-      </li>
-      <li>
-        <%= link_to "Daiwa", boating_path %>
-      </li>
-      <li>
-        <%= link_to "Denali Rods", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Dobyns Rods", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Duckett Fishing", reels_path %>
-      </li>
-      <li>
-        <%= link_to "Falcon", rods_path %>
-      </li>
-      <li>
-        <%= link_to "Fenwick", lures_path %>
-      </li>
-      <li>
-        <%= link_to "G. Loomis", general_path %>
-      </li>
-      <li>
-        <%= link_to "Halo Fishing", apparel_path %>
-      </li>
-      <li>
-        <%= link_to "Jackall", boating_path %>
-      </li>
-      <li>
-        <%= link_to "Lew's", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Megabass", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Okuma", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Quantum", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "St. Croix", electronics_path %>
-      </li>
+      <% end %>
       <li>
         <%= link_to "Other", electronics_path %>
       </li>

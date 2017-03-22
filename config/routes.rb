@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'brands/index', to: 'brands#index', as: :brands
+  get 'saltwater/:id', to: 'brands#salt', as: :salt_brands
+  get 'freshwater/:id', to: 'brands#fresh', as: :fresh_brands
+
   get 'order/:id/paypal_order', to: 'paypal_order#index', as: :paypal_index
 
   get 'paypal_order/:id/create', to: 'paypal_order#create', as: :paypal_create
@@ -90,6 +94,8 @@ Rails.application.routes.draw do
   get 'boating', to: 'categories#boating', as: :boating
   get 'electronics', to: 'categories#electronics', as: :electronics
   get 'general', to: 'categories#general', as: :general
+
+  get ':id', to: 'brands#show', as: :brand
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

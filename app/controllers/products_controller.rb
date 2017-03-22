@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
       @products = Product.ordered_and_instock.paginate(:page => params[:page], :per_page => 12)
     end
     # @products = Product.ordered_and_instock
+    @brands = Brand.all
   end
 
   # GET /products/1
