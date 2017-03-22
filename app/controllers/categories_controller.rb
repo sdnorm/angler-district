@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def reels
-    @products = Category.where(name: "Reels").includes(:products)
+    @products = Category.reels
   end
 
   def rods

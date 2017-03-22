@@ -4,6 +4,7 @@ class Category < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :products, through: :product_categories
+  has_many :product_categories
 
   scope :reels, -> { where(name: "Reels").includes(:products) }
   scope :rods, -> { where(name: "Rods").includes(:products) }

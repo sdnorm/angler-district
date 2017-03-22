@@ -11,6 +11,7 @@ class Order < ApplicationRecord
   belongs_to :seller, class_name: "User"
   belongs_to :grouped_order
 
+  has_many :order_products
   has_many :products, through: :order_products
 
   scope :buyer_orders, -> (buyer_id) { where(buyer_id: buyer_id.id) }
