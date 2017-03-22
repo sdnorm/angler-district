@@ -1,10 +1,9 @@
 
   <div class="large-12 columns text-center">
     <h4>My Cart</h4>
-    <p> You've selected <span class="cart-count"><%=current_user.cart_count%></span> products!</p>
   </div>
   <div class="large-12 columns">
-    <div class="large-9 columns text-center">
+    <div class="large-8 large-offset-1 columns text-center">
       <% @cart_products.each do |product| %>
         <div class="cart-box">
           <span id="cart-item"><%= image_tag(product.image.thumb) %></span>
@@ -16,25 +15,40 @@
             </p>
           </span>
           <span id="cart-item">
-            <%if signed_in?%>
-              <%=link_to "", class: "button cart-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do%>
+            <%= link_to "", class: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
+              <% if product.cart_action(current_user.try :id) == 'Remove from' %>
                 <i class="fa fa-times"></i>
+                <span><%=product.cart_action(current_user.try :id)%></span> Cart
+              <% else %>
+                <i class="fa fa-shopping-cart"></i>
                 <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
-              <%end%>
+              <% end %>
             <%end%>
+            <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
           </span>
         </div>
       <% end %>
     </div>
-    <div class="large-3 columns text-center cart-sum">
+    <div class="large-2 columns text-left cart-sum">
+      <p class="first-cart-sum">
+        <span class="cart-count"><%=current_user.cart_count%></span> Product(s) Selected
+      </p>
+      <p>
+        Product(s) Total: <%= number_to_currency(@total) %>
+      </p>
+      <p>
+        Shipping: n/a
+      </p>
       <h4>
         Total: <%= number_to_currency(@total) %>
       </h4>
       <%if signed_in?%>
         <% if @cart_ids.count >= 1 %>
-          <%= link_to 'Checkout', route_order_path, class: "button success" %>
+          <%= link_to 'Checkout', route_order_path, class: "button checkout-button", id: "checkout-button" %>
         <% end %>
       <% end %>
+    </div>
+    <div class="large-1 columns">
     </div>
   </div>
 
