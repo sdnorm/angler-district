@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+
+  before_save :times_100
+
   mount_uploader :image, ProductImageUploader
   mount_uploader :image2, ProductImageUploader
   mount_uploader :image3, ProductImageUploader
@@ -33,6 +36,10 @@ class Product < ApplicationRecord
   scope :ordered, -> { all.order('created_at DESC') }
 
   scope :freshwater_brand, -> (brand) { where(category_id: 8, brand_id: brand ) }
+
+  def times_100
+    self.price = self.price * 100
+  end
 
   def cart_action(current_user_id)
     if $redis.sismember "cart#{current_user_id}", slug

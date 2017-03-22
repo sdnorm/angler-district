@@ -1,10 +1,44 @@
-<div id="mycart" class="small-10 small-centered medium-8 large-8 column">
-  <div class="p1 glassy-bg mb1 text-center radius-l1 radius-r1">
+
+  <div class="large-12 columns text-center">
     <h4>My Cart</h4>
-    <p class="mb0"> You've selected <span class="cart-count"><%=current_user.cart_count%></span> products!</p>
+    <p> You've selected <span class="cart-count"><%=current_user.cart_count%></span> products!</p>
+  </div>
+  <div class="large-12 columns">
+    <div class="large-9 columns text-center">
+      <% @cart_products.each do |product| %>
+        <div class="cart-box">
+          <span id="cart-item"><%= image_tag(product.image.thumb) %></span>
+          <span>
+            <h4><%= product.name %></h4>
+            <h6><%= number_to_currency(product.price) %></h6>
+            <p>
+              Seller: <%= product.user.profile_name %>
+            </p>
+          </span>
+          <span id="cart-item">
+            <%if signed_in?%>
+              <%=link_to "", class: "button cart-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do%>
+                <i class="fa fa-times"></i>
+                <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+              <%end%>
+            <%end%>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div class="large-3 columns text-center cart-sum">
+      <h4>
+        Total: <%= number_to_currency(@total) %>
+      </h4>
+      <%if signed_in?%>
+        <% if @cart_ids.count >= 1 %>
+          <%= link_to 'Checkout', route_order_path, class: "button success" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <% @cart_products.each do |product| %>
+  <!--<% @cart_products.each do |product| %>
     <div data-equalizer class="cart-product large-12 column mb1">
       <div class="column large-2 text-center p0" data-equalizer-watch>
         <%=link_to product do%>
@@ -29,6 +63,4 @@
       <% if @cart_ids.count >= 1 %>
         <%= link_to 'Purchase Order', route_order_path, class: "button success" %>
       <% end %>
-    <% end %>
-  </div>
-</div>
+    <% end %>-->

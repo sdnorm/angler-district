@@ -7,6 +7,9 @@
 //
 @import 'motion-ui/motion-ui';
 
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+
 // We include everything by default.  To slim your CSS, remove components you don't use.
 
 @include foundation-global-styles;

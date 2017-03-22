@@ -29,7 +29,7 @@ class UserProfilesController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html {redirect_to({action: 'edit', id: @user.slug}, notice: 'User Profile was successfully updated.') }
+        format.html {redirect_to({action: 'show', id: @user.slug}, notice: 'User Profile was successfully updated.') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

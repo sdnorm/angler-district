@@ -76,6 +76,11 @@ body {
   margin-bottom: 10rem;
 }
 
+.side-search-bar-input {
+  height: 40px;
+  margin-top: 10px;
+}
+
 .tag-line {
   color: #FFFFEC;
   padding: .5rem;
@@ -229,8 +234,8 @@ input[type=search] {
 #flash_notice, #flash_alert {
   max-width: 75%;
   margin: auto;
-  color: gold;
-  background: #f1c40f;
+  color: #D0011B;
+  background: #EE97A5;
   padding: 8px;
   font-size: 108%;
   font-weight: bold;
