@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'brands/index', to: 'brands#index', as: :brands
   get 'saltwater/:id', to: 'brands#salt', as: :salt_brands
   get 'freshwater/:id', to: 'brands#fresh', as: :fresh_brands
+  get 'saltwater/categories/:id', to: 'categories#salt_rods', as: :salt_categories
+  get 'freshwater/categories/:id', to: 'categories#fresh_rods', as: :fresh_categories
 
   get 'order/:id/paypal_order', to: 'paypal_order#index', as: :paypal_index
 

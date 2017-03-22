@@ -24,7 +24,7 @@ class GroupedOrdersController < ApplicationController
     @grouped_order.total = @products.sum {|price| price.price}
     @cart_ids.each do |product|
       @order = Order.new
-      @product = Product.find(product)
+      @product = Product.find_by(slug: product)
       @seller = User.find(@product.user_id)
       @order.total = @product.price
       @order.product_id = @product.id

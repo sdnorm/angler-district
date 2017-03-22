@@ -15,6 +15,10 @@ class CategoriesController < ApplicationController
     @products = Category.rods
   end
 
+  def fresh_rods
+    @products = Category.fresh_rods
+  end
+
   def lures
     @products = Category.lures
   end

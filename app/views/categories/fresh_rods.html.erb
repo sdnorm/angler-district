@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Freshwater Rods</h1>
+    <ul>
+      <% @products.each do |product| %>
+        <li>
+          <%= product.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

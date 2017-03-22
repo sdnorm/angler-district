@@ -21,7 +21,7 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :grouped_order
   has_many :order, through: :order_products
-  belongs_to :category
+  has_many :categories, through: :product_categories
   belongs_to :brand
 
   scope :user_products, -> (user) {
