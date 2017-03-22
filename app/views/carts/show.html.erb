@@ -6,16 +6,20 @@
     <div class="large-8 large-offset-1 columns text-center">
       <% @cart_products.each do |product| %>
         <div class="cart-box">
-          <span id="cart-item"><%= image_tag(product.image.thumb) %></span>
+          <span id="cart-item">
+            <%= link_to product_path(product) do %>
+              <%= image_tag(product.image.thumb) %>
+            <% end %>
+          </span>
           <span>
-            <h4><%= product.name %></h4>
+            <h4><%= link_to product.name, product_path(product), id: "title-link" %></h4>
             <h6><%= number_to_currency(product.price) %></h6>
             <p>
               Seller: <%= product.user.profile_name %>
             </p>
           </span>
           <span id="cart-item">
-            <%= link_to "", class: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
+            <%= link_to "", id: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
               <% if product.cart_action(current_user.try :id) == 'Remove from' %>
                 <i class="fa fa-times"></i>
                 <span><%=product.cart_action(current_user.try :id)%></span> Cart
