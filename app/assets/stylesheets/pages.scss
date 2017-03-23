@@ -71,3 +71,17 @@
   color: #f1c40f;
   background: #2c3e50;
 }
+
+.tab-bar-color {
+  @media only screen and (max-width: 40em) {
+    .menu > li > a {
+      background-color: #BDC3C7;
+    };
+  }
+}
+
+.angler-district {
+  img {
+    
+  }
+}
