@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
   before_save :price_to_cents
-  before_save :shipping_to_cents
+  # before_save :shipping_to_cents
 
   mount_uploader :image, ProductImageUploader
   mount_uploader :image2, ProductImageUploader
