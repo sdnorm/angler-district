@@ -119,7 +119,7 @@
       <h1><%= @product.name %></h1>
     </div>
     <div class="large-12 columns">
-      <h3 class='product-price'><%= number_to_currency(@product.price / 100) %></h3>
+      <h3 class='product-price'><%= number_to_currency(@product.price_in_cents/100.0) %></h3>
     </div>
     <div class="large-12 columns">
       <p>
@@ -148,6 +148,20 @@
           <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition %></span>
         </p>
       </div>
+    </div>
+    <div class="large-12 columns payment-methods">
+      <p>
+        <span id="product-text-title">Accepted Payment Methods: </span>
+        <% if @product.accept_paypal? %>
+          <i class="fa fa-3x fa-cc-paypal" aria-hidden="true"></i>
+        <% end %>
+        <% if @product.accept_stripe? %>
+          <i class="fa fa-3x fa-credit-card" aria-hidden="true"></i>
+        <% end %>
+      </p>
+      <p>
+
+      </p>
     </div>
     <div class="large-12 columns purchase-options">
       <%if signed_in? && current_user.id == @product.user_id %>

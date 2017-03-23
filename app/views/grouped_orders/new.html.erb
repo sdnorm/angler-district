@@ -78,6 +78,7 @@
       <h5>
         Item Count - <%= @cart_ids.count %>
       </h5>
+      <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
       <div class="large-12 columns text-center">
         <% @cart_products.each do |product| %>
           <div class="cart-box-go">
@@ -93,8 +94,16 @@
                 Seller: <%= product.user.profile_name %>
               </p>
             </span>
-            <span id="paypal-button">
-              <%= link_to "Submit Payment", root_path, class: "button" %>
+            <span>
+              <%= link_to "", id: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
+                <% if product.cart_action(current_user.try :id) == 'Remove from' %>
+                  <i class="fa fa-times"></i>
+                  <span><%=product.cart_action(current_user.try :id)%></span> Cart
+                <% else %>
+                  <i class="fa fa-shopping-cart"></i>
+                  <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+                <% end %>
+              <%end%>
             </span>
           </div>
         <% end %>

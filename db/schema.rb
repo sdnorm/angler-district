@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322022751) do
+ActiveRecord::Schema.define(version: 20170323081858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170322022751) do
     t.string   "state"
     t.integer  "zip_code"
     t.integer  "buyer_id"
-    t.float    "total"
+    t.integer  "total"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170322022751) do
     t.integer  "seller_id"
     t.integer  "grouped_orders_id"
     t.string   "address2"
-    t.float    "total"
+    t.integer  "total"
     t.boolean  "charged"
     t.string   "first_name"
     t.string   "last_name"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170322022751) do
     t.boolean  "purchased"
     t.datetime "purchased_at"
     t.string   "ip_address"
+    t.integer  "grouped_order_id"
     t.index ["grouped_orders_id"], name: "index_orders_on_grouped_orders_id", using: :btree
   end
 
@@ -92,8 +93,8 @@ ActiveRecord::Schema.define(version: 20170322022751) do
     t.string   "name"
     t.text     "description"
     t.float    "price"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "image"
     t.integer  "user_id"
     t.integer  "shop_id"
@@ -101,11 +102,14 @@ ActiveRecord::Schema.define(version: 20170322022751) do
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.integer  "inventory",     default: 1
+    t.integer  "inventory",         default: 1
     t.string   "slug"
     t.integer  "category_id"
     t.string   "condition"
     t.integer  "brand_id"
+    t.float    "shipping"
+    t.integer  "price_in_cents"
+    t.integer  "shipping_in_cents"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["shop_id"], name: "index_products_on_shop_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree

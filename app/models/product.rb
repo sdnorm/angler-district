@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 
-  before_save :times_100
+  before_save :price_to_cents
+  before_save :shipping_to_cents
 
   mount_uploader :image, ProductImageUploader
   mount_uploader :image2, ProductImageUploader
@@ -16,10 +17,10 @@ class Product < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search,
-                :against => [:name],
-                :using => {
-                  :tsearch => {:dictionary => "english"}
-                }
+                  :against => [:name],
+                  :using => {
+                    :tsearch => {:dictionary => "english"}
+                  }
 
   belongs_to :user
   belongs_to :grouped_order
@@ -39,8 +40,12 @@ class Product < ApplicationRecord
 
   scope :freshwater_brand, -> (brand) { where(category_id: 8, brand_id: brand ) }
 
-  def times_100
-    self.price = self.price * 100
+  def accept_paypal?
+    true if self.user.paypal_email != nil || self.user.paypal_email_the_same == true
+  end
+
+  def accept_stripe?
+    true if self.user.provider == "stripe_connect"
   end
 
   def cart_action(current_user_id)
@@ -61,4 +66,14 @@ class Product < ApplicationRecord
       positive_inventory.ordered
     end
   end
+
+  private
+
+    def price_to_cents
+      self.price_in_cents = self.price * 100
+    end
+
+    def shipping_to_cents
+      self.shipping_in_cents = self.shipping * 100
+    end
 end

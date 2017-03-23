@@ -1,31 +1,83 @@
 <div class="row">
-  <p id="notice"><%= notice %></p>
+  <div class="row align-center">
+    <div class="column large-3 text-center go-form">
+      <h2>Shipping Information</h2>
+      <p>
+        Email: <%= @order.buyer.email %>
+      </p>
+      <%= link_to 'Edit', edit_order_path(@order), class: "button", style: "width:100%;" %>
+    </div>
+    <div class="column large-7 text-center">
+      <div class="column large-12">
+        <h3>Choose Payment Method</h3>
+        <div class="payment-method">
+          <div class="cc-payment">
+            <i class="fa fa-5x fa-credit-card" aria-hidden="true"></i>
+            <p>
+              Credit Card
+            </p>
+          </div>
+          <div class="paypal" id="paypal">
+            <i class="fa fa-5x fa-paypal" aria-hidden="true"></i>
+            <p>
+              PayPal
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column large-12">
+        <h2>
+          Order Details
+        </h2>
+        <h5>
+          Total - <%= number_to_currency(@order.product.price_in_cents/100.0) %>
+        </h5>
+        <h5>
+          Item Count - 1
+        </h5>
+        <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
+        <div class="large-12 columns text-center">
+          <div class="cart-box-go">
+            <span id="cart-item-go">
+              <%= link_to product_path(@order.product) do %>
+                <%= image_tag(@order.product.image.thumb) %>
+              <% end %>
+            </span>
+            <span>
+              <h4><%= link_to @order.product.name, product_path(@order.product), id: "title-link-go" %></h4>
+              <h6><%= number_to_currency(@order.product.price_in_cents/100.0) %></h6>
+              <p>
+                Seller: <%= @order.product.user.profile_name %>
+              </p>
+            </span>
+            <span>
+              <%= link_to "", id: "purchase-button", data: {target: @order.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(@order.product), removeUrl: remove_from_cart_path(@order.product)} do %>
+                <% if @order.product.cart_action(current_user.try :id) == 'Remove from' %>
+                  <i class="fa fa-times"></i>
+                  <span><%=@order.product.cart_action(current_user.try :id)%></span> Cart
+                <% else %>
+                  <i class="fa fa-shopping-cart"></i>
+                  <span><%=@order.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+                <% end %>
+              <%end%>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="large-2 columns">
+      <h2>Purchase!</h2>
+      <div class="stripe-button" style="width:100%;">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Tackle!"
+                data-amount=<%= @order.product.price_in_cents %>
+                data-locale="auto">
+        </script>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <strong>Address1:</strong>
-    <%= @order.address1 %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= @order.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @order.state %>
-  </p>
-
-  <p>
-    <strong>Total:</strong>
-    $<%= Money.new(@order.total*100, "USD") %>
-  </p>
-
-  <p>
-    <strong>Seller:</strong>
-    <%= @order.seller.profile_name %>
-    <%= @order.first_name %>
-  </p>
 
   <%= form_tag charges_path(order: @order.id) do %>
     <article>
@@ -35,23 +87,12 @@
         </div>
       <% end %>
       <label class="amount">
-        <span>$<%= Money.new(@order.total*100, "USD") %></span>
       </label>
     </article>
-    <div class="stripe-button">
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="Tackle!"
-              data-amount=<%= @order.total*100 %>
-              data-locale="auto">
-      </script>
-    </div>
     <div class="paypal-button">
       <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@order), id:"paypal-button" %>
       <!-- <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_express_path, id:"paypal-button" %> -->
       <!-- <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), root_path, id:"paypal-button" %> -->
     </div>
   <% end %>
-
-  <%= link_to 'Edit', edit_order_path(@order) %>
 </div>

@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :referral_codes, through: :referral_codes
   has_many :user_ratings
   has_many :ratings, through: :user_ratings
+  has_many :orders
 
   def cart_count
     $redis.scard "cart#{id}"

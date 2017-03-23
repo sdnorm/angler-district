@@ -14,7 +14,9 @@ class GroupedOrdersController < ApplicationController
     @cart_ids = $redis.smembers current_user_cart
     @cart_products = Product.where(slug: @cart_ids)
     @products = Product.where(slug: [@cart_ids])
-    @total = @products.sum {|price| price.price}
+    price_total = @products.sum {|price| price.price}
+    shipping_total = @products.sum {|shipping| shipping.shipping}
+    @total = price_total + shipping_total
   end
 
   def create
@@ -22,12 +24,15 @@ class GroupedOrdersController < ApplicationController
     @grouped_order.buyer_id = current_user.id
     @cart_ids = $redis.smembers current_user_cart
     @products = Product.where(id: [@cart_ids])
-    @grouped_order.total = @products.sum {|price| price.price}
+    price_total = @products.sum {|price| price.price}
+    shipping_total = @products.sum {|shipping| shipping.shipping}
+    @grouped_order.total = price_total + shipping_total
+    @grouped_order.save
     @cart_ids.each do |product|
       @order = Order.new
       @product = Product.find_by(slug: product)
       @seller = User.find(@product.user_id)
-      @order.total = @product.price
+      @order.total = @product.price_in_cents + @product.shipping_in_cents
       @order.product_id = @product.id
       @order.buyer_id = current_user.id
       @order.seller_id = @seller.id
@@ -38,6 +43,7 @@ class GroupedOrdersController < ApplicationController
       @order.city = @grouped_order.city
       @order.state = @grouped_order.state
       @order.zip_code = @grouped_order.zip_code
+      @order.grouped_order_id = @grouped_order.id
       @order.save
     end
     respond_to do |format|
@@ -56,7 +62,7 @@ class GroupedOrdersController < ApplicationController
   end
 
   def purchase
-
+    @orders = @grouped_order.orders
   end
 
   def confirm

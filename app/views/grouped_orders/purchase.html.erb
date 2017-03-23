@@ -1,42 +1,117 @@
-<div class="row">
-
-  <p>
-    <strong>Address1:</strong>
-    <%= @grouped_order.address1 %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= @grouped_order.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @grouped_order.state %>
-  </p>
-
-  <p>
-    <strong>Total:</strong>
-    $<%= Money.new(@grouped_order.total*100, "USD") %>
-  </p>
-
-  <%= form_tag charges_path(order: @grouped_order.id) do %>
-    <article>
-      <% if flash[:error].present? %>
+<div class="row align-center">
+  <div class="column large-4 text-center go-form">
+    <h2>Shipping Address:</h2>
+    <%= form_for @grouped_order do |f| %>
+      <% if @grouped_order.errors.any? %>
         <div id="error_explanation">
-          <p><%= flash[:error] %></p>
+          <h2><%= pluralize(grouped_order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+          <ul>
+          <% grouepd_order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
-      <label class="amount">
-        <span>$<%= Money.new(@grouped_order.total*100, "USD") %></span>
-      </label>
-    </article>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Tackle!"
-            data-amount=<%= @grouped_order.total*100 %>
-            data-locale="auto"></script>
-  <% end %>
 
-  <%= link_to 'Edit', edit_grouped_order_path(@grouped_order) %>
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, value: ApplicationHelper.value(@grouped_order.first_name, current_user.first_name) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, value: ApplicationHelper.value(@grouped_order.last_name, current_user.last_name) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, value: ApplicationHelper.value(@grouped_order.address1, current_user.address1) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, value: ApplicationHelper.value(@grouped_order.address2, current_user.address2) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_field :city, value: ApplicationHelper.value(@grouped_order.city, current_user.city) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state, value: ApplicationHelper.value(@grouped_order.state, current_user.state) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, value: ApplicationHelper.value(@grouped_order.zip_code, current_user.zip_code) %>
+      </div>
+  </div>
+
+  <div class="column large-8 text-center">
+    <div class="column large-12">
+      <h3>Choose Payment Method</h3>
+      <div class="payment-method">
+        <div class="cc-payment">
+          <i class="fa fa-5x fa-credit-card" aria-hidden="true"></i>
+          <p>
+            Credit Card
+          </p>
+        </div>
+        <div class="paypal" id="paypal">
+          <i class="fa fa-5x fa-paypal" aria-hidden="true"></i>
+          <p>
+            PayPal
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column large-12">
+      <h2>
+        Order Details
+      </h2>
+      <h5>
+        Total - <%= number_to_currency(@total) %>
+      </h5>
+      <h5>
+        Item Count - <%= @orders.count %>
+      </h5>
+      <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
+      <div class="large-12 columns text-center">
+        <% @orders.each do |product| %>
+          <div class="cart-box-go">
+            <span id="cart-item-go">
+              <%= link_to product_path(product) do %>
+                <%= image_tag(product.image.thumb) %>
+              <% end %>
+            </span>
+            <span>
+              <h4><%= link_to product.name, product_path(product), id: "title-link-go" %></h4>
+              <h6><%= number_to_currency(product.price) %></h6>
+              <p>
+                Seller: <%= product.user.profile_name %>
+              </p>
+            </span>
+            <span>
+              <%= link_to "", id: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
+                <% if product.cart_action(current_user.try :id) == 'Remove from' %>
+                  <i class="fa fa-times"></i>
+                  <span><%=product.cart_action(current_user.try :id)%></span> Cart
+                <% else %>
+                  <i class="fa fa-shopping-cart"></i>
+                  <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+                <% end %>
+              <%end%>
+            </span>
+          </div>
+        <% end %>
+        <%= button_tag(class: "button", id: "cc-payment") do %>
+          Continue With Order <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>

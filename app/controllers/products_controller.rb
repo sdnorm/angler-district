@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+    # @product.price = params[:product][:price] * 100 if params[:product][:price]
     respond_to do |format|
       if @product.save
         format.html {
@@ -64,6 +65,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    # @product.price = params[:product][:price] * 100 if params[:product][:price]
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
