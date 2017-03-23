@@ -1,13 +1,108 @@
-<
+<div class="row align-center">
+  <div class="column large-4 text-center go-form">
+    <h2>Shipping Address:</h2>
+    <%= form_for @grouped_order do |f| %>
+      <% if @grouped_order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(grouped_order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-<h1>New Order</h1>
+          <ul>
+          <% grouepd_order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<p>
-  Total - <%= number_to_currency(@total) %>
-</p>
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, value: ApplicationHelper.value(@grouped_order.first_name, current_user.first_name) %>
+      </div>
 
-<p>
-  Item Count - <%= @cart_ids.count %>
-</p>
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, value: ApplicationHelper.value(@grouped_order.last_name, current_user.last_name) %>
+      </div>
 
-<%= render 'form', grouped_order: @grouped_order %>
+      <div class="field">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, value: ApplicationHelper.value(@grouped_order.address1, current_user.address1) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, value: ApplicationHelper.value(@grouped_order.address2, current_user.address2) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_field :city, value: ApplicationHelper.value(@grouped_order.city, current_user.city) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state, value: ApplicationHelper.value(@grouped_order.state, current_user.state) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, value: ApplicationHelper.value(@grouped_order.zip_code, current_user.zip_code) %>
+      </div>
+  </div>
+
+  <div class="column large-8 text-center">
+    <div class="column large-12">
+      <h3>Choose Payment Method</h3>
+      <div class="payment-method">
+        <div class="cc-payment">
+          <i class="fa fa-5x fa-credit-card" aria-hidden="true"></i>
+          <p>
+            Credit Card
+          </p>
+        </div>
+        <div class="paypal" id="paypal">
+          <i class="fa fa-5x fa-paypal" aria-hidden="true"></i>
+          <p>
+            PayPal
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column large-12">
+      <h2>
+        Order Details
+      </h2>
+      <h5>
+        Total - <%= number_to_currency(@total) %>
+      </h5>
+      <h5>
+        Item Count - <%= @cart_ids.count %>
+      </h5>
+      <div class="large-12 columns text-center">
+        <% @cart_products.each do |product| %>
+          <div class="cart-box-go">
+            <span id="cart-item-go">
+              <%= link_to product_path(product) do %>
+                <%= image_tag(product.image.thumb) %>
+              <% end %>
+            </span>
+            <span>
+              <h4><%= link_to product.name, product_path(product), id: "title-link-go" %></h4>
+              <h6><%= number_to_currency(product.price) %></h6>
+              <p>
+                Seller: <%= product.user.profile_name %>
+              </p>
+            </span>
+            <span id="paypal-button">
+              <%= link_to "Submit Payment", root_path, class: "button" %>
+            </span>
+          </div>
+        <% end %>
+        <%= button_tag(class: "button", id: "cc-payment") do %>
+          Continue With Order <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

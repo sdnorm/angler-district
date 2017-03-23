@@ -1,3 +1,14 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
+$(function(){
+  $(".paypal").click(function(){
+    $(document.querySelectorAll('#paypal-button')).show();
+    $('#cc-payment').hide();
+    $(".paypal").css({"border-color":"#f1c40f"});
+    $(".cc-payment").css({"border-color":"#2c3e50"});
+  });
+  $(".cc-payment").click(function(){
+    $(document.querySelectorAll('#paypal-button')).hide();
+    $('#cc-payment').show();
+    $(".cc-payment").css({"border-color":"#f1c40f"});
+    $(".paypal").css({"border-color":"#2c3e50"});
+  });
+});

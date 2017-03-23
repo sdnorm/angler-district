@@ -30,7 +30,6 @@
     <% else %>
       <%= render 'pages/topbar' %>
     <% end %>
-    <div class="expanded row">
       <%- flash.each do |name, msg| -%>
         <% if msg == "Product was successfully updated." || msg == "Order was successfully updated." %>
         <% else %>
@@ -51,7 +50,6 @@
         <% end %>
       <%- end -%>
       <%= yield %>
-    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

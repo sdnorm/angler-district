@@ -1,3 +1,87 @@
-// Place all the styles related to the GroupedOrders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.payment-method {
+  display: inline-block;
+}
+
+.paypal {
+  display: inline-block;
+  margin-left: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #2c3e50;
+  color: #2c3e50;
+  padding: 1.5rem;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.paypal:hover {
+  background: #f1c40f;
+}
+
+.cc-payment {
+  margin-right: 3px;
+  display: inline-block;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #2c3e50;
+  color: #2c3e50;
+  padding: 1.5rem;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.cc-payment:hover {
+  background: #f1c40f;
+}
+
+.cart-box-go {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  span {
+    display: inline-block;
+    padding-left: 2rem;
+    padding-top: 4.5px;
+    padding-right: 2rem;
+    vertical-align: middle;
+  }
+  a:visited {
+    color: #2c3e50;
+  }
+  color: #2c3e50;
+}
+
+#cc-payment {
+  width: 100%;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  display: none;
+}
+
+.go-form {
+  input {
+    border-radius: 5px;
+  }
+}
+
+#paypal-button:hover {
+  background: #FFFFFF;
+  a {
+    background: #14679e;
+  }
+}
+
+#paypal-button {
+  display: none;
+  a {
+    color: #fff;
+  }
+}
+
+#title-link-go:hover {
+  color: #f1c40f;
+  background: #fff;
+  text-decoration: underline;
+}
