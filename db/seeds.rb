@@ -61,29 +61,21 @@ Product.create([
     name: "Lew's Speed Spool",
     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
     price: 100.50,
-    user_id: 1,
+    user_id: 8,
     display_image: file
   },
   {
     name: "Shimano Citica",
     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
     price: 150.50,
-    user_id: 2,
+    user_id: 9,
     display_image: file
   },
   {
     name: "Abu Garcia Revo",
     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
     price: 200.50,
-    user_id: 3,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 200.50,
-    shipping: 10.00,
-    user_id: 4,
+    user_id: 10,
     display_image: file
   },
   {
@@ -91,7 +83,15 @@ Product.create([
     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
     price: 200.50,
     shipping: 10.00,
-    user_id: 5,
+    user_id: 11,
+    display_image: file
+  },
+  {
+    name: "Abu Garcia Revo",
+    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+    price: 200.50,
+    shipping: 10.00,
+    user_id: 12,
     display_image: file
   },
 ])
