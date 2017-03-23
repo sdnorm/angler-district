@@ -66,7 +66,7 @@ class PaypalOrderController < ApplicationController
     @order.paypal_last_name = details["LASTNAME"]
     @order.save
     @order.purchase(params[:token])
-    flash[:notice] = "Your order has been completed and paid for. You shoudl receive an email soon. Thanks!"
+    flash[:notice] = "Your order has been completed and paid for. You should receive an email soon. Thanks!"
   end
 
 end

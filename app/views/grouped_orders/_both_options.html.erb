@@ -1,0 +1,23 @@
+<div class="payment-method">
+  <div class="large-6 small-12 columns">
+    <div class="cc-payment-one">
+      <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
+      <div class="stripe-button stripe-option" id="stripe-button">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Tackle!"
+                data-amount=<%= @grouped_order.total %>
+                data-locale="auto">
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="large-6 small-12 columns">
+    <div class="paypal-one" id="paypal">
+      <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
+      <div class="paypal-button-one">
+        <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
+      </div>
+    </div>
+  </div>
+</div>
