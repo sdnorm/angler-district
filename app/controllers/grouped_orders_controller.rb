@@ -23,31 +23,34 @@ class GroupedOrdersController < ApplicationController
     @grouped_order = GroupedOrder.new(grouped_order_params)
     @grouped_order.buyer_id = current_user.id
     @cart_ids = $redis.smembers current_user_cart
+    @cart_products = Product.where(slug: @cart_ids)
     @products = Product.where(id: [@cart_ids])
     price_total = @products.sum {|price| price.price}
     shipping_total = @products.sum {|shipping| shipping.shipping}
     @grouped_order.total = price_total + shipping_total
     @grouped_order.save
-    @cart_ids.each do |product|
-      @order = Order.new
-      @product = Product.find_by(slug: product)
-      @seller = User.find(@product.user_id)
-      @order.total = @product.price_in_cents + @product.shipping_in_cents
-      @order.product_id = @product.id
-      @order.buyer_id = current_user.id
-      @order.seller_id = @seller.id
-      @order.first_name = @grouped_order.first_name
-      @order.last_name = @grouped_order.last_name
-      @order.address1 = @grouped_order.address1
-      @order.address2 = @grouped_order.address2
-      @order.city = @grouped_order.city
-      @order.state = @grouped_order.state
-      @order.zip_code = @grouped_order.zip_code
-      @order.grouped_order_id = @grouped_order.id
-      @order.save
-    end
     respond_to do |format|
       if @grouped_order.save
+        @cart_ids.each do |product|
+          @product = Product.find_by(slug: product)
+          @seller = User.find(@product.user_id)
+          @order = Order.new(
+            total: @product.price_in_cents + @product.shipping_in_cents,
+            product_id: @product.id,
+            buyer_id: current_user.id,
+            seller_id: @seller.id,
+            first_name: @grouped_order.first_name,
+            last_name:  @grouped_order.last_name,
+            address1: @grouped_order.address1,
+            address2: @grouped_order.address2,
+            city: @grouped_order.city,
+            state: @grouped_order.state,
+            zip_code: @grouped_order.zip_code,
+            grouped_order_id:@grouped_order.id
+          )
+          @order.save!
+          OrderProduct.create({product_id: @product.id, order_id: @order.id})
+        end
         format.html {
           redirect_to action: "purchase", id: @grouped_order.id, notice: 'Order was successfully created.'
         }
@@ -98,6 +101,10 @@ class GroupedOrdersController < ApplicationController
   def set_grouped_order
     @grouped_order = GroupedOrder.find(params[:id])
   end
+
+  # def order_params
+  #   params.require(:order).permit(:address1, :address2, :city, :state, :first_name, :last_name, :zip_code)
+  # end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def grouped_order_params

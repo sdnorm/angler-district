@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   require 'uri'
   require 'openssl'
 
-  validates :address1, :city, :state, presence: true
+  validates :address1, :city, :state, :zip_code, :first_name, :last_name, presence: true
 
   belongs_to :product
   belongs_to :buyer, class_name: "User"

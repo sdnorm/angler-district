@@ -23,9 +23,9 @@ class Product < ApplicationRecord
                   }
 
   belongs_to :user
-  belongs_to :grouped_order
+  has_many :grouped_orders
   has_many :order_products
-  has_many :order, through: :order_products
+  has_many :orders, through: :order_products
   has_many :product_categories
   has_many :categories, through: :product_categories
   belongs_to :brand

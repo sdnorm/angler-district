@@ -76,6 +76,14 @@ body {
   margin-bottom: 10rem;
 }
 
+.menu > li > a {
+  background-color: $light-gray;
+}
+
+.font-color {
+  color: $midnight-blue;
+}
+
 .side-search-bar-input {
   height: 40px;
   margin-top: 10px;
@@ -257,4 +265,8 @@ input[type=search] {
 
 .signup-form {
   color: $midnight-blue;
+}
+
+.sign-in {
+  margin-bottom: 9rem;
 }

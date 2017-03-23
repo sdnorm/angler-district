@@ -4,10 +4,10 @@
     <%= form_for @grouped_order do |f| %>
       <% if @grouped_order.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(grouped_order.errors.count, "error") %> prohibited this order from being saved:</h2>
+          <h2><%= pluralize(@grouped_order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
           <ul>
-          <% grouepd_order.errors.full_messages.each do |message| %>
+          <% @grouped_order.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
           </ul>
@@ -51,23 +51,6 @@
   </div>
 
   <div class="column large-8 text-center">
-    <div class="column large-12">
-      <h3>Choose Payment Method</h3>
-      <div class="payment-method">
-        <div class="cc-payment">
-          <i class="fa fa-5x fa-credit-card" aria-hidden="true"></i>
-          <p>
-            Credit Card
-          </p>
-        </div>
-        <div class="paypal" id="paypal">
-          <i class="fa fa-5x fa-paypal" aria-hidden="true"></i>
-          <p>
-            PayPal
-          </p>
-        </div>
-      </div>
-    </div>
     <div class="column large-12">
       <h2>
         Order Details

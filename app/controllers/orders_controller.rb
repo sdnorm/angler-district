@@ -41,6 +41,10 @@ class OrdersController < ApplicationController
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
     @order.save
+    puts "-----"
+    puts @order.inspect
+    puts "-----"
+    OrderProduct.create({product_id: @product.id, order_id: @order.id})
     respond_to do |format|
       if @order.save
         format.html {

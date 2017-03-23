@@ -6,8 +6,12 @@
   margin: 4px;
 }
 
-.paypal-button {
+.paypal-button-one {
   margin: 4px;
+}
+
+.paypal-button-one a:hover {
+  background: #ECF0F1;
 }
 
 .new-order-form {
@@ -18,4 +22,57 @@
 
 .new-order-form, .field {
   margin-bottom: 0px;
+}
+
+.cart-box-one {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  span {
+    display: inline-block;
+    padding-left: 2rem;
+    padding-top: 4.5px;
+    padding-right: .2rem;
+    vertical-align: middle;
+  }
+  a:visited {
+    color: #2c3e50;
+  }
+  color: #2c3e50;
+  padding-bottom: 10px;
+}
+
+.cc-payment-one {
+  margin-right: 3px;
+  display: inline-block;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #2c3e50;
+  color: #2c3e50;
+  padding: 1.5rem;
+  p {
+    margin-bottom: 0;
+  }
+  width: 100%;
+  height: 145px;
+}
+
+.paypal-one {
+  display: inline-block;
+  margin-left: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #2c3e50;
+  color: #2c3e50;
+  padding: 1.5rem;
+  p {
+    margin-bottom: 0;
+  }
+  width: 100%;
+  height: 145px;
+}
+
+#one-edit {
+  width: 100%;
+  border-radius: 5px;
 }
