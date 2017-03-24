@@ -27,6 +27,14 @@ class Order < ApplicationRecord
       paid.buyer_orders(user)
     end
 
+    def orders_left_to_purchase
+      if not_purchased.count == 0
+        false
+      else
+        true
+      end
+    end
+
     def get_paypal_details token
       uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
       request = Net::HTTP::Post.new(uri)

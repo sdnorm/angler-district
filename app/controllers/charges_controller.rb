@@ -62,9 +62,6 @@ class ChargesController < ApplicationController
   end
 
   def remove_from_cart product
-    puts "testing this stuff"
-    puts product
-    puts "------------------"
     $redis.srem current_user_cart, product
   end
 

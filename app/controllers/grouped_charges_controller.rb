@@ -6,7 +6,7 @@ class GroupedChargesController < ApplicationController
     @grouped_order = GroupedOrder.find(params[:grouped_order])
     # Find the user to pay.
     # user = User.find(@order.seller_id)
-    user = "acct_19o2A4DAZfujDBem" ENV['']
+    user = "acct_19o2A4DAZfujDBem"# ENV['']
     amount = @order.total.to_i*100
     fee = (amount.to_i * ENV["NORMAL_FEE_PERCENTAGE"].to_f)
     token = params[:stripeToken]

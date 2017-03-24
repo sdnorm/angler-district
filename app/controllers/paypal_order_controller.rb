@@ -22,7 +22,7 @@ class PaypalOrderController < ApplicationController
       "PWD" => ENV["PAYPAL_PASSWORD"], # the caller account Password \
       "SIGNATURE" => ENV["PAYPAL_SIGNATURE"], # the caller account Signature \
       "METHOD" => "SetExpressCheckout", # API operation \
-      "RETURNURL" => paypal_show_url(@order), # URL displayed to buyer after authorizing transaction \
+      "RETURNURL" => route_paypal_url(@order), # URL displayed to buyer after authorizing transaction \
       "CANCELURL" => orders_url(@order), # URL displayed to buyer after canceling transaction \
       "VERSION" => 93, # API version \
       "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",

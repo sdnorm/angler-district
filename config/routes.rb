@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-resources :grouped_charges
+  get 'route_paypal/index', to: 'route_paypal#index', as: :route_paypal
+
+  resources :grouped_charges
+
+  # get '/order/:id/paypal/route', to: ''
 
   get 'brands/index', to: 'brands#index', as: :brands
   get 'saltwater/:id', to: 'brands#salt', as: :salt_brands
