@@ -24,7 +24,7 @@
             <div class="cc-payment-one">
               <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
               <div class="stripe-button" id="stripe-button">
-                <%= form_tag charges_path do %>
+                <%= form_tag charged_order_path(@order) do %>
                   <article>
                     <% if flash[:error].present? %>
                       <div id="error_explanation">

@@ -5,7 +5,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       provider: request.env["omniauth.auth"].provider,
       uid: request.env["omniauth.auth"].uid,
       access_code: request.env["omniauth.auth"].credentials.token,
-      publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key
+      publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key,
+      stripe_user_id: request.env["omniauth.auth"].info.stripe_user_id,
+      refresh_token: request.env["omniauth.auth"].info.refresh_token,
+      access_token: request.env["omniauth.auth"].info.access_token
     })
       # anything else you need to do in response..
       # sign_in_and_redirect @user, :event => :authentication

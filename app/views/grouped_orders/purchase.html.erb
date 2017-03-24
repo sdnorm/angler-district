@@ -58,9 +58,6 @@
                       <p><%= flash[:error] %></p>
                     </div>
                   <% end %>
-                  <label class="amount">
-                    <span>Amount: <%= number_to_currency(@total / 100.0) %></span>
-                  </label>
                 </article>
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

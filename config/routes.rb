@@ -64,8 +64,13 @@ resources :grouped_charges
   get 'complete-order/:id', to: 'orders#purchase', as: :complete_order
   get 'complete-grouporder/:id', to: 'grouped_orders#purchase', as: :complete_grouporder
 
-  get 'charged-order/:id', to: 'orders#charged', as: :charged_order
-  get 'charged-grouporder/:id', to: 'grouped_orders#charged', as: :charged_orderorder
+  # get 'charged-order/:id', to: 'charges#create', as: :charged_order
+  post 'charged-order/:id', to: 'charges#create', as: :charged_order
+  get 'charged-order/:id', to: 'orders#charged', as: :completed_order
+
+  # get 'charged-order/:id', to: 'orders#charged', as: :charged_order
+  # post 'charged-order/:id', to: 'orders#charged'#, as: :charged_order
+  # get 'charged-grouporder/:id', to: 'grouped_orders#charged', as: :charged_order
 
   resources :products
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324030144) do
+ActiveRecord::Schema.define(version: 20170324144640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -211,6 +211,9 @@ ActiveRecord::Schema.define(version: 20170324030144) do
     t.integer  "zip_code"
     t.string   "paypal_email"
     t.boolean  "paypal_email_the_same"
+    t.string   "stripe_user_id"
+    t.string   "refresh_token"
+    t.string   "access_token"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["profile_name"], name: "index_users_on_profile_name", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
