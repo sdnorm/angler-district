@@ -66,6 +66,18 @@ class GroupedOrdersController < ApplicationController
 
   def purchase
     @orders = @grouped_order.orders
+    @paypal = []
+    @stripe = []
+    @both = []
+    @orders.each do |order|
+      @both << order if order.product.accept_stripe? && order.product.accept_paypal?
+      @paypal << order if order.product.accept_paypal?
+      @stripe << order if order.product.accept_stripe?
+    end
+    @total_order_count = @orders.count
+    @both_count = @both.count
+    @paypal_count = @paypal.count
+    @stripe_count = @stripe.count
   end
 
   def confirm

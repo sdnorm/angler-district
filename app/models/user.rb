@@ -20,8 +20,15 @@ class User < ApplicationRecord
   has_many :ratings, through: :user_ratings
   has_many :orders
 
+  scope :paypal, -> { where(paypal_email_the_same: true).or(where.not(paypal_email: nil)) }
+  scope :stripe, -> { where(provider: "stripe_connect")}
+
   def cart_count
     $redis.scard "cart#{id}"
+  end
+
+  def paypal_and_stripe
+    paypal.stripe
   end
 
   def average_rating
@@ -53,6 +60,12 @@ class User < ApplicationRecord
 
   def purchase(product)
     products << product unless purchase?(product)
+  end
+
+  class << self
+    def paypal_and_stripe
+      paypal.stripe
+    end
   end
 
 end
