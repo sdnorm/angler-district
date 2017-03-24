@@ -1,23 +1,4 @@
-<% if @both_count > 0 %>
-  <% price = @both.sum {|order| order.product.price_in_cents} %>
-  <% shipping = @both.sum {|order| order.product.shipping_in_cents} %>
-  <% @total_both = price + shipping %>
-<% end %>
-
 <div class="payment-method">
-  <div class="large-6 small-12 columns">
-    <div class="cc-payment-one">
-      <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
-      <div class="stripe-button stripe-option" id="stripe-button">
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Tackle!"
-                data-amount=<%= @total_both %>
-                data-locale="auto">
-        </script>
-      </div>
-    </div>
-  </div>
   <div class="large-6 small-12 columns">
     <div class="paypal-one" id="paypal">
       <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
@@ -29,8 +10,8 @@
 </div>
 <div class="large-12 columns text-center">
   <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
-  <% if @both_count > 0 %>
-    <% @both.each do |product| %>
+  <% if @paypal_count > 0 %>
+    <% @paypal.each do |product| %>
       <div class="cart-box-go">
         <span id="cart-item-go">
           <%= link_to product_path(product.product) do %>
@@ -41,7 +22,7 @@
           <h4><%= link_to product.product.name, product_path(product.product), id: "title-link-go" %></h4>
           <h6><%= number_to_currency(product.product.price) %></h6>
           <p>
-            Seller: <%= product.product.user.profile_name %>
+            Seller: <%= product.product.user.id %>
           </p>
         </span>
         <span>
@@ -52,6 +33,9 @@
             <% else %>
               <i class="fa fa-shopping-cart"></i>
               <span><%=product.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+              <div class="paypal-button-one">
+                <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
+              </div>
             <% end %>
           <%end%>
         </span>

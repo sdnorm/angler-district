@@ -15,7 +15,7 @@
             <h4><%= link_to product.name, product_path(product), id: "title-link" %></h4>
             <h6><%= number_to_currency(product.price) %></h6>
             <p>
-              Seller: <%= product.user.profile_name %>
+              Seller: <%= product.user.id %>
             </p>
           </span>
           <span id="cart-item">

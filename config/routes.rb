@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+resources :grouped_charges
+
   get 'brands/index', to: 'brands#index', as: :brands
   get 'saltwater/:id', to: 'brands#salt', as: :salt_brands
   get 'freshwater/:id', to: 'brands#fresh', as: :fresh_brands

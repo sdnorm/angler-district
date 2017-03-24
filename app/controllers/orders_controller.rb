@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
   end
 
   def purchase
-
+    @total = @order.product.price_in_cents + @order.product.shipping_in_cents
   end
 
   def submitted_orders

@@ -20,6 +20,8 @@ class Order < ApplicationRecord
 
   scope :buyer_orders, -> (current_user) { where(buyer_id: current_user) }
 
+  scope :not_purchased, -> { where.not(purchased: true) }
+
   class << self
     def charged user
       paid.buyer_orders(user)
@@ -89,20 +91,6 @@ class Order < ApplicationRecord
     self.update_attributes(purchased_at: Time.now, purchased: true) if ParsePaypal.run(response.body)["ACK"] == "SUCCESS"
     # response.success?
     # update_paypal(parse_paypal(response)["TOKEN"])
-  end
-
-  # def express_token=(token)
-  #   self[:express_token] = token
-  #   if new_record? && !token.blank?
-  #     details = EXPRESS_GATEWAY.details_for(self.token)
-  #     self.express_payer_id = details.payer_id
-  #     self.paypal_first_name = details.params["first_name"]
-  #     self.paypal_last_name = details.params["last_name"]
-  #   end
-  # end
-
-  def price_in_cents
-    (cart.total_price*100).round
   end
 
 private

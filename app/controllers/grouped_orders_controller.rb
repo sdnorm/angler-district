@@ -65,15 +65,25 @@ class GroupedOrdersController < ApplicationController
   end
 
   def purchase
-    @orders = @grouped_order.orders
+    @orders = @grouped_order.orders.not_purchased
     @paypal = []
     @stripe = []
     @both = []
     @orders.each do |order|
-      @both << order if order.product.accept_stripe? && order.product.accept_paypal?
-      @paypal << order if order.product.accept_paypal?
-      @stripe << order if order.product.accept_stripe?
+      if order.product.accept_stripe? && order.product.accept_paypal?
+        @both << order
+      elsif order.product.accept_paypal?
+        @paypal << order
+      elsif order.product.accept_stripe?
+        @stripe << order
+      end
     end
+    price = @orders.sum {|order| order.product.price_in_cents}
+    shipping = @orders.sum {|order| order.product.shipping_in_cents}
+    @total = price + shipping
+    stripe_price = @orders.sum {|order| order.product.price_in_cents}
+    stripe_shipping = @orders.sum {|order| order.product.shipping_in_cents}
+    @stripe_total = stripe_price + stripe_shipping
     @total_order_count = @orders.count
     @both_count = @both.count
     @paypal_count = @paypal.count

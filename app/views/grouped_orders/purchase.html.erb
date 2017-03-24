@@ -17,50 +17,106 @@
       <%= link_to 'Edit', edit_grouped_order_path(@grouped_order), class: "button", id: "one-edit" %>
     </div>
     <div class="column large-8 small-12 text-center">
-      <div class="column large-12">
-        <h3>Choose Payment Method</h3>
-        <%= render 'both_options' %>
-      </div>
-      <div class="column large-12">
+      <div class="column large-12 order-details">
         <h2>
           Order Details
         </h2>
         <h5>
-          Total - <%= number_to_currency(@grouped_order.total/100.0) %>
+          Total - <%= number_to_currency(@total/100.0) %>
         </h5>
         <h5>
           Item Count - <%= @orders.count %>
         </h5>
-        <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
-        <div class="large-12 columns text-center">
-          <% @orders.each do |product| %>
-            <div class="cart-box-go">
-              <span id="cart-item-go">
-                <%= link_to product_path(product.product) do %>
-                  <%= image_tag(product.product.image.thumb) %>
-                <% end %>
-              </span>
-              <span>
-                <h4><%= link_to product.product.name, product_path(product.product), id: "title-link-go" %></h4>
-                <h6><%= number_to_currency(product.product.price) %></h6>
-                <p>
-                  Seller: <%= product.product.user.profile_name %>
-                </p>
-              </span>
-              <span>
-                <%= link_to "", id: "purchase-button", data: {target: product.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product.product), removeUrl: remove_from_cart_path(product.product)} do %>
-                  <% if product.product.cart_action(current_user.try :id) == 'Remove from' %>
-                    <i class="fa fa-times"></i>
-                    <span><%=product.product.cart_action(current_user.try :id)%></span> Cart
-                  <% else %>
-                    <i class="fa fa-shopping-cart"></i>
-                    <span><%=product.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+      </div>
+      <!--<div class="column large-12">
+        <h3>Choose Payment Method</h3>
+        <% if @both_count > 0 %>
+          <div class="large-12 columns">
+            <%= render 'both_options' %>
+          </div>
+        <% end %>
+        <% if @paypal_count > 0 %>
+          <div class="large-12 columns">
+            <%= render 'paypal_only' %>
+          </div>
+        <% end %>
+        <% if @stripe_count > 0 %>
+          <div class="large-12 columns">
+            <%= render 'stripe_only' %>
+          </div>
+        <% end %>
+      </div>-->
+      <div class="payment-method">
+        <div class="large-6 small-12 columns">
+          <div class="cc-payment-one">
+            <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
+            <div class="stripe-button stripe-option" id="stripe-button">
+              <%= form_tag grouped_charges_path do %>
+                <article>
+                  <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                    </div>
                   <% end %>
-                <%end%>
-              </span>
+                  <label class="amount">
+                    <span>Amount: <%= number_to_currency(@total / 100.0) %></span>
+                  </label>
+                </article>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="Angler District - Tackle"
+                        data-amount="<%= @total %>"
+                        data-locale="auto">
+                </script>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </div>
+        <div class="large-6 small-12 columns">
+          <div class="paypal-one" id="paypal">
+            <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
+            <div class="paypal-button-one">
+              <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="large-12 columns text-center">
+        <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
+        <% @orders.each do |product| %>
+          <div class="cart-box-go">
+            <span id="cart-item-go">
+              <%= link_to product_path(product.product) do %>
+                <%= image_tag(product.product.image.thumb) %>
+              <% end %>
+            </span>
+            <span>
+              <h4><%= link_to product.product.name, product_path(product.product), id: "title-link-go" %></h4>
+              <h6><%= number_to_currency(product.product.price) %></h6>
+              <p>
+                Seller: <%= product.product.user.profile_name %>
+              </p>
+            </span>
+            <span>
+              <%= link_to "", id: "purchase-button", data: {target: product.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product.product), removeUrl: remove_from_cart_path(product.product)} do %>
+                <% if product.product.cart_action(current_user.try :id) == 'Remove from' %>
+                  <i class="fa fa-times"></i>
+                  <span><%=product.product.cart_action(current_user.try :id)%></span> Cart
+                <% else %>
+                  <i class="fa fa-shopping-cart"></i>
+                  <span><%=product.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+                <% end %>
+              <%end%>
+              <% if product.product.accept_stripe? && product.product.accept_paypal? %>
+                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+              <% elsif product.product.accept_paypal? %>
+                <p class="payment-options"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+              <% elsif product.product.accept_stripe? %>
+                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
