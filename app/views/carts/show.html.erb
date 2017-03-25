@@ -28,7 +28,13 @@
                 <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
               <% end %>
             <%end%>
-            <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+            <% if product.accept_stripe? && product.accept_paypal? %>
+              <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+            <% elsif product.accept_paypal? %>
+              <p class="payment-options"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+            <% elsif product.accept_stripe? %>
+              <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
+            <% end %>
           </span>
         </div>
       <% end %>
