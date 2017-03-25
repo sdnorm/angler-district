@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
   before_save :price_to_cents
-  # before_save :shipping_to_cents
+  before_save :shipping_to_cents
 
   mount_uploader :image, ProductImageUploader
   mount_uploader :image2, ProductImageUploader
@@ -74,6 +74,10 @@ class Product < ApplicationRecord
     end
 
     def shipping_to_cents
-      self.shipping_in_cents = self.shipping * 100
+      if self.shipping == nil
+        self.shipping_in_cents = 0
+      else
+        self.shipping_in_cents = self.shipping * 100
+      end
     end
 end

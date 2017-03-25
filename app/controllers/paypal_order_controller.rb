@@ -22,7 +22,7 @@ class PaypalOrderController < ApplicationController
       "PWD" => ENV["PAYPAL_PASSWORD"], # the caller account Password \
       "SIGNATURE" => ENV["PAYPAL_SIGNATURE"], # the caller account Signature \
       "METHOD" => "SetExpressCheckout", # API operation \
-      "RETURNURL" => route_paypal_url(@order), # URL displayed to buyer after authorizing transaction \
+      "RETURNURL" => paypal_show_url(@order), # URL displayed to buyer after authorizing transaction \
       "CANCELURL" => orders_url(@order), # URL displayed to buyer after canceling transaction \
       "VERSION" => 93, # API version \
       "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",
@@ -66,7 +66,20 @@ class PaypalOrderController < ApplicationController
     @order.paypal_last_name = details["LASTNAME"]
     @order.save
     @order.purchase(params[:token])
-    flash[:notice] = "Your order has been completed and paid for. You should receive an email soon. Thanks!"
+    @order = Order.find(params[:id])
+    product = Product.find(@order.product_id)
+    @order.purchased = true
+    @order.save
+    product.set_inventory_to_zero
+    remove_from_cart(product.slug)
+    flash[:notice] = "Payment Submitted Successfully!"
+    if @order.grouped_order_id == nil
+      redirect_to completed_order_url(@order)
+    elsif GroupedOrder.find(@order.grouped_order_id).orders.orders_left_to_purchase
+      redirect_to complete_grouporder_url(GroupedOrder.find(@order.grouped_order_id))
+    else
+      redirect_to completed_groupedorder_url(GroupedOrder.find(@order.group_order_id))
+    end
   end
 
 end

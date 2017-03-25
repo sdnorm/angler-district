@@ -56,7 +56,7 @@
         Order Details
       </h2>
       <h5>
-        Total - <%= number_to_currency(@total) %>
+        Total - <%= number_to_currency(@total/100.0) %>
       </h5>
       <h5>
         Item Count - <%= @cart_ids.count %>

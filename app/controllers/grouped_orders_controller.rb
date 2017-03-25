@@ -4,6 +4,8 @@ class GroupedOrdersController < ApplicationController
     :new, :create, :edit, :update, :destroy
   ]
   # before_action :check_user, only: [:edit, :update, :destroy]
+  # check_shipper
+  # check_receiver
 
   def index
     @grouped_orders = GroupedOrder.buyer_gps(current_user.id)
@@ -14,8 +16,8 @@ class GroupedOrdersController < ApplicationController
     @cart_ids = $redis.smembers current_user_cart
     @cart_products = Product.where(slug: @cart_ids)
     @products = Product.where(slug: [@cart_ids])
-    price_total = @products.sum {|price| price.price}
-    shipping_total = @products.sum {|shipping| shipping.shipping}
+    price_total = @products.sum {|price| price.price_in_cents}
+    shipping_total = @products.sum {|shipping| shipping.shipping_in_cents}
     @total = price_total + shipping_total
   end
 
@@ -152,6 +154,12 @@ class GroupedOrdersController < ApplicationController
 
   def current_user_cart
     "cart#{current_user.id}"
+  end
+
+  def check_user
+    if current_user != @product.user
+      redirect_to root_url, alert: "Sorry, this product belongs to someone else"
+    end
   end
 
 

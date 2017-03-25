@@ -1,5 +1,90 @@
-<h1>Editing Order</h1>
+<div class="row align-center">
+  <div class="column large-4 text-center go-form">
+    <h2>Shipping Address:</h2>
+    <%= form_for @order do |f| %>
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, value: ApplicationHelper.value(@order.first_name, current_user.first_name) %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, value: ApplicationHelper.value(@order.last_name, current_user.last_name) %>
+      </div>
+      <div class="field">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, value: ApplicationHelper.value(@order.address1, current_user.address1) %>
+      </div>
+      <div class="field">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, value: ApplicationHelper.value(@order.address2, current_user.address2) %>
+      </div>
 
-<%= render 'form', order: @order %>
-
-<%= link_to 'Show', @order %>
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_field :city, value: ApplicationHelper.value(@order.city, current_user.city) %>
+      </div>
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state, value: ApplicationHelper.value(@order.state, current_user.state) %>
+      </div>
+      <div class="field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, value: ApplicationHelper.value(@order.zip_code, current_user.zip_code) %>
+      </div>
+    </div>
+    <div class="column large-8 text-center">
+      <div class="column large-12">
+        <h2>
+          Order Details
+        </h2>
+        <h5>
+          Total - <%= number_to_currency(@total/100.0) %>
+        </h5>
+        <h5>
+          Item Count - <%= @cart_ids.count %>
+        </h5>
+        <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
+        <div class="large-12 columns text-center">
+          <div class="cart-box-go">
+            <span id="cart-item-go">
+              <%= link_to product_path(@product) do %>
+                <%= image_tag(@product.image.thumb) %>
+              <% end %>
+            </span>
+            <span>
+              <h4><%= link_to @product.name, product_path(@product), id: "title-link-go" %></h4>
+              <h6><%= number_to_currency(@product.price) %></h6>
+              <p>
+                Seller: <%= @order.seller %>
+              </p>
+            </span>
+            <span>
+              <%= link_to "", id: "purchase-button", data: {target: @product.cart_action(current_user.try :id), addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+                <% if @product.cart_action(current_user.try :id) == 'Remove from' %>
+                  <i class="fa fa-times"></i>
+                  <span><%=@product.cart_action(current_user.try :id)%></span> Cart
+                <% else %>
+                  <i class="fa fa-shopping-cart"></i>
+                  <span><%=@product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+                <% end %>
+              <%end%>
+            </span>
+          </div>
+          <%= button_tag(class: "button", id: "cc-payment") do %>
+            Continue With Order <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

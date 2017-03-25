@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:purchase, :edit, :update, :destroy]
   before_action :authenticate_user!
+  # before_action :check_user, only: [:edit, :update, :destroy]
+  # check_shipper
+  # check_receiver
 
   # GET /orders
   # GET /orders.json
@@ -21,8 +24,10 @@ class OrdersController < ApplicationController
     @order = Order.new
     @cart_ids = $redis.smembers current_user_cart
     @product = Product.where(slug: @cart_ids).first
-    @seller = User.find(@product.user_id)
-    @total = @product.price
+    # @seller = User.find(@product.user_id)
+    price_total = @product.price_in_cents
+    shipping_total = @product.shipping_in_cents
+    @total = price_total + shipping_total
   end
 
   # GET /orders/1/edit
@@ -121,5 +126,11 @@ class OrdersController < ApplicationController
 
     def current_user_cart
       "cart#{current_user.id}"
+    end
+
+    def check_user
+      if current_user != @product.user
+        redirect_to root_url, alert: "Sorry, this product belongs to someone else"
+      end
     end
 end

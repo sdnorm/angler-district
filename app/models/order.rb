@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   require 'openssl'
 
   validates :address1, :city, :state, :zip_code, :first_name, :last_name, presence: true
+  
 
   belongs_to :product
   belongs_to :buyer, class_name: "User"
@@ -20,7 +21,9 @@ class Order < ApplicationRecord
 
   scope :buyer_orders, -> (current_user) { where(buyer_id: current_user) }
 
-  scope :not_purchased, -> { where.not(purchased: true) }
+  scope :not_purchased, -> { where(purchased: false) }
+
+  scope :purchased, -> { where(purchased: true) }
 
   class << self
     def charged user

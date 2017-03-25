@@ -62,6 +62,22 @@ class User < ApplicationRecord
     products << product unless purchase?(product)
   end
 
+  def stripe?
+    if self.provider == "stripe_connect"
+      true
+    else
+      false
+    end
+  end
+
+  def paypal?
+    if self.paypal_email_the_same == true || self.paypal_email != nil
+      true
+    else
+      false
+    end
+  end
+
   class << self
     def paypal_and_stripe
       paypal.stripe

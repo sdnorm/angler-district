@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324144640) do
+ActiveRecord::Schema.define(version: 20170324165859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20170324144640) do
     t.string   "address1"
     t.string   "city"
     t.string   "state"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "product_id"
     t.integer  "buyer_id"
     t.integer  "seller_id"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170324144640) do
     t.string   "express_payer_id"
     t.string   "paypal_first_name"
     t.string   "paypal_last_name"
-    t.boolean  "purchased"
+    t.boolean  "purchased",         default: false
     t.datetime "purchased_at"
     t.string   "ip_address"
     t.integer  "grouped_order_id"
