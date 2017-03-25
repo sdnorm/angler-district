@@ -10,6 +10,8 @@ end
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-foundation'
 
+gem 'mailgun-ruby', '~>1.1.4'
+
 gem 'rails_12factor'
 gem 'money'
 gem 'devise'
