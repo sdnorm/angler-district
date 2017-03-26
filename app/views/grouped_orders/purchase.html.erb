@@ -105,9 +105,12 @@
                 <% end %>
               <%end%>
               <% if product.product.accept_stripe? && product.product.accept_paypal? %>
-                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" id="js-paypal-button" aria-hidden="true"></i></p>
               <% elsif product.product.accept_paypal? %>
-                <p class="payment-options"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+                <div class="paypal-button-one" id="js-paypal-pay">
+                  <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(product) %>
+                </div>
+                <p class="payment-options" id="js-paypal-button"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
               <% elsif product.product.accept_stripe? %>
                 <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
               <% end %>
