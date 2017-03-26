@@ -108,6 +108,12 @@ Rails.application.routes.draw do
   get 'electronics', to: 'categories#electronics', as: :electronics
   get 'general', to: 'categories#general', as: :general
 
+  get 'faq', to: 'pages#faq', as: :faq
+  get 'tackle-condition-guide', to: 'pages#tackle_condition_info', as: :tackle_condition_guide
+  get 'how-to-sell', to: 'pages#sell_your_tackle', as: :how_to_sell
+  get 'buyer-protection', to: 'pages#buyer_protection', as: :buyer_protection
+  get 'fees', to: 'pages#fees', as: :fees
+
   get ':id', to: 'brands#show', as: :brand
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

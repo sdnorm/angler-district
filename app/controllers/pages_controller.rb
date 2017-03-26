@@ -11,6 +11,18 @@ class PagesController < ApplicationController
   def sell_your_tackle
   end
 
+  def faq
+  end
+
+  def tackle_condition_info
+  end
+
+  def buyer_protection
+  end
+
+  def fees
+  end
+
   def contact
   end
 

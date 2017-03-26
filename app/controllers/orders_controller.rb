@@ -135,8 +135,8 @@ class OrdersController < ApplicationController
     end
 
     def check_buyer
-      if current_user != @order.buyer_id
-        redirect_to root_url, alert: "Sorry, this order belongs to someone else"
+      if current_user.id != @order.buyer_id
+        redirect_to root_url, flash[:notice] = "Sorry, this order belongs to someone else"
       end
     end
 end

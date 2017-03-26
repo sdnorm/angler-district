@@ -19,7 +19,7 @@ class RouteOrderController < ApplicationController
       redirect_to complete_order_url(@recent_open_order)
     elsif @cart_ids.count == 1
       redirect_to new_order_url
-    elsif @cart_ids.count > 1 && @cart_ids == products_ids
+    elsif @cart_ids.count > 1 && products_ids != nil && @cart_ids == products_ids
       puts "here"
       redirect_to complete_grouporder_url(@recent_grouped_order)
     else

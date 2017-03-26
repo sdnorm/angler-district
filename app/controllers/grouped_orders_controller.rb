@@ -163,8 +163,8 @@ class GroupedOrdersController < ApplicationController
   end
 
   def check_buyer
-    if current_user != @grouped_order.buyer_id
-      redirect_to root_url, alert: "Sorry, this order belongs to someone else"
+    if current_user.id != @grouped_order.buyer_id
+      redirect_to root_url, flash[:notice] = "Sorry, this order belongs to someone else"
     end
   end
 
