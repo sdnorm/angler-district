@@ -50,6 +50,7 @@ html {
 
 body, html {
   height: auto;
+  color: $midnight-blue;
 }
 
 body p {
@@ -204,11 +205,6 @@ input[type=search] {
 
 .home-page-product {
   padding-left: 3px;
-}
-
-.search-button {
-  border-radius: 5px;
-  background-color: purple;
 }
 
 .card {

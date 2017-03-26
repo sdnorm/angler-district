@@ -69,6 +69,10 @@ class OrdersController < ApplicationController
     @orders = Order.charged(current_user.id)
   end
 
+  def sold_orders
+    @orders = Order.charged(current_user.id)
+  end
+
   def purchase
     @total = @order.product.price_in_cents + @order.product.shipping_in_cents
   end

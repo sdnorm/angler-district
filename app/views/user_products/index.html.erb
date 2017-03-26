@@ -1,14 +1,20 @@
 <div class="row">
-  <h1>All Products Listed</h1>
+  <div class="large-12 text-center user-product">
+    <h1>All My Products</h1>
+    <%= link_to "New Product Listing", new_product_path, class: "button", id: "list-button" %>
+  </div>
 
-  <%= link_to "New Product Listing", new_product_path, class: "button" %>
-
-  <ul>
+  <div class="large-10 large-offset-1 small-12 columns">
     <% @products.each do |product| %>
-      <li>
-        <%= link_to product.name, edit_product_path(product) %>
-        <%= image_tag(product.display_image.display)%>
-      </li>
+      <div class="large-4 small-6 columns float-left">
+        <div class="main-products">
+          <%= link_to product do %>
+            <h4 class="text-center"><%= product.name %></h4>
+            <%= image_tag(product.display_image.display, class: "main-display-product-image") %>
+            <h5 class="home-page-product"><%= number_to_currency(product.price_in_cents/100.0) %></h5>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>

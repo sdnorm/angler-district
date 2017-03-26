@@ -86,6 +86,8 @@ Rails.application.routes.draw do
   get 'my-products', to: 'user_products#index', as: :all_user_products
   get 'edit-product/product/:id', to: 'products#edit', as: :edit_user_product
 
+  get 'sold-orders', to: 'orders#sold_orders', as: :sold_orders
+
   # resources :products do
   #   resources :orders
   # end

@@ -1,3 +1,19 @@
 // Place all the styles related to the UserProducts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-product {
+  color: #2c3e50;
+}
+
+#list-button {
+  background: #f1c40f;
+  padding: .65rem;
+  color: #2c3e50;
+  border-radius: 5px;
+}
+
+#list-button:hover {
+  color: #ecf0f1;
+  background-color: #2c3e50;
+}

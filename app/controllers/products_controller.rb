@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:search_text].present?
-      @products = Product.search(params[:search_text]).ordered_and_instock.paginate(:page => params[:page], :per_page => 6)
+      @products = Product.search(params[:search_text]).ordered_and_instock.paginate(:page => params[:page], :per_page => 18)
     else
       @products = Product.ordered_and_instock.paginate(:page => params[:page], :per_page => 12)
     end

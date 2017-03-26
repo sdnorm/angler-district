@@ -8,35 +8,43 @@ class CategoriesController < ApplicationController
   end
 
   def reels
-    @products = Category.reels
+    @products = Product.where(category_id: Category.reels.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def rods
-    @products = Category.rods
+    @products = Product.where(category_id: Category.rods.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def fresh_rods
-    @products = Category.fresh_rods
+    @products = Product.where(category_id: Category.fresh_rods.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def lures
-    @products = Category.lures
+    @products = Product.where(category_id: Category.lures.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def apparel
-    @products = Category.apparel
+    @products = Product.where(category_id: Category.apparel.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def boating
-    @products = Category.boating
+    @products = Product.where(category_id: Category.boating.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   def electronics
-    @products = Category.electronics
+    @products = Product.where(category_id: Category.electronics.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
-  def genrel
-    @products = Category.general
+  def generel
+    @products = Product.where(category_id: Category.general.first.id).paginate(:page => params[:page], :per_page => 18)
+    @brands = Brand.all
   end
 
   private
