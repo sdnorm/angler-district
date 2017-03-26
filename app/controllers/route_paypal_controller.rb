@@ -11,7 +11,7 @@ class RoutePaypalController < ApplicationController
     if @order.group_order_id == nil
       redirect_to completed_order_url(@order)
     elsif GroupedOrder.find(@order.group_order_id).orders.orders_left_to_purchase
-      
+      redirect_to complete_groupedorder_url(@group_order_id)
     else
       redirect_to completed_groupedorder_url(GroupedOrder.find(@order.group_order_id))
     end

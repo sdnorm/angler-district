@@ -4,8 +4,8 @@ class GroupedOrdersController < ApplicationController
     :new, :create, :edit, :update, :destroy
   ]
   # before_action :check_user, only: [:edit, :update, :destroy]
-  # check_shipper
-  # check_receiver
+  # before_action :check_shipper
+  before_action :check_buyer, only: [:index, :purchase, :confirm, :show, :update]
 
   def index
     @grouped_orders = GroupedOrder.buyer_gps(current_user.id)
@@ -159,6 +159,12 @@ class GroupedOrdersController < ApplicationController
   def check_user
     if current_user != @product.user
       redirect_to root_url, alert: "Sorry, this product belongs to someone else"
+    end
+  end
+
+  def check_buyer
+    if current_user != @grouped_order.buyer_id
+      redirect_to root_url, alert: "Sorry, this order belongs to someone else"
     end
   end
 

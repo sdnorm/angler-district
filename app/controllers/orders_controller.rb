@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:purchase, :edit, :update, :destroy]
+  before_action :set_order, only: [:purchase, :edit, :update, :destroy, :show, :charged]
   before_action :authenticate_user!
   # before_action :check_user, only: [:edit, :update, :destroy]
-  # check_shipper
-  # check_receiver
+  # before_action :check_shipper,
+  before_action :check_buyer, only: [:show, :edit, :update, :destroy, :purchase, :charged]
 
   # GET /orders
   # GET /orders.json
@@ -46,9 +46,9 @@ class OrdersController < ApplicationController
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
     @order.save
-    puts "-----"
-    puts @order.inspect
-    puts "-----"
+    # puts "-----"
+    # puts @order.inspect
+    # puts "-----"
     OrderProduct.create({product_id: @product.id, order_id: @order.id})
     respond_to do |format|
       if @order.save
@@ -131,6 +131,12 @@ class OrdersController < ApplicationController
     def check_user
       if current_user != @product.user
         redirect_to root_url, alert: "Sorry, this product belongs to someone else"
+      end
+    end
+
+    def check_buyer
+      if current_user != @order.buyer_id
+        redirect_to root_url, alert: "Sorry, this order belongs to someone else"
       end
     end
 end
