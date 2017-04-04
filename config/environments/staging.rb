@@ -3,6 +3,16 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'angler-district-staging.herokuapp.com' }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.mailgun.org",
+    port:                 587,
+    domain:               ENV["mailgun_domain"],
+    user_name:            ENV["mailgun_username"],
+    password:             ENV["mailgun_password"],
+    authentication:       'plain'
+  }
+
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
