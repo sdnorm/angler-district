@@ -38,7 +38,9 @@ class Product < ApplicationRecord
 
   scope :ordered, -> { all.order('created_at DESC') }
 
-  scope :freshwater_brand, -> (brand) { where(category_id: 8, brand_id: brand ) }
+  scope :freshwater_brand, -> (brand) { where(water_type: "fresh", brand_id: brand ) }
+
+  scope :saltwater_brand, -> (brand) { where(water_type: "salt", brand_id: brand ) }
 
   def accept_paypal?
     true if self.user.paypal_email != nil || self.user.paypal_email_the_same == true

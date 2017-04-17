@@ -47,33 +47,11 @@
       <button class="button">Popular Saltwater Brands</button>
     </div>
     <ul class="no-bullet" id="saltwater-list" style="display: none;">
+      <% @brands.each do |brand| %>
       <li>
-        <%= link_to "Offshore Angler", reels_path %>
+        <%= link_to brand.name, salt_brands_path(brand) %>
       </li>
-      <li>
-        <%= link_to "Abu Garcia", rods_path %>
-      </li>
-      <li>
-        <%= link_to "Penn", lures_path %>
-      </li>
-      <li>
-        <%= link_to "Accurate", general_path %>
-      </li>
-      <li>
-        <%= link_to "Fin-Nor", apparel_path %>
-      </li>
-      <li>
-        <%= link_to "Daiwa", boating_path %>
-      </li>
-      <li>
-        <%= link_to "Lew's", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Okuma", electronics_path %>
-      </li>
-      <li>
-        <%= link_to "Quantum", electronics_path %>
-      </li>
+      <% end %>
       <li>
         <%= link_to "Other", electronics_path %>
       </li>

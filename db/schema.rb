@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326035929) do
+ActiveRecord::Schema.define(version: 20170417185125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170326035929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+    t.boolean  "salt"
+    t.boolean  "fresh"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(version: 20170326035929) do
     t.float    "shipping"
     t.integer  "price_in_cents"
     t.integer  "shipping_in_cents"
+    t.string   "water_type"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["shop_id"], name: "index_products_on_shop_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree

@@ -2,4 +2,12 @@
   <h1><%= @brand.name %></h1>
 </div>
 
-<%= @products.first.name %>
+<% if @products == [] %>
+  <div class="row">
+    <p>
+      No products have been posted yet for this brand.
+    </p>
+  </div>
+<% else %>
+  <%= @products.first.name %>
+<% end %>

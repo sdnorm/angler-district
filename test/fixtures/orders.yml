@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  address: MyString
-  city: MyString
-  state: MyString
+  address1: "123 Street"
+  city: City
+  state: ST
 
 two:
-  address: MyString
-  city: MyString
-  state: MyString
+  address1: "456 Blvd"
+  city: Town
+  state: SA
