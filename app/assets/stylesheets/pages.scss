@@ -212,6 +212,9 @@
 .how-to-row {
   padding-bottom: 1rem;
   padding-top: 1rem;
+  p {
+    font-family: "Cooper Hewitt Medium";
+  }
 }
 
 .how-to-row-bottom {
@@ -223,13 +226,5 @@
 }
 
 #how-to-title {
-  font-family: "Cooper Hewitt Bold";
-}
-
-.how-to-2 {
-  background: #ecf0f1;
-}
-
-.how-to-1 {
-  background: #bdc3c7;
+  font-family: "Cooper Hewitt Medium";
 }
