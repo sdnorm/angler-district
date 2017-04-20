@@ -197,6 +197,37 @@
   }
 }
 
+.how-to-top-image {
+  background: image-url('How-to-Sell-Banner-02.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  // background-size: 100px 300px;
+  height: 300px;
+  min-width: 100%;
+  margin-top: -3px;
+  margin-left: -2px;
+  @media only screen and (max-width: 40em) {
+    height: 100px;
+  }
+  @media only screen and (max-width: 70em) {
+    height: 200px;
+  }
+  color: #f1c40f;
+  h3 {
+    font-size: 1000%;
+    font-family: "Cooper Hewitt Semibold";
+    padding-top: 4rem;
+    @media only screen and (max-width: 40em) {
+      font-size: 400%;
+      padding-top: 1rem;
+    }
+    @media only screen and (max-width: 70em) {
+      font-size: 800%;
+      padding-top: 1.5rem;
+    }
+  }
+}
+
 .how-to-img {
   max-height: 400px;
 }
