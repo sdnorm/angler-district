@@ -189,7 +189,10 @@
   @media only screen and (max-width: 70em) {
     height: 200px;
   }
-  @media only screen and (max-width: 120em) {
+  // @media only screen and (max-width: 110em) {
+  //   height: 200px;
+  // }
+  @media only screen and (min-width: 120em) {
     height: 470px;
     margin-top: -4px;
   }
@@ -224,7 +227,7 @@
   @media only screen and (max-width: 70em) {
     height: 200px;
   }
-  @media only screen and (max-width: 120em) {
+  @media only screen and (min-width: 120em) {
     height: 470px;
     margin-top: -4px;
   }
@@ -291,7 +294,7 @@
   @media only screen and (max-width: 70em) {
     height: 200px;
   }
-  @media only screen and (max-width: 120em) {
+  @media only screen and (min-width: 120em) {
     height: 470px;
     margin-top: -4px;
   }
