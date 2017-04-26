@@ -44,10 +44,21 @@
 
 .cc-payment-one {
   margin-right: 3px;
-  display: inline-block;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #2c3e50;
+  // display: inline-block;
+  // border-radius: 5px;
+  // border-style: solid;
+  // border-color: #2c3e50;
+  color: #2c3e50;
+  padding: 1.5rem;
+  p {
+    margin-bottom: 0;
+  }
+  width: 100%;
+  height: 145px;
+}
+
+.paypal-one-lonely {
+  margin-right: 3px;
   color: #2c3e50;
   padding: 1.5rem;
   p {

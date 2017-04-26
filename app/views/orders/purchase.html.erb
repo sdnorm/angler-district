@@ -21,7 +21,7 @@
         <h3>Choose Payment Method:</h3>
         <div class="payment-method">
           <% if @order.seller.paypal? == false %>
-            <div class="large-12 columns">
+            <div class="large-6 columns">
               <div class="cc-payment-one">
                 <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
                 <div class="stripe-button" id="stripe-button">
@@ -74,7 +74,7 @@
             </div>
           <% end %>
           <% if @order.seller.stripe? == false %>
-            <div class="large-12 columns">
+            <div class="large-6 columns align-middle">
               <div class="paypal-one-lonely" id="paypal-lonely">
                 <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
                 <div class="paypal-button-one">
@@ -106,31 +106,7 @@
         </h5>
         <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
         <div class="large-12 columns text-center">
-          <div class="cart-box-one">
-            <span id="cart-item-go">
-              <%= link_to product_path(@order.product) do %>
-                <%= image_tag(@order.product.display_image.thumb) %>
-              <% end %>
-            </span>
-            <span>
-              <h4><%= link_to @order.product.name, product_path(@order.product), id: "title-link-go" %></h4>
-              <h6><%= number_to_currency(@order.product.price_in_cents/100.0) %></h6>
-              <p>
-                Seller: <%= @order.product.user.profile_name %>
-              </p>
-            </span>
-            <span>
-              <%= link_to "", id: "purchase-button", data: {target: @order.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(@order.product), removeUrl: remove_from_cart_path(@order.product)} do %>
-                <% if @order.product.cart_action(current_user.try :id) == 'Remove from' %>
-                  <i class="fa fa-times"></i>
-                  <span><%=@order.product.cart_action(current_user.try :id)%></span> Cart
-                <% else %>
-                  <i class="fa fa-shopping-cart"></i>
-                  <span><%=@order.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
-                <% end %>
-              <%end%>
-            </span>
-          </div>
+          <%= render 'list_product' %>
         </div>
       </div>
     </div>

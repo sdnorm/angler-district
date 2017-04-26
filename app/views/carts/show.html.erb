@@ -1,90 +1,62 @@
-
-  <div class="large-12 columns text-center">
+<div class="large-12 columns">
+  <div class="large-8 large-offset-1 columns text-center">
     <h4>My Cart</h4>
   </div>
-  <div class="large-12 columns">
-    <div class="large-8 large-offset-1 columns text-center">
-      <% @cart_products.each do |product| %>
-        <div class="cart-box">
-          <span id="cart-item">
-            <%= link_to product_path(product) do %>
-              <%= image_tag(product.image.thumb) %>
+  <div class="large-8 large-offset-1 columns text-center">
+    <% @cart_products.each do |product| %>
+      <div class="cart-box">
+        <span id="cart-item">
+          <%= link_to product_path(product) do %>
+            <%= image_tag(product.display_image.thumb) %>
+          <% end %>
+        </span>
+        <span>
+          <h4><%= link_to product.name, product_path(product), id: "title-link" %></h4>
+          <h6><%= number_to_currency(product.price) %></h6>
+          <p>
+            Seller: <%= product.user.id %>
+          </p>
+        </span>
+        <span id="cart-item">
+          <%= link_to "", id: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
+            <% if product.cart_action(current_user.try :id) == 'Remove from' %>
+              <i class="fa fa-times"></i>
+              <span><%=product.cart_action(current_user.try :id)%></span> Cart
+            <% else %>
+              <i class="fa fa-shopping-cart"></i>
+              <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
             <% end %>
-          </span>
-          <span>
-            <h4><%= link_to product.name, product_path(product), id: "title-link" %></h4>
-            <h6><%= number_to_currency(product.price) %></h6>
-            <p>
-              Seller: <%= product.user.id %>
-            </p>
-          </span>
-          <span id="cart-item">
-            <%= link_to "", id: "purchase-button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do %>
-              <% if product.cart_action(current_user.try :id) == 'Remove from' %>
-                <i class="fa fa-times"></i>
-                <span><%=product.cart_action(current_user.try :id)%></span> Cart
-              <% else %>
-                <i class="fa fa-shopping-cart"></i>
-                <span><%=product.cart_action(current_user.try :id)%></span> <span>Cart</span>
-              <% end %>
-            <%end%>
-            <% if product.accept_stripe? && product.accept_paypal? %>
-              <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
-            <% elsif product.accept_paypal? %>
-              <p class="payment-options"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
-            <% elsif product.accept_stripe? %>
-              <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
-            <% end %>
-          </span>
-        </div>
-      <% end %>
-    </div>
-    <div class="large-2 columns text-left cart-sum float-right">
-      <p class="first-cart-sum">
-        <span class="cart-count"><%=current_user.cart_count%></span> Product(s) Selected
-      </p>
-      <p>
-        Product(s) Total: <%= number_to_currency(@total) %>
-      </p>
-      <p>
-        Shipping: n/a
-      </p>
-      <h4>
-        Total: <%= number_to_currency(@total) %>
-      </h4>
-      <%if signed_in?%>
-        <% if @cart_ids.count >= 1 %>
-          <%= link_to 'Checkout', route_order_path, class: "button checkout-button", id: "checkout-button" %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="large-1 columns">
-    </div>
-  </div>
-
-  <!--<% @cart_products.each do |product| %>
-    <div data-equalizer class="cart-product large-12 column mb1">
-      <div class="column large-2 text-center p0" data-equalizer-watch>
-        <%=link_to product do%>
-          <h5><%= product.name%></h5>
-        <%end%>
-      </div>
-      <div class="column large-7 glassy-bg text-center" data-equalizer-watch>
-        <h5 class="scale">$ <%= product.price %></h5>
-      </div>
-      <div class="column large-3 primary-bg text-center radius-r1" data-equalizer-watch>
-        <%if signed_in?%>
-          <%=link_to "", class: "button", data: {target: product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product), removeUrl: remove_from_cart_path(product)} do%>
-            <i class="fa fa-times"></i>
-            <span><%=product.cart_action(current_user.try :id)%></span> Cart
           <%end%>
-        <%end%>
+          <% if product.accept_stripe? && product.accept_paypal? %>
+            <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+          <% elsif product.accept_paypal? %>
+            <p class="payment-options"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
+          <% elsif product.accept_stripe? %>
+            <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
+          <% end %>
+        </span>
       </div>
-    </div>
-  <%end%>
-  <div id="purchase-button" class="large-12 large-centered column">
+    <% end %>
+  </div>
+  <div class="large-2 columns text-left cart-sum float-right">
+    <p class="first-cart-sum">
+      <span class="cart-count"><%=current_user.cart_count%></span> Product(s) Selected
+    </p>
+    <p>
+      Product(s) Total: <%= number_to_currency(@total) %>
+    </p>
+    <p>
+      Shipping: n/a
+    </p>
+    <h4>
+      Total: <%= number_to_currency(@total) %>
+    </h4>
     <%if signed_in?%>
       <% if @cart_ids.count >= 1 %>
-        <%= link_to 'Purchase Order', route_order_path, class: "button success" %>
+        <%= link_to 'Checkout', route_order_path, class: "button checkout-button", id: "checkout-button" %>
       <% end %>
-    <% end %>-->
+    <% end %>
+  </div>
+  <div class="large-1 columns">
+  </div>
+</div>

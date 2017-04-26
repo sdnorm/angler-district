@@ -1,0 +1,25 @@
+<div class="cart-box-one">
+  <span id="cart-item-go">
+    <%= link_to product_path(@order.product) do %>
+      <%= image_tag(@order.product.display_image.thumb) %>
+    <% end %>
+  </span>
+  <span>
+    <h4><%= link_to @order.product.name, product_path(@order.product), id: "title-link-go" %></h4>
+    <h6><%= number_to_currency(@order.product.price_in_cents/100.0) %></h6>
+    <p>
+      Seller: <%= @order.product.user.profile_name %>
+    </p>
+  </span>
+  <span>
+    <%= link_to "", id: "purchase-button", data: {target: @order.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(@order.product), removeUrl: remove_from_cart_path(@order.product)} do %>
+      <% if @order.product.cart_action(current_user.try :id) == 'Remove from' %>
+        <i class="fa fa-times"></i>
+        <span><%=@order.product.cart_action(current_user.try :id)%></span> Cart
+      <% else %>
+        <i class="fa fa-shopping-cart"></i>
+        <span><%=@order.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
+      <% end %>
+    <%end%>
+  </span>
+</div>
