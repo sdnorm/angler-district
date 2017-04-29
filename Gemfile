@@ -7,6 +7,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'awesome_print', require: 'ap'
+
+# gem 'quiet_assets', group: :development
+gem "pry-rails", group:"development"
+
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-foundation'
 

@@ -44,20 +44,26 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    @categories = Category.all
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-    # @product.price = params[:product][:price] * 100 if params[:product][:price]
-    respond_to do |format|
-      if @product.save
-        format.html {
-          redirect_to @product, notice: 'Product was successfully created.'
-        }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json {
-          render json: @product.errors, status: :unprocessable_entity
-        }
+    if check_payment
+      # puts "here"
+      flash[:notice] = 'Please provide a method to accept payments for the sale of your product before creating a listing. Thanks!'
+      render :new
+    else
+      respond_to do |format|
+        if @product.save
+          format.html {
+            redirect_to @product, notice: 'Product was successfully created.'
+          }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new }
+          format.json {
+            render json: @product.errors, status: :unprocessable_entity
+          }
+        end
       end
     end
   end
@@ -101,6 +107,18 @@ class ProductsController < ApplicationController
     def check_user
       if current_user != @product.user
         redirect_to root_url, alert: "Sorry, this product belongs to someone else"
+      end
+    end
+
+    def check_payment
+      @user = User.find(current_user.id)
+      # puts "---- paypal email ----" if @user.paypal_email == nil
+      # puts @user.paypal_email
+      if @user.paypal_email == nil && @user.paypal_email_the_same == false && @user.stripe_user_id == nil
+        # puts "what the hell"
+        true
+      else
+        false
       end
     end
 
