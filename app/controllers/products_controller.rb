@@ -32,8 +32,14 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
-    @categories = Category.all
+    if check_payment
+      # puts "here"
+      flash[:notice] = 'Please provide a method to accept payments for the sale of your product before creating a listing. Thanks!'
+      redirect_back fallback_location: all_user_products_url
+    else
+      @product = Product.new
+      @categories = Category.all
+    end
   end
 
   # GET /products/1/edit
