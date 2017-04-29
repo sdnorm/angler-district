@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'shipped_orders', to: 'shipped_order#index', as: :shipped_orders
+  get 'shipped_order/:id', to: 'shipped_order#show', as: :shipped_order
+
+  get 'to_ship_orders', to: 'to_ship_order#index',as: :to_ship_orders
+  get 'to_ship_order/:id', to: 'to_ship_order#show', as: :to_ship_order
+
+  get 'purchased_orders', to: 'purchased_order#index', as: :purchased_orders
+  get 'purchased_order/:id', to: 'purchased_order#show', as: :purchased_orders
+
   get 'route_paypal/index', to: 'route_paypal#index', as: :route_paypal
 
   resources :grouped_charges

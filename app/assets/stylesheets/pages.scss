@@ -313,3 +313,39 @@
     }
   }
 }
+
+.tackle-condition-top {
+  // background-size: 100px 300px;
+  height: 300px;
+  min-width: 100%;
+  // margin-top: -3px;
+  // margin-left: -2px;
+  background-color: #95a5a6;
+  @media only screen and (max-width: 40em) {
+    height: 100px;
+  }
+  @media only screen and (max-width: 70em) {
+    height: 200px;
+  }
+  @media only screen and (min-width: 120em) {
+    height: 470px;
+    margin-top: -4px;
+  }
+  color: #f1c40f;
+  h3 {
+    font-size: 1000%;
+    font-family: "Cooper Hewitt Semibold";
+    padding-top: 4rem;
+    @media only screen and (max-width: 40em) {
+      font-size: 400%;
+      padding-top: 1rem;
+    }
+    @media only screen and (max-width: 70em) {
+      font-size: 800%;
+      padding-top: 1.5rem;
+    }
+  }
+  span {
+    display: table-caption;
+  }
+}
