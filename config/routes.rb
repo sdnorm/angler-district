@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'to_ship_order/:id', to: 'to_ship_order#show', as: :to_ship_order
 
   get 'purchased_orders', to: 'purchased_order#index', as: :purchased_orders
-  get 'purchased_order/:id', to: 'purchased_order#show', as: :purchased_orders
+  get 'purchased_order/:id', to: 'purchased_order#show', as: :purchased_order
 
   get 'route_paypal/index', to: 'route_paypal#index', as: :route_paypal
 
