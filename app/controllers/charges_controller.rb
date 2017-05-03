@@ -37,6 +37,7 @@ class ChargesController < ApplicationController
       Stripe::Charge.create(charge_attrs, stripe_account: user.access_token)
       product = Product.find(@order.product_id)
       @order.purchased = true
+      @order.purchased_at = Time.now
       product.set_inventory_to_zero
       remove_from_cart(product.slug)
       flash[:notice] = "Payment Submitted Successfully!"

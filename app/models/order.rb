@@ -5,7 +5,6 @@ class Order < ApplicationRecord
   require 'openssl'
 
   validates :address1, :city, :state, :zip_code, :first_name, :last_name, presence: true
-  
 
   belongs_to :product
   belongs_to :buyer, class_name: "User"
@@ -15,17 +14,30 @@ class Order < ApplicationRecord
   has_many :order_products
   has_many :products, through: :order_products
 
-  scope :buyer_orders, -> (buyer_id) { where(buyer_id: buyer_id.id) }
-
   scope :paid, -> { where(charged: true) }
-
-  scope :buyer_orders, -> (current_user) { where(buyer_id: current_user) }
-
+  scope :buyer_orders, -> (user) { where(buyer_id: user) }
+  scope :seller_orders, -> (user) { where(seller_id: user) }
   scope :not_purchased, -> { where(purchased: false) }
-
-  scope :purchased, -> { where(purchased: true) }
+  scope :user_purchased, -> { where(purchased: true) }
+  # scope :active, -> { where(active: true) }
+  scope :not_active, -> { where(active: false) }
+  scope :shipped, -> { where(active: true) }
+  scope :not_shipped, -> { where(active: false) }
 
   class << self
+
+    def to_ship user
+      seller_orders(user).not_shipped
+    end
+
+    def shipped user
+      seller_orders(user).shipped
+    end
+
+    def purchased user
+      buyer_orders(user).user_purchased
+    end
+
     def charged user
       paid.buyer_orders(user)
     end

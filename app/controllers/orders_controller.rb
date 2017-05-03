@@ -8,7 +8,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.buyer_orders(current_user)
+    # @orders = Order.buyer_orders(current_user)
+
+    @to_ship_orders = Order.to_ship(current_user.id)
+    puts current_user.id
+    # @shipped_orders = Order.shipped(current_user.id)
+    @purchased_orders = Order.purchased(current_user.id)
   end
 
   # GET /orders/1

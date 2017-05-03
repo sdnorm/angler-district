@@ -12,11 +12,7 @@
             <a href="#">My Stuff</a>
             <ul class="submenu menu vertical nav-drop" data-submenu>
               <li id="drop-main-item">
-                <a href="#">Orders</a>
-                <ul class="menu">
-                  <li id="nav-drop-item"><%= link_to "Purchased", orders_path %></li>
-                  <li id="nav-drop-item"><%= link_to "Sold", sold_orders_path %></li>
-                </ul>
+                <%= link_to "Orders", user_orders_path %>
               </li>
               <li id="drop-main-item">
                 <%= link_to "Profile", user_profile_path %>

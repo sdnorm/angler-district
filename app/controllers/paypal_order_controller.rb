@@ -69,6 +69,7 @@ class PaypalOrderController < ApplicationController
     @order = Order.find(params[:id])
     product = Product.find(@order.product_id)
     @order.purchased = true
+    @order.purchased_at = Time.now
     @order.save
     product.set_inventory_to_zero
     remove_from_cart(product.slug)

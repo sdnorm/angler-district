@@ -35,11 +35,8 @@ class Product < ApplicationRecord
   }
 
   scope :positive_inventory, -> { where("inventory > ?", 0) }
-
   scope :ordered, -> { all.order('created_at DESC') }
-
   scope :freshwater_brand, -> (brand) { where(water_type: "fresh", brand_id: brand ) }
-
   scope :saltwater_brand, -> (brand) { where(water_type: "salt", brand_id: brand ) }
 
   def accept_paypal?
