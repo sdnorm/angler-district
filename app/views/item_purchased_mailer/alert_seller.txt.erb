@@ -1,0 +1,16 @@
+Hello, <%= @seller.name %>
+
+You sold your <%= @product.first_name %>!
+
+<%= link_to "Please ship this item to the address below as soon as possbile and update the order to show that it was shipped and provide the tracking number.", to_ship_order_url(@order) %>
+
+===============================================
+Address to ship your <%= @product.name %> to:
+
+<%= @buyer.name %>
+<%= @buyer.address1 %>
+<%= @buyer.address2 %>
+<%= @buyer.city %>, <%= @buyer.state %> <%= @buyer.zip_code %>
+===============================================
+
+Thanks for selling on Angler District!

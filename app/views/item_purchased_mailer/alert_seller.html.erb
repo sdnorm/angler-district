@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @seller.first_name %></h1>
+    <h1>You sold your <%= @product.name %>!</h1>
+    <p>
+      <%= link_to "Please ship this item to the address below as soon as possbile and update the order to show that it was shipped and provide the tracking number.", to_ship_order_url(@order) %>
+    </p>
+    <hr />
+    <h3>
+      Address to ship your item to:
+    </h3>
+    <p>
+      <span><%= @buyer.first_name %></span>
+      <span><%= @buyer.address1 %></span>
+      <span><%= @buyer.address2 %></span>
+      <span><%= @buyer.city %>, <%= @buyer.state %> <%= @buyer.zip_code %></span>
+    </p>
+    <hr />
+    <h4>Thanks for selling on Angler District!</h4>
+  </body>
+</html>

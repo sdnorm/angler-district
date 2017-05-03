@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    puts "here - - - - - - -"
+    # puts "here - - - - - - -"
     # Find the user to pay.
     # user = User.find(@order.seller_id)
     user = @order.seller
@@ -40,6 +40,7 @@ class ChargesController < ApplicationController
       @order.purchased_at = Time.now
       product.set_inventory_to_zero
       remove_from_cart(product.slug)
+      ItemPurchasedMailer.alert_seller(@order.seller, @order, product, @order.buyer)
       flash[:notice] = "Payment Submitted Successfully!"
       redirect_to completed_order_url(@order)
     rescue Stripe::CardError => e
