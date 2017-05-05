@@ -14,7 +14,7 @@ class RouteOrderController < ApplicationController
       end
     end
     if @cart_ids.count == 0
-      redirect_to :back, flash[:notice] = "All items were removed from your cart."
+      redirect_back fallback_location: cart_url, notice: "All items were removed from your cart."
     elsif @cart_ids.count == 1 && product != nil && @cart_ids.first == product.slug
       redirect_to complete_order_url(@recent_open_order)
     elsif @cart_ids.count == 1
