@@ -53,13 +53,14 @@ class OrdersController < ApplicationController
     @order.save
     # test mailer
     puts "test mailer"
-    ItemPurchasedMailer.alert_seller(@seller, @order, @product, current_user).deliver_now
+    # ItemPurchasedMailer.alert_seller(@seller, @order, @product, current_user).deliver_now
 
     OrderProduct.create({product_id: @product.id, order_id: @order.id})
     respond_to do |format|
       if @order.save
         format.html {
-          redirect_to action: "purchase", id: @order.id, notice: 'Order was successfully created.'
+          flash[:notice] = 'Order was successfully created.'
+          redirect_to action: "purchase", id: @order.id
         }
         format.json { render :purchase, status: :created, location: @order }
       else

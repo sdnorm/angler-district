@@ -1,5 +1,12 @@
 class Order < ApplicationRecord
 
+  after_initialize :set_defaults
+
+  def set_defaults
+    self.shipped = false if self.new_record?
+    self.purchased = false if self.new_record?
+  end
+
   require 'net/http'
   require 'uri'
   require 'openssl'
@@ -15,16 +22,28 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
 
   scope :paid, -> { where(charged: true) }
+  scope :not_paid, -> { where(charged: false) }
   scope :buyer_orders, -> (user) { where(buyer_id: user) }
   scope :seller_orders, -> (user) { where(seller_id: user) }
   scope :not_purchased, -> { where(purchased: false) }
   scope :user_purchased, -> { where(purchased: true) }
   # scope :active, -> { where(active: true) }
-  scope :not_active, -> { where(active: false) }
-  scope :shipped, -> { where(active: true) }
-  scope :not_shipped, -> { where(active: false) }
+  # scope :not_active, -> { where(active: false) }
+  scope :shipped, -> { where(shipped: true) }
+  scope :not_shipped, -> { where(shipped: false) }
 
   class << self
+
+    def check_something buyer
+      buyer_orders(buyer.id).not_purchased
+    end
+
+    def open_buyer buyer
+      puts "open buyer"
+      puts buyer.inspect
+      puts "++++++++++"
+      buyer_orders(buyer.id).not_purchased.not_shipped
+    end
 
     def to_ship user
       seller_orders(user).not_shipped
