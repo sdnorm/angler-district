@@ -5,20 +5,15 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # puts "here - - - - - - -"
-    # Find the user to pay.
-    # user = User.find(@order.seller_id)
     user = @order.seller
     amount = @order.product.price_to_cents + @order.product.shipping_in_cents
     fee = (amount.to_i * ENV["NORMAL_FEE_PERCENTAGE"].to_f)
     token = params[:stripeToken]
     buyer_email = params[:stripeEmail]
-
     customer = Stripe::Customer.create(
       source: token,
       email: buyer_email
     )
-
     begin
       token = Stripe::Token.create({
         customer: customer.id
