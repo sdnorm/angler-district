@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 
   include ParsePaypal
+  include ProcessPaypal
 
   after_initialize :set_defaults
 
@@ -8,10 +9,6 @@ class Order < ApplicationRecord
     self.shipped = false if self.new_record?
     self.purchased = false if self.new_record?
   end
-
-  require 'net/http'
-  require 'uri'
-  require 'openssl'
 
   validates :address1, :city, :state, :zip_code, :first_name, :last_name, presence: true
 
@@ -61,29 +58,9 @@ class Order < ApplicationRecord
       end
     end
 
-    def get_paypal_details token
-      uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
-      request = Net::HTTP::Post.new(uri)
-      request.set_form_data(
-        "USER" => ENV["PAYPAL_USERNAME"],
-        "PWD" => ENV["PAYPAL_PASSWORD"],
-        "SIGNATURE" => ENV["PAYPAL_SIGNATURE"],
-        "METHOD" => "GetExpressCheckoutDetails",
-        "VERSION" => "93",
-        "TOKEN" => token,
-      )
-      req_options = {
-        use_ssl: uri.scheme == "https",
-        verify_mode: OpenSSL::SSL::VERIFY_NONE,
-      }
-      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-        http.request(request)
-      end
-      parse_paypal(response.body)
-    end
-
     def update_paypal token
       details = get_paypal_details(token)
+      parse_paypal(details.body)
       self.express_payer_id = details["PAYER_ID"]
       self.paypal_first_name = details["first_name"]
       self.paypal_last_name = details["last_name"]
@@ -93,8 +70,9 @@ class Order < ApplicationRecord
   def purchase(token)
     # process_purchase(self)
     # transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-    seller_amount = 9
+    # seller_amount = 9
     # EXPRESS_GATEWAY.purchase(1000, express_purchase_options)
+    seller_amount = self.product.price_in_cents + self.product.shipping_in_cents
     uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
     request = Net::HTTP::Post.new(uri)
     request.set_form_data(
@@ -126,36 +104,8 @@ class Order < ApplicationRecord
     # update_paypal(parse_paypal(response)["TOKEN"])
   end
 
-private
   def process_purchase(order)
-    seller_amount = 9
-    # EXPRESS_GATEWAY.purchase(1000, express_purchase_options)
-    uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
-    request = Net::HTTP::Post.new(uri)
-    request.set_form_data(
-      "USER" => ENV["PAYPAL_USERNAME"],
-      "PWD" => ENV["PAYPAL_PASSWORD"],
-      "SIGNATURE" => ENV["PAYPAL_SIGNATURE"],
-      "METHOD" => "DoExpressCheckoutPayment",
-      "VERSION" => "93",
-      "TOKEN" => order.express_token,
-      "PAYERID" => order.express_payer_id,
-      "PAYMENTREQUEST_0_AMT" => seller_amount,
-      "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_0_SELLERPAYPALACCOUNTID" => "seller-ad@email.com",#User.find(self.seller_id).paypal_email
-      "PAYMENTREQUEST_0_PAYMENTREQUESTID" => "Order#{order.id}-PAYMENT0",
-      "PAYMENTREQUEST_1_AMT" => 1,
-      "PAYMENTREQUEST_1_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_1_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com",
-      "PAYMENTREQUEST_1_PAYMENTREQUESTID" => "Order#{order.id}-PAYMENT1"
-    )
-    req_options = {
-      use_ssl: uri.scheme == "https",
-      verify_mode: OpenSSL::SSL::VERIFY_NONE,
-    }
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-    parse_paypal(response)
+    processed_response = process_paypal
+    parse_paypal(processed_response)
   end
 end
