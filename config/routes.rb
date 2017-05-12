@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'route_charged_order/index', to: 'route_charged_order#index', as: :route_charged_order
+
+  get 'handle_stripe_group_orders/index'
+
   get 'shipped_orders', to: 'shipped_order#index', as: :shipped_orders
   get 'shipped_order/:id', to: 'shipped_order#show', as: :shipped_order
 
