@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   resources :grouped_charges
 
-  # get '/order/:id/paypal/route', to: ''
-
   get 'brands/index', to: 'brands#index', as: :brands
   get 'saltwater/:id', to: 'brands#salt', as: :salt_brands
   get 'freshwater/:id', to: 'brands#fresh', as: :fresh_brands
@@ -54,8 +52,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: "omniauth_callbacks"
   }
 
-  # get 'omniauth_callbacks/stripe_connect'
-
   get 'route_order', to: 'route_order#route_order', as: :route_order
 
   get 'transactions/new'
@@ -79,33 +75,21 @@ Rails.application.routes.draw do
   get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
 
 
-  #orders and grouped orders stuff
+  # orders and grouped orders stuff
   get 'complete-order/:id', to: 'orders#purchase', as: :complete_order
   get 'complete-grouporder/:id', to: 'grouped_orders#purchase', as: :complete_grouporder
 
-  # get 'charged-order/:id', to: 'charges#create', as: :charged_order
   post 'charged-order/:id', to: 'charges#create', as: :charged_order
   get 'charged-order/:id', to: 'orders#charged', as: :completed_order
-
-  # get 'charged-order/:id', to: 'orders#charged', as: :charged_order
-  # post 'charged-order/:id', to: 'orders#charged'#, as: :charged_order
-  # get 'charged-grouporder/:id', to: 'grouped_orders#charged', as: :charged_order
 
   resources :products
 
   resources :grouped_orders
 
-  # devise_for :users
-  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-
   get 'my-products', to: 'user_products#index', as: :all_user_products
   get 'edit-product/product/:id', to: 'products#edit', as: :edit_user_product
 
   get 'sold-orders', to: 'orders#sold_orders', as: :sold_orders
-
-  # resources :products do
-  #   resources :orders
-  # end
 
   resources :orders
 
@@ -116,7 +100,6 @@ Rails.application.routes.draw do
 
   resources :transactions, only: [:new, :create]
 
-  # at the bottom because I want the URL to read anglerdistrict.com/reels
   get 'rods', to: 'categories#rods', as: :rods
   get 'reels', to: 'categories#reels', as: :reels
   get 'lures', to: 'categories#lures', as: :lures
@@ -133,5 +116,4 @@ Rails.application.routes.draw do
 
   get ':id', to: 'brands#show', as: :brand
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
