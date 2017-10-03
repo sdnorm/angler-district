@@ -29,36 +29,15 @@
         </h5>
       </div>
       <div class="payment-method">
-        <div class="large-6 small-12 columns">
-          <div class="cc-payment-one">
-            <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
-            <div class="stripe-button stripe-option" id="stripe-button">
-              <%= form_tag grouped_charges_path do %>
-                <article>
-                  <% if flash[:error].present? %>
-                    <div id="error_explanation">
-                      <p><%= flash[:error] %></p>
-                    </div>
-                  <% end %>
-                </article>
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                        data-description="Angler District - Tackle"
-                        data-amount="<%= @stripe_total %>"
-                        data-locale="auto">
-                </script>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="large-6 small-12 columns">
-          <div class="paypal-one" id="paypal">
-            <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
-            <div class="paypal-button-one">
-              <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
-            </div>
-          </div>
-        </div>
+        <% if @both_count > 0 %>
+          <%= render 'both_payment_methods' %>
+        <% elsif @stripe_count > 0  && @paypal_count > 0%>
+          <%= render 'both_payment_methods' %>
+        <% elsif @stripe_count > 0  && @paypal_count > 0%>
+          <%= render 'stripe_payment_method' %>
+        <% elsif @paypal_count %>
+          <%= render 'paypal_payment_method' %>
+        <% end %>
       </div>
       <div class="large-12 columns text-center">
         <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
@@ -89,9 +68,6 @@
               <% if product.product.accept_stripe? && product.product.accept_paypal? %>
                 <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" id="js-paypal-button" aria-hidden="true"></i></p>
               <% elsif product.product.accept_paypal? %>
-                <div class="paypal-button-one" id="js-paypal-pay">
-                  <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(product) %>
-                </div>
                 <p class="payment-options" id="js-paypal-button"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
               <% elsif product.product.accept_stripe? %>
                 <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>

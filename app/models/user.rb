@@ -8,6 +8,12 @@ class User < ApplicationRecord
   validates :email, presence: true
   # validates :profile_name, presence: true
 
+  after_create :skip_conf!
+
+  def skip_conf!
+    self.confirm if Rails.env.development?
+  end
+
   extend FriendlyId
   friendly_id :profile_name, use: :slugged
 

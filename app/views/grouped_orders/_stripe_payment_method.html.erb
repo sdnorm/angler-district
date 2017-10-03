@@ -1,0 +1,22 @@
+<div class="large-6 small-12 columns">
+  <div class="cc-payment-one">
+    <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
+    <div class="stripe-button stripe-option" id="stripe-button">
+      <%= form_tag grouped_charges_path do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+        </article>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Angler District - Tackle"
+                data-amount="<%= @stripe_total %>"
+                data-locale="auto">
+        </script>
+      <% end %>
+    </div>
+  </div>
+</div>

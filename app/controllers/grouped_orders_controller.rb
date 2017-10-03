@@ -83,9 +83,12 @@ class GroupedOrdersController < ApplicationController
     price = @orders.sum {|order| order.product.price_in_cents}
     shipping = @orders.sum {|order| order.product.shipping_in_cents}
     @total = price + shipping
-    stripe_price = @orders.sum {|order| order.product.price_in_cents}
-    stripe_shipping = @orders.sum {|order| order.product.shipping_in_cents}
+    stripe_price = @stripe.sum {|order| order.product.price_in_cents}
+    stripe_shipping = @stripe.sum {|order| order.product.shipping_in_cents}
     @stripe_total = stripe_price + stripe_shipping
+    paypal_price = @paypal.sum {|order| order.product.price_in_cents}
+    paypal_shipping = @paypal.sum {|order| order.product.shipping_in_cents}
+    @paypal_total = paypal_price + paypal_shipping
     @total_order_count = @orders.count
     @both_count = @both.count
     @paypal_count = @paypal.count
