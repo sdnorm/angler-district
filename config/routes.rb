@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'order/:id/paypal_order', to: 'paypal_order#index', as: :paypal_index
 
   get 'paypal_order/:id/create', to: 'paypal_order#create', as: :paypal_create
+  get 'paypal__grouped_order/:id/create', to: 'paypal_order#grouped_create', as: :paypal__grouped_create
 
   get 'order/:id/paypal_charged', to: 'paypal_order#show', as: :paypal_show
 

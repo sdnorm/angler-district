@@ -9,10 +9,9 @@ class PaypalOrderController < ApplicationController
   def create
     @order = Order.find(params[:id])
     @product = Product.find(@order.product_id)
-    # puts "======= #{@product.inspect} ========="
     @seller = User.find(@product.user_id)
-    # fee = @product.price * ENV["normal_fee_percentage"]
-    fee = 1
+    i_fee = @order.product.price * ENV["NORMAL_FEE_PERCENTAGE"].to_f
+    fee = i_fee.round(2)
     @order.ip_address = request.remote_ip
     @order.save
     uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
@@ -26,11 +25,11 @@ class PaypalOrderController < ApplicationController
       "CANCELURL" => orders_url(@order), # URL displayed to buyer after canceling transaction \
       "VERSION" => 93, # API version \
       "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_0_AMT" => 9, # total amount of first payment \
+      "PAYMENTREQUEST_0_AMT" => @order.product.price - fee, # total amount of first payment \
       "PAYMENTREQUEST_0_ITEMAMT" => 0,
       "PAYMENTREQUEST_0_TAXAMT" => 0,
       "PAYMENTREQUEST_0_PAYMENTACTION" => "Order",
-      "PAYMENTREQUEST_0_DESC" => "Purchased #{@product.name}",
+      "PAYMENTREQUEST_0_DESC" => "Purchased #{@order.product.name}",
       "PAYMENTREQUEST_0_SELLERPAYPALACCOUNTID" => "seller-ad@email.com", # PayPal e-mail of 1st receiver \
       "PAYMENTREQUEST_0_PAYMENTREQUESTID" => "Order#{@order.id}-PAYMENT0",  # unique ID for 1st payment \
       "PAYMENTREQUEST_1_CURRENCYCODE" => "USD",
@@ -55,6 +54,29 @@ class PaypalOrderController < ApplicationController
     else
       flash[:notice] = "There was a problem initiating the PayPal transaction. Please try again or use a different payment method. Thanks."
     end
+  end
+
+  def grouped_create
+    @grouped_orders = GroupedOrder.buyer_gps(current_user.id)
+    @orders = @grouped_order.orders.not_purchased
+    @paypal = []
+    @stripe = []
+    @both = []
+    @orders.each do |order|
+      if order.product.accept_stripe? && order.product.accept_paypal?
+        @both << order
+      elsif order.product.accept_paypal?
+        @paypal << order
+      elsif order.product.accept_stripe?
+        @stripe << order
+      end
+    end
+    price = @orders.sum {|order| order.product.price_in_cents}
+    shipping = @orders.sum {|order| order.product.shipping_in_cents}
+    @total = price + shipping
+    paypal_price = @paypal.sum {|order| order.product.price_in_cents}
+    paypal_shipping = @paypal.sum {|order| order.product.shipping_in_cents}
+    @paypal_total = paypal_price + paypal_shipping
   end
 
   def show
