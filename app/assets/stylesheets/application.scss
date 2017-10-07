@@ -234,14 +234,14 @@ input[type=search] {
 }
 
 #flash_notice, #flash_alert {
-  max-width: 75%;
+  max-width: 100%;
   margin: auto;
-  color: #D0011B;
-  background: #EE97A5;
+  color: #303E4F;
+  background: #E9C547;
   padding: 8px;
   font-size: 108%;
   font-weight: bold;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
 #flash_alert {
