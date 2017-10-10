@@ -1,16 +1,48 @@
 Rails.application.routes.draw do
 
   namespace :paypal do
-    get 'more_than_9_items_order/index'
+    get 'route_charge/index'
   end
 
-  namespace :paypal do
-    get 'more_than_9_items_order/show'
-  end
+  # paypal payments
+  get 'route-paypal/:id', to: 'paypal/route_charge#index', as: :route_paypal_order
 
-  namespace :paypal do
-    get 'single_item_order/index'
-  end
+  get 'paypal-payment/:id/create', to: 'paypal/single_item_order#index', as: :paypal
+
+  get 'paypal-payments/:id/create', to: 'paypal/route_multi_item#index', as: :paypals
+
+  get 'paypal-payment2/:id/create', to: 'paypal/2_item_order#index', as: :two_item_paypal_order
+  # get 'paypal-payment2/:id/paypal_charged', to: 'paypal/2_item_order#show', as: :two_item_paypal_order_show
+
+  get 'paypal-payment3/:id/create', to: 'paypal/3_item_order#index', as: :three_item_paypal_order
+  # get 'paypal-payment3/:id/paypal_charged', to: 'paypal/3_item_order#show', as: :three_item_paypal_order_show
+
+  get 'paypal-payment4/:id/create', to: 'paypal/4_item_order#index', as: :four_item_paypal_order
+  # get 'paypal-payment4/:id/paypal_charged', to: 'paypal/4_item_order#show', as: :four_item_paypal_order_show
+
+  get 'paypal-payment5/:id/create', to: 'paypal/5_item_order#index', as: :five_item_paypal_order
+  # get 'paypal-payment5/:id/paypal_charged', to: 'paypal/5_item_order#show', as: :five_item_paypal_order_show
+
+  get 'paypal-payment6/:id/create', to: 'paypal/6_item_order#index', as: :six_item_paypal_order
+  # get 'paypal-payment6/:id/paypal_charged', to: 'paypal/6_item_order#show', as: :six_item_paypal_order_show
+
+  get 'paypal-payment7/:id/create', to: 'paypal/7_item_order#index', as: :seven_item_paypal_order
+  # get 'paypal-payment7/:id/paypal_charged', to: 'paypal/7_item_order#show', as: :seven_item_paypal_order_show
+
+  get 'paypal-payment8/:id/create', to: 'paypal/8_item_order#index', as: :eight_item_paypal_order
+  # get 'paypal-payment8/:id/paypal_charged', to: 'paypal/8_item_order#show', as: :eight_item_paypal_order_show
+
+  get 'paypal-payment9/:id/create', to: 'paypal/9_item_order#index', as: :nine_item_paypal_order
+  # get 'paypal-payment9/:id/paypal_charged', to: 'paypal/9_item_order#show', as: :nine_item_paypal_order_show
+
+  get 'paypal-orders/:id/create', to: 'paypal/more_than_9_items_order#index', as: :more_than_nine_items_paypal_order
+  # get 'paypal-orders/:id/paypal_charged', to: 'paypal/more_than_9_items_order#show', as: :more_than_nine_items_paypal_order_show
+
+  get 'paypal-orders/:id/paypal_charged', to: 'paypalroute_multi_item#show', as: :multiple_paypal_show
+
+  #stripe payments
+  get 's-payments/:id/create', to: 'stripe/multi_item_order#index', as: :stripes
+  get 's-payment/:id/create', to: 'stripe/single_item_order#index', as: :stripe
 
   get 'route_charged_order/index', to: 'route_charged_order#index', as: :route_charged_order
 
@@ -110,6 +142,9 @@ Rails.application.routes.draw do
     put 'add/:product_id', to: 'carts#add', as: :add_to
     put 'remove/:product_id', to: 'carts#remove', as: :remove_from
   end
+
+  get 'orders/cart/get-cart-total', to: 'carts#get_cart_total', as: :js_cart_total
+  get 'grouped_orders/cart/get-cart-total', to: 'carts#get_cart_total'
 
   resources :transactions, only: [:new, :create]
 

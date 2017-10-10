@@ -102,7 +102,7 @@
           Total - <%= number_to_currency(@total/100.0) %>
         </h5>
         <h5>
-          Item Count - 1
+          Item Count - <span class="cart-count"><%=current_user.cart_count%></span>
         </h5>
         <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
         <div class="large-12 columns text-center">

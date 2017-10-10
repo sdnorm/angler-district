@@ -48,7 +48,8 @@ class GroupedOrdersController < ApplicationController
             city: @grouped_order.city,
             state: @grouped_order.state,
             zip_code: @grouped_order.zip_code,
-            grouped_order_id:@grouped_order.id
+            grouped_order_id: @grouped_order.id,
+            payment_method: payment_method(@seller)
           )
           @order.save!
           OrderProduct.create({product_id: @product.id, order_id: @order.id})
@@ -123,6 +124,18 @@ class GroupedOrdersController < ApplicationController
   end
 
   private
+
+  def payment_method user
+    if user.paypal_email != nil and user.stripe_user_id != nil
+      "both"
+    elsif user.paypal_email != nil
+      "paypal"
+    elsif user.stripe_user_id != nil
+      "stripe"
+    else
+      "none"
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_grouped_order

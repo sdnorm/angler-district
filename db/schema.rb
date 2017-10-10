@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503010848) do
+ActiveRecord::Schema.define(version: 20171010054312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170503010848) do
     t.string   "tracking_number"
     t.boolean  "active"
     t.boolean  "shipped"
+    t.string   "payment_method"
     t.index ["grouped_orders_id"], name: "index_orders_on_grouped_orders_id", using: :btree
   end
 

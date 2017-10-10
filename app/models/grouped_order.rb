@@ -12,4 +12,8 @@ class GroupedOrder < ApplicationRecord
 
   scope :buyer_gps, -> (id) { where(buyer_id: id) }
 
+  scope :paypal_orders, -> { includes(:orders).where(orders: {payment_method: "paypal"}) }
+  scope :stripe_orders, -> { includes(:orders).where(orders: {payment_method: "stripe"}) }
+  scope :both_methods, -> { includes(:orders).where(orders: {payment_method: "both"}) }
+
 end

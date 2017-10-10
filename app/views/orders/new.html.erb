@@ -48,10 +48,10 @@
           Order Details
         </h2>
         <h5>
-          Total - <%= number_to_currency(@total) %>
+          Total - $<span class="cart-total"><%= @total %></span>
         </h5>
         <h5>
-          Item Count - <%= @cart_ids.count %>
+          Item Count - <span class="cart-count"><%=current_user.cart_count%></span>
         </h5>
         <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
         <div class="large-12 columns text-center">

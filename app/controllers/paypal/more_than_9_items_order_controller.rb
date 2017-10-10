@@ -1,8 +1,9 @@
 class Paypal::MoreThan9ItemsOrderController < ApplicationController
   def index
     @order = GroupedOrder.find(params[:id])
+    paypal_orders = @order.orders.product.user.paypal_email?
 
-    i_fee = @order.orders.sum(:total) * ENV["NORMAL_FEE_PERCENTAGE"].to_f
+    i_fee = paypal_orders.orders.sum(:total) * ENV["NORMAL_FEE_PERCENTAGE"].to_f
     fee = i_fee.round(2)
 
     order_1_fee = @order.orders.first.total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
@@ -74,8 +75,7 @@ class Paypal::MoreThan9ItemsOrderController < ApplicationController
     seller_8 = User.find(@order.orders[7].product.user_id)
     product_desc_8 = @order.orders[7].product.name
     order_8_id = @order.orders[7].id
-    @order.orders[7].ip_address = request.remote_ip
-    @order.orders[7].save
+    @order.orders[7].update_attributes(ip_address: request.remote_ip)
 
     order_9_fee = @order.orders[8].total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
     order_9_fee = order_1_fee.round(2)
@@ -83,8 +83,7 @@ class Paypal::MoreThan9ItemsOrderController < ApplicationController
     seller_9 = User.find(@order.orders[8].product.user_id)
     product_desc_9 = @order.orders[8].product.name
     order_9_id = @order.orders[8].id
-    @order.orders[8].ip_address = request.remote_ip
-    @order.orders[8].save
+    @order.orders[8].update_attributes(ip_address: request.remote_ip)
 
     uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
     request = Net::HTTP::Post.new(uri)
@@ -93,7 +92,7 @@ class Paypal::MoreThan9ItemsOrderController < ApplicationController
       "PWD" => ENV["PAYPAL_PASSWORD"], # the caller account Password \
       "SIGNATURE" => ENV["PAYPAL_SIGNATURE"], # the caller account Signature \
       "METHOD" => "SetExpressCheckout", # API operation \
-      "RETURNURL" => paypal_show_url(@order), # URL displayed to buyer after authorizing transaction \
+      "RETURNURL" => paypals_url(@order), # URL displayed to buyer after authorizing transaction \
       "CANCELURL" => orders_url(@order), # URL displayed to buyer after canceling transaction \
       "VERSION" => 93, # API version \
       "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",
@@ -209,7 +208,7 @@ class Paypal::MoreThan9ItemsOrderController < ApplicationController
       order.product.set_inventory_to_zero
       remove_from_cart(order.product.slug)
     end
-    flash[:notice] = "Payment Submitted Successfully!"
+    flash[:notice] = "Payment Submitted Successfully! Please process another payment for the remaining items."
     redirect_to complete_grouporder_url(@order.id)
   end
 end

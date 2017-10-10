@@ -22,6 +22,13 @@ class CartsController < ApplicationController
     render json: current_user.cart_count, status: 200
   end
 
+  def get_cart_total
+    @cart_ids = $redis.smembers current_user_cart
+    @cart_products = Product.where(slug: @cart_ids)
+    @total = @cart_products.sum { |product| product.price }
+    render json: @total, status: 200
+  end
+
   private
 
   def current_user_cart
