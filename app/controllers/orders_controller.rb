@@ -28,10 +28,9 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @cart_ids = $redis.smembers current_user_cart
-    @product = Product.where(slug: @cart_ids).first
-    # @seller = User.find(@product.user_id)
-    price_total = @product.price_in_cents
-    shipping_total = @product.shipping_in_cents
+    @product = Product.where(slug: @cart_ids.first).first
+    price_total = @product.price
+    shipping_total = @product.shipping
     @total = price_total + shipping_total
   end
 
@@ -59,7 +58,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         format.html {
-          flash[:notice] = 'Order was successfully created.'
+          # flash[:notice] = 'Order was successfully created.'
           redirect_to action: "purchase", id: @order.id
         }
         format.json { render :purchase, status: :created, location: @order }
