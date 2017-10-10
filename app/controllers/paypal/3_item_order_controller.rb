@@ -85,11 +85,31 @@ class Paypal::3ItemOrderController < ApplicationController
     end
     paypal_return = ParsePaypal.run(response.body)
     if paypal_return["ACK"] == "Success"
-      @order.orders.update_all(purchased: true, purchased_at: Time.now)
       redirect_to "#{ENV["PAYPAL_URL"]}#{paypal_return["TOKEN"]}"
     else
       flash[:notice] = "There was a problem initiating the PayPal transaction. Please try again or use a different payment method. Thanks."
     end
+  end
+
+  def show
+    @order = GroupedOrder.find(params[:id])
+    details = Order.get_paypal_details(params[:token])
+    @order.orders.update_all(
+      express_token: params[:token],
+      express_payer_id: details["PAYERID"],
+      paypal_first_name: details["FIRSTNAME"],
+      paypal_last_name: details["LASTNAME"],
+      purchased: true,
+      purchased_at: Time.now
+    )
+    paypal_token = params[:token]
+    @order.orders.each do |order|
+      order.purchase(paypal_token)
+      order.product.set_inventory_to_zero
+      remove_from_cart(order.product.slug)
+    end
+    flash[:notice] = "Payment Submitted Successfully!"
+    redirect_to completed_groupedorder_url(GroupedOrder.find(@order.group_order_id))
   end
 
 end

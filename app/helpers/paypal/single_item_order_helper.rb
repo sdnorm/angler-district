@@ -1,0 +1,2 @@
+module Paypal::SingleItemOrderHelper
+end

@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :paypal do
+    get 'more_than_9_items_order/index'
+  end
+
+  namespace :paypal do
+    get 'more_than_9_items_order/show'
+  end
+
+  namespace :paypal do
+    get 'single_item_order/index'
+  end
+
   get 'route_charged_order/index', to: 'route_charged_order#index', as: :route_charged_order
 
   get 'handle_stripe_group_orders/index'
