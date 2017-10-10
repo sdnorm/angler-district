@@ -96,299 +96,301 @@
 #   },
 # ])
 
-Product.create([
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },{
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },{
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-  {
-    name: "Lew's Speed Spool",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 105.50,
-    user_id: 5,
-    display_image: file
-  },
-  {
-    name: "Shimano Citica",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 155.50,
-    user_id: 6,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 207.50,
-    shipping: 10.00,
-    user_id: 7,
-    display_image: file
-  },
-  {
-    name: "Abu Garcia Revo",
-    description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
-    price: 205.50,
-    shipping: 10.00,
-    user_id: 8,
-    display_image: file
-  },
-])
+# Product.create([
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+#   {
+#     name: "Lew's Speed Spool",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 105.50,
+#     user_id: 5,
+#     display_image: file
+#   },
+#   {
+#     name: "Shimano Citica",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 155.50,
+#     user_id: 6,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 207.50,
+#     shipping: 10.00,
+#     user_id: 7,
+#     display_image: file
+#   },
+#   {
+#     name: "Abu Garcia Revo",
+#     description: "Bacon ipsum dolor amet ribeye biltong pork chuck. Shankle meatloaf porchetta bacon short ribs swine kielbasa, corned beef turkey. Leberkas tri-tip landjaeger pork. Landjaeger turkey cupim sirloin short loin rump, chuck tongue.",
+#     price: 205.50,
+#     shipping: 10.00,
+#     user_id: 8,
+#     display_image: file
+#   },
+# ])

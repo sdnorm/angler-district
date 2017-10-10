@@ -2,11 +2,11 @@ class RoutePaypalController < ApplicationController
 
   def index
     @order = Order.find(params[:id])
-    product = Product.find(@order.product_id)
+    @product = Product.find(@order.product_id)
     @order.purchased = true
     @order.save
     product.set_inventory_to_zero
-    remove_from_cart(product.slug)
+    remove_from_cart
     flash[:notice] = "Payment Submitted Successfully!"
     if @order.group_order_id == nil
       redirect_to completed_order_url(@order)
@@ -17,10 +17,14 @@ class RoutePaypalController < ApplicationController
     end
   end
 
+  def multi_or_single_item
+    
+  end
+
   private
 
-  def remove_from_cart product
-    $redis.srem current_user_cart, product
+  def remove_from_cart
+    $redis.srem current_user_cart, @product.slug
   end
 
 end
