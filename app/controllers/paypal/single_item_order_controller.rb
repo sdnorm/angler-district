@@ -53,26 +53,20 @@ class Paypal::SingleItemOrderController < ApplicationController
   def show
     @order = Order.find(params[:id])
     details = Order.get_paypal_details(params[:token])
-    @order.update_attributes(express_token: params[:token])
-    @order.express_payer_id = details["PAYERID"]
-    @order.paypal_first_name = details["FIRSTNAME"]
-    @order.paypal_last_name = details["LASTNAME"]
-    @order.save
-    @order.purchase(params[:token])
-    @order = Order.find(params[:id])
-    product = Product.find(@order.product_id)
-    @order.purchased = true
-    @order.purchased_at = Time.now
-    @order.save
-    product.set_inventory_to_zero
-    remove_from_cart(product.slug)
+    @order.update_attributes(
+      express_token: params[:token],
+      express_payer_id: details["PAYERID"],
+      paypal_first_name: details["FIRSTNAME"],
+      paypal_last_name: details["LASTNAME"],
+      purchased: true,
+      purchased_at: Time.now
+    )
+    paypal_token = params[:token]
+    @order.purchase(paypal_token)
+    @order.product.set_inventory_to_zero
+    remove_from_cart(@order.product.slug)
     flash[:notice] = "Payment Submitted Successfully!"
-    if @order.grouped_order_id == nil
-      redirect_to completed_order_url(@order)
-    elsif GroupedOrder.find(@order.grouped_order_id).orders.orders_left_to_purchase
-      redirect_to complete_grouporder_url(GroupedOrder.find(@order.grouped_order_id))
-    else
-      redirect_to completed_groupedorder_url(GroupedOrder.find(@order.group_order_id))
-    end
+    redirect_to completed_order_url(@order)
+  end
 
 end
