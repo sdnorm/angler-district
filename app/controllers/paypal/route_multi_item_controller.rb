@@ -49,9 +49,7 @@ class Paypal::RouteMultiItemController < ApplicationController
       purchased: true,
       purchased_at: Time.now
     )
-    paypal_token = params[:token]
     @order.orders.each do |order|
-      order.purchase(paypal_token)
       order.product.set_inventory_to_zero
       remove_from_cart(order.product.slug)
     end

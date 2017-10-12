@@ -69,8 +69,8 @@ class Paypal::SingleItemOrderController < ApplicationController
       purchased: true,
       purchased_at: Time.now
     )
-    paypal_token = params[:token]
-    @order.purchase(paypal_token)
+    # paypal_token = params[:token]
+    # @order.purchase(paypal_token)
     @order.product.set_inventory_to_zero
     remove_from_cart(@order.product.slug)
     flash[:notice] = "Payment Submitted Successfully!"

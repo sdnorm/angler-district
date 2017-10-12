@@ -25,7 +25,7 @@ class Order < ApplicationRecord
   scope :buyer_orders, -> (user) { where(buyer_id: user) }
   scope :seller_orders, -> (user) { where(seller_id: user) }
   scope :not_purchased, -> { where(purchased: false) }
-  scope :user_purchased, -> { where(purchased: true) }
+  scope :user_purchased, -> (buyer) { where(purchased: true, buyer_id: buyer) }
   scope :shipped, -> { where(shipped: true) }
   scope :not_shipped, -> { where(shipped: false) }
 

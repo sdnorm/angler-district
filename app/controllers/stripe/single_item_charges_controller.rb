@@ -1,15 +1,12 @@
-class ChargesController < ApplicationController
+class Stripe::SingleItemChargesController < ApplicationController
   before_action :set_order, only: [:create]
 
-  def new
-  end
-
   def create
-    user = @order.seller
+    seller = @order.seller
     amount = @order.product.price_in_cents + @order.product.shipping_in_cents
     fee = (amount.to_i * ENV["NORMAL_FEE_PERCENTAGE"].to_f)
     token = params[:stripeToken]
-    buyer_email = "spencerdnorman@yahoo.com"
+    buyer_email = current_user.email#"spencerdnorman@yahoo.com"
     customer = Stripe::Customer.create(
       source: token,
       email: buyer_email
@@ -17,7 +14,7 @@ class ChargesController < ApplicationController
     begin
       token = Stripe::Token.create({
         customer: customer.id
-      }, {stripe_account: user.uid})
+      }, {stripe_account: seller.uid})
 
       charge_attrs = {
         amount: amount,
@@ -26,7 +23,7 @@ class ChargesController < ApplicationController
         description: "Test Charge via Stripe Connect",
         application_fee: fee.to_i
       }
-      charge = Stripe::Charge.create(charge_attrs, stripe_account: user.uid)
+      charge = Stripe::Charge.create(charge_attrs, stripe_account: seller.uid)
       product = Product.find(@order.product_id)
       remove_from_cart(product.slug)
       @order.update_attributes(
@@ -55,7 +52,6 @@ class ChargesController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
     params.require(:order).permit(:address, :city, :state)
   end
@@ -63,5 +59,4 @@ class ChargesController < ApplicationController
   def remove_from_cart product
     $redis.srem current_user_cart, product
   end
-
 end

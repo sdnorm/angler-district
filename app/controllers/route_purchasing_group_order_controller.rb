@@ -1,2 +1,0 @@
-class RoutePurchasingGroupOrderController < ApplicationController
-end

@@ -28,6 +28,18 @@
           Item Count - <span class="cart-count"><%=current_user.cart_count%></span>
         </h5>
       </div>
+      <%= form_tag stripes_path(@grouped_order), id: "payment-form" do %>
+        <div class="input-group">
+          <div class="form-row">
+            <div id="card-element">
+            </div>
+            <div id="card-errors" role="alert"></div>
+          </div>
+          <div class="input-group-button">
+            <button class="button card-submit-button">Submit Payment</button>
+          </div>
+        </div>
+      <% end %>
       <div class="payment-method">
         <% if @both_count > 0 %>
           <%= render 'both_payment_methods' %>
