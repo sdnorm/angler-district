@@ -9,7 +9,6 @@ class ChargesController < ApplicationController
     amount = @order.product.price_in_cents + @order.product.shipping_in_cents
     fee = (amount.to_i * ENV["NORMAL_FEE_PERCENTAGE"].to_f)
     token = params[:stripeToken]
-    # buyer_email = params[:stripeEmail]
     buyer_email = "spencerdnorman@yahoo.com"
     customer = Stripe::Customer.create(
       source: token,
@@ -18,38 +17,40 @@ class ChargesController < ApplicationController
     begin
       token = Stripe::Token.create({
         customer: customer.id
-      }, {stripe_account: user.access_token})
+      }, {stripe_account: user.uid})
 
       charge_attrs = {
-        # customer: customer.id,
         amount: amount,
         source: token.id,
         currency: 'usd',
         description: "Test Charge via Stripe Connect",
         application_fee: fee.to_i
       }
-      # Use the user-to-be-paid's access token
-      # to make the charge directly on their account
-      Stripe::Charge.create(charge_attrs, stripe_account: user.access_token)
+      charge = Stripe::Charge.create(charge_attrs, stripe_account: user.uid)
       product = Product.find(@order.product_id)
-      @order.purchased = true
-      @order.purchased_at = Time.now
-      product.set_inventory_to_zero
       remove_from_cart(product.slug)
+      @order.update_attributes(
+        purchased: true,
+        purchased_at: Time.now,
+        stripe_charge_id: charge.id,
+        payment_method: "stripe",
+        charged: true
+      )
+      product.set_inventory_to_zero
       ItemPurchasedMailer.alert_seller(@order.seller, @order, product, @order.buyer)
       flash[:notice] = "Payment Submitted Successfully!"
       redirect_to completed_order_url(@order)
     rescue Stripe::CardError => e
-      puts "----- stripe error -----"
+      puts "----- stripe error < begin > -----"
       error = e.json_body[:error][:message]
       flash[:error] = "Charge failed! #{error}"
       redirect_to complete_order_url(@order)
+      puts "----- stripe error < end > -----"
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
   end
