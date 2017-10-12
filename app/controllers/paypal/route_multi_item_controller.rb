@@ -1,29 +1,30 @@
 class Paypal::RouteMultiItemController < ApplicationController
 
   def index
-    @grouped_order = GroupedOrder.find(params[:id]).paypal_orders
+    @grouped_order = GroupedOrder.includes(:orders).where(orders: {payment_method: "paypal"}).find(params[:id])
+    # @grouped_order = g_o
     # paypal_orders = PaypalOrders.run(@grouped_order)
-    if @grouped_order.count > 0#PaypalOrderChecker.run(@grouped_order)
-      number_of_items = @group_order.count
+    if @grouped_order.orders.count > 0#PaypalOrderChecker.run(@grouped_order)
+      number_of_items = @grouped_order.orders.count
       case number_of_items
       when 2
-        redirect_to 2_item_paypal_order_url(@group_order.id)
+        redirect_to two_item_paypal_order_url(@grouped_order.id)
       when 3
-        redirect_to 3_item_paypal_order_url(@group_order.id)
+        redirect_to three_item_paypal_order_url(@grouped_order.id)
       when 4
-        redirect_to 4_item_paypal_order_url(@group_order.id)
+        redirect_to four_item_paypal_order_url(@grouped_order.id)
       when 5
-        redirect_to 5_item_paypal_order_url(@group_order.id)
+        redirect_to five_item_paypal_order_url(@grouped_order.id)
       when 6
-        redirect_to 6_item_paypal_order_url(@group_order.id)
+        redirect_to six_item_paypal_order_url(@grouped_order.id)
       when 7
-        redirect_to 7_item_paypal_order_url(@group_order.id)
+        redirect_to seven_item_paypal_order_url(@grouped_order.id)
       when 8
-        redirect_to 8_item_paypal_order_url(@group_order.id)
+        redirect_to eight_item_paypal_order_url(@grouped_order.id)
       when 9
-        redirect_to 9_item_paypal_order_url(@group_order.id)
+        redirect_to nine_item_paypal_order_url(@grouped_order.id)
       else
-        redirect_to more_than_9_items_paypal_order_url(@group_order.id)
+        redirect_to more_than_9_items_paypal_order_url(@grouped_order.id)
       end
     else
       @grouped_order.GroupedOrder.includes(:orders).find(params[:id])

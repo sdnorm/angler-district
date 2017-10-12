@@ -74,6 +74,7 @@ class Product < ApplicationRecord
 
     def shipping_to_cents
       if self.shipping == nil
+        self.shipping = 0
         self.shipping_in_cents = 0
       else
         self.shipping_in_cents = self.shipping * 100

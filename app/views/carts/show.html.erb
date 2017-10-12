@@ -43,13 +43,13 @@
       <span class="cart-count"><%=current_user.cart_count%></span> Product(s) Selected
     </p>
     <p>
-      Product(s) Total: <%= number_to_currency(@total) %>
+      Product(s) Total: <span class="cart-total"><%= number_to_currency(@total) %></span>
     </p>
     <p>
       Shipping: n/a
     </p>
     <h4>
-      Total: <%= number_to_currency(@total) %>
+      Total: <span class="cart-total"><%= number_to_currency(@total) %></span>
     </h4>
     <%if signed_in?%>
       <% if @cart_ids.count >= 1 %>

@@ -6,10 +6,11 @@ class ChargesController < ApplicationController
 
   def create
     user = @order.seller
-    amount = @order.product.price_to_cents + @order.product.shipping_in_cents
+    amount = @order.product.price_in_cents + @order.product.shipping_in_cents
     fee = (amount.to_i * ENV["NORMAL_FEE_PERCENTAGE"].to_f)
     token = params[:stripeToken]
-    buyer_email = params[:stripeEmail]
+    # buyer_email = params[:stripeEmail]
+    buyer_email = "spencerdnorman@yahoo.com"
     customer = Stripe::Customer.create(
       source: token,
       email: buyer_email

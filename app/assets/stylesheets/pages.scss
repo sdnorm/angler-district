@@ -176,14 +176,18 @@
 }
 
 .faq-top-image {
-  background: image-url('FAQs_Background_Image-01.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: image-url('FAQs_Background_Image-01.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // background-size: contain;
+  // background-repeat: no-repeat;
   // background-size: 100px 300px;
-  height: 300px;
-  min-width: 100%;
-  margin-top: -3px;
-  margin-left: -2px;
+  // height: 300px;
+  // min-width: 100%;
+  // margin-top: -3px;
+  // margin-left: -2px;
   @media only screen and (max-width: 40em) {
     height: 100px;
   }
@@ -214,14 +218,18 @@
 }
 
 .how-to-top-image {
-  background: image-url('How-to-Sell-Banner-02.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: image-url('How-to-Sell-Banner-02.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // background-size: contain;
+  // background-repeat: no-repeat;
   // background-size: 100px 300px;
-  height: 300px;
-  min-width: 100%;
-  margin-top: -3px;
-  margin-left: -2px;
+  // height: 300px;
+  // min-width: 100%;
+  // margin-top: -3px;
+  // margin-left: -2px;
   @media only screen and (max-width: 40em) {
     height: 100px;
   }

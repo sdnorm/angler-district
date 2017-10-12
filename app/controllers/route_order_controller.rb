@@ -2,6 +2,7 @@ class RouteOrderController < ApplicationController
 
   def route_order
     @cart_ids = $redis.smembers current_user_cart
+    
     case @cart_ids.count
     when 0
       redirect_back fallback_location: cart_url, notice: "All items were removed from your cart."
@@ -38,7 +39,6 @@ class RouteOrderController < ApplicationController
     @products_ids = []
     if @recent_go_orders != nil && @recent_go_orders.count > 1
       @recent_go_orders.each do |order|
-        puts order.product_id
         @products_ids << order.product.slug
       end
     end

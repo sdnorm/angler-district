@@ -22,10 +22,10 @@
           Order Details
         </h2>
         <h5>
-          Total - <%= number_to_currency(@total/100.0) %>
+          Total - <span class="cart-total"><%= number_to_currency(@total) %></span>
         </h5>
         <h5>
-          Item Count - <%= @orders.count %>
+          Item Count - <span class="cart-count"><%=current_user.cart_count%></span>
         </h5>
       </div>
       <div class="payment-method">
@@ -40,7 +40,6 @@
         <% end %>
       </div>
       <div class="large-12 columns text-center">
-        <span style="color: #2c3e50;">(Refresh the page to see an updated total and item count if you remove an item from your cart on this page.)</span>
         <% @grouped_order.orders.each do |product| %>
           <div class="cart-box-go">
             <span id="cart-item-go">

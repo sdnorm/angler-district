@@ -1,4 +1,7 @@
 class GroupedChargesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def new
   end
 
@@ -15,7 +18,8 @@ class GroupedChargesController < ApplicationController
     @stripe_total = @stripe_orders.sum {|order| order.price_in_cents + order.shipping_in_cents}
 
     token = params[:stripeToken]
-    buyer_email = params[:stripeEmail]
+    # buyer_email = params[:stripeEmail]
+    buyer_email = current_user.email
     customer = Stripe::Customer.create(
       source: token,
       email: buyer_email

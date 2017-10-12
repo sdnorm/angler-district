@@ -1,4 +1,4 @@
-class Paypal::6ItemOrderController < ApplicationController
+class Paypal::NineItemOrderController < ApplicationController
 
   def index
     @order = GroupedOrder.find(params[:id])
@@ -60,6 +60,33 @@ class Paypal::6ItemOrderController < ApplicationController
     @order.orders[5].ip_address = request.remote_ip
     @order.orders[5].save
 
+    order_7_fee = @order.orders[6].total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
+    order_7_fee = order_1_fee.round(2)
+    order_7_total = @order.orders[6].total - order_1_fee
+    seller_7 = User.find(@order.orders[6].product.user_id)
+    product_desc_7 = @order.orders[6].product.name
+    order_7_id = @order.orders[6].id
+    @order.orders[6].ip_address = request.remote_ip
+    @order.orders[6].save
+
+    order_8_fee = @order.orders[7].total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
+    order_8_fee = order_1_fee.round(2)
+    order_8_total = @order.orders[7].total - order_1_fee
+    seller_8 = User.find(@order.orders[7].product.user_id)
+    product_desc_8 = @order.orders[7].product.name
+    order_8_id = @order.orders[7].id
+    @order.orders[7].ip_address = request.remote_ip
+    @order.orders[7].save
+
+    order_9_fee = @order.orders[8].total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
+    order_9_fee = order_1_fee.round(2)
+    order_9_total = @order.orders[8].total - order_1_fee
+    seller_9 = User.find(@order.orders[8].product.user_id)
+    product_desc_9 = @order.orders[8].product.name
+    order_9_id = @order.orders[8].id
+    @order.orders[8].ip_address = request.remote_ip
+    @order.orders[8].save
+
     uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
     request = Net::HTTP::Post.new(uri)
     request.set_form_data(
@@ -119,13 +146,37 @@ class Paypal::6ItemOrderController < ApplicationController
       "PAYMENTREQUEST_5_SELLERPAYPALACCOUNTID" => seller_6.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
       "PAYMENTREQUEST_5_PAYMENTREQUESTID" => "Order#{order_6_id}-PAYMENT5",  # unique ID for 1st payment \
       "PAYMENTREQUEST_6_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_6_AMT" => fee, # total amount of second payment \
+      "PAYMENTREQUEST_6_AMT" => order_7_total, # total amount of first payment \
       "PAYMENTREQUEST_6_ITEMAMT" => 0,
       "PAYMENTREQUEST_6_TAXAMT" => 0,
       "PAYMENTREQUEST_6_PAYMENTACTION" => "Order",
-      "PAYMENTREQUEST_6_DESC" => "Angler District Fee",
-      "PAYMENTREQUEST_6_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com", # PayPal e-mail of 2nd receiver \
-      "PAYMENTREQUEST_6_PAYMENTREQUESTID" => "Order#{@order.id}-PAYMENT6", # unique ID for 1st payment \
+      "PAYMENTREQUEST_6_DESC" => "Purchased #{product_desc_7}",
+      "PAYMENTREQUEST_6_SELLERPAYPALACCOUNTID" => seller_7.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
+      "PAYMENTREQUEST_6_PAYMENTREQUESTID" => "Order#{order_7_id}-PAYMENT6",  # unique ID for 1st payment \
+      "PAYMENTREQUEST_7_CURRENCYCODE" => "USD",
+      "PAYMENTREQUEST_7_AMT" => order_8_total, # total amount of first payment \
+      "PAYMENTREQUEST_7_ITEMAMT" => 0,
+      "PAYMENTREQUEST_7_TAXAMT" => 0,
+      "PAYMENTREQUEST_7_PAYMENTACTION" => "Order",
+      "PAYMENTREQUEST_7_DESC" => "Purchased #{product_desc_8}",
+      "PAYMENTREQUEST_7_SELLERPAYPALACCOUNTID" => seller_8.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
+      "PAYMENTREQUEST_7_PAYMENTREQUESTID" => "Order#{order_8_id}-PAYMENT7",  # unique ID for 1st payment \
+      "PAYMENTREQUEST_8_CURRENCYCODE" => "USD",
+      "PAYMENTREQUEST_8_AMT" => order_9_total, # total amount of first payment \
+      "PAYMENTREQUEST_8_ITEMAMT" => 0,
+      "PAYMENTREQUEST_8_TAXAMT" => 0,
+      "PAYMENTREQUEST_8_PAYMENTACTION" => "Order",
+      "PAYMENTREQUEST_8_DESC" => "Purchased #{product_desc_9}",
+      "PAYMENTREQUEST_8_SELLERPAYPALACCOUNTID" => seller_9.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
+      "PAYMENTREQUEST_8_PAYMENTREQUESTID" => "Order#{order_9_id}-PAYMENT8",  # unique ID for 1st payment \
+      "PAYMENTREQUEST_9_CURRENCYCODE" => "USD",
+      "PAYMENTREQUEST_9_AMT" => fee, # total amount of second payment \
+      "PAYMENTREQUEST_9_ITEMAMT" => 0,
+      "PAYMENTREQUEST_9_TAXAMT" => 0,
+      "PAYMENTREQUEST_9_PAYMENTACTION" => "Order",
+      "PAYMENTREQUEST_9_DESC" => "Angler District Fee",
+      "PAYMENTREQUEST_9_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com", # PayPal e-mail of 2nd receiver \
+      "PAYMENTREQUEST_9_PAYMENTREQUESTID" => "Order#{@order.id}-PAYMENT9", # unique ID for 1st payment \
     )
     req_options = {
       use_ssl: uri.scheme == "https",

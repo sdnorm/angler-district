@@ -1,4 +1,4 @@
-class Paypal::8ItemOrderController < ApplicationController
+class Paypal::EightItemOrderController < ApplicationController
 
   def index
     @order = GroupedOrder.find(params[:id])

@@ -1,4 +1,4 @@
-class Paypal::5ItemOrderController < ApplicationController
+class Paypal::FourItemOrderController < ApplicationController
 
   def index
     @order = GroupedOrder.find(params[:id])
@@ -41,15 +41,6 @@ class Paypal::5ItemOrderController < ApplicationController
     order_4_id = @order.orders.fourth.id
     @order.orders.fourth.ip_address = request.remote_ip
     @order.orders.fourth.save
-
-    order_5_fee = @order.orders.fifth.total * ENV["NORMAL_FEE_PERCENTAGE"].to_f
-    order_5_fee = order_1_fee.round(2)
-    order_5_total = @order.orders.fifth.total - order_1_fee
-    seller_5 = User.find(@order.orders.fifth.product.user_id)
-    product_desc_5 = @order.orders.fifth.product.name
-    order_5_id = @order.orders.fifth.id
-    @order.orders.fifth.ip_address = request.remote_ip
-    @order.orders.fifth.save
 
     uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
     request = Net::HTTP::Post.new(uri)
@@ -94,21 +85,13 @@ class Paypal::5ItemOrderController < ApplicationController
       "PAYMENTREQUEST_3_SELLERPAYPALACCOUNTID" => seller_4.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
       "PAYMENTREQUEST_3_PAYMENTREQUESTID" => "Order#{order_4_id}-PAYMENT3",  # unique ID for 1st payment \
       "PAYMENTREQUEST_4_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_4_AMT" => order_5_total, # total amount of first payment \
+      "PAYMENTREQUEST_4_AMT" => fee, # total amount of second payment \
       "PAYMENTREQUEST_4_ITEMAMT" => 0,
       "PAYMENTREQUEST_4_TAXAMT" => 0,
       "PAYMENTREQUEST_4_PAYMENTACTION" => "Order",
-      "PAYMENTREQUEST_4_DESC" => "Purchased #{product_desc_5}",
-      "PAYMENTREQUEST_4_SELLERPAYPALACCOUNTID" => seller_5.paypal_email,#"seller-ad@email.com", # PayPal e-mail of 1st receiver \
-      "PAYMENTREQUEST_4_PAYMENTREQUESTID" => "Order#{order_5_id}-PAYMENT4",  # unique ID for 1st payment \
-      "PAYMENTREQUEST_5_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_5_AMT" => fee, # total amount of second payment \
-      "PAYMENTREQUEST_5_ITEMAMT" => 0,
-      "PAYMENTREQUEST_5_TAXAMT" => 0,
-      "PAYMENTREQUEST_5_PAYMENTACTION" => "Order",
-      "PAYMENTREQUEST_5_DESC" => "Angler District Fee",
-      "PAYMENTREQUEST_5_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com", # PayPal e-mail of 2nd receiver \
-      "PAYMENTREQUEST_5_PAYMENTREQUESTID" => "Order#{@order.id}-PAYMENT5", # unique ID for 1st payment \
+      "PAYMENTREQUEST_4_DESC" => "Angler District Fee",
+      "PAYMENTREQUEST_4_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com", # PayPal e-mail of 2nd receiver \
+      "PAYMENTREQUEST_4_PAYMENTREQUESTID" => "Order#{@order.id}-PAYMENT4", # unique ID for 1st payment \
     )
     req_options = {
       use_ssl: uri.scheme == "https",

@@ -34,7 +34,7 @@
               <i class="fa fa-shopping-cart"></i>
               <span><%=product.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
               <div class="paypal-button-one">
-                <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
+                <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypals_path(@grouped_order) %>
               </div>
             <% end %>
           <%end%>
