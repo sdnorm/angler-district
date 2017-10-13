@@ -5,9 +5,7 @@ class Paypal::SingleItemOrderController < ApplicationController
     case @cart_ids.count
     when 0
       redirect_back fallback_location: cart_url, notice: "All items were removed from your cart."
-    when > 1
-      redirect_to complete_grouporder_url(params[:id])
-    else
+    when 1
       @order = Order.find(params[:id])
       @product = Product.find(@order.product_id)
       @seller = User.find(@product.user_id)
@@ -55,6 +53,8 @@ class Paypal::SingleItemOrderController < ApplicationController
       else
         flash[:notice] = "There was a problem initiating the PayPal transaction. Please try again or use a different payment method. Thanks."
       end
+    else
+      redirect_to complete_grouporder_url(params[:id])
     end
   end
 

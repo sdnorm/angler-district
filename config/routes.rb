@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # paypal payments
   get 'route-paypal/:id', to: 'paypal/route_charge#index', as: :route_paypal_order
   get 'paypal-payment/:id/create', to: 'paypal/single_item_order#index', as: :paypal
+  get 'paypal-order/:id/paypal_charged', to: 'single_item_order#show', as: :paypal_show
   get 'paypal-payments/:id/create', to: 'paypal/route_multi_item#index', as: :paypals
   get 'paypal-payment2/:id/create', to: 'paypal/two_item_order#index', as: :two_item_paypal_order
   get 'paypal-payment3/:id/create', to: 'paypal/three_item_order#index', as: :three_item_paypal_order
@@ -20,8 +21,8 @@ Rails.application.routes.draw do
   get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
 
   #stripe payments
-  post 's-payments/charged-order/:id', to: 'stripe/multi_item_charges#create', as: :stripes
-  post 's-payment/charged-order/:id', to: 'stripe/single_item_charges#create', as: :stripe
+  post 's-payments/charged-order/:id', to: 'stripe/multi_item_charges#create', as: :stripes_post
+  post 's-payment/charged-order/:id', to: 'stripe/single_item_charges#create', as: :stripe_post
   # get 'charged-order/:id', to: 'orders#charged', as: :completed_order
   get 's-payments/:id/create', to: 'stripe/multi_item_order#index', as: :stripes
   get 's-payment/:id/create', to: 'stripe/single_item_order#index', as: :stripe
@@ -88,6 +89,10 @@ Rails.application.routes.draw do
   get 'carts/cart/get-cart-total', to: 'carts#get_cart_total'
   get 'grouped_orders/cart/get-cart-total', to: 'carts#get_cart_total'
   get 'complete-grouporder/cart/get-cart-total', to: 'carts#get_cart_total'
+  get 'complete-order/cart/get-cart-total', to: 'carts#get_cart_total'
+  get 'carts/cart/get-cart-total', to: 'carts#get_cart_total'
+
+  get 'route-order', to: 'route_order#route_order', as: :route_order
 
   # General Pages and Guides
   get '/about', to: 'pages#about', as: :about

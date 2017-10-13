@@ -49,12 +49,12 @@
   // border-style: solid;
   // border-color: #2c3e50;
   color: #2c3e50;
-  padding: 1.5rem;
+  // padding: 1.5rem;
   p {
     margin-bottom: 0;
   }
   width: 100%;
-  height: 145px;
+  // height: 145px;
 }
 
 .paypal-one-lonely {
@@ -71,16 +71,16 @@
 .paypal-one {
   display: inline-block;
   margin-left: 3px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #2c3e50;
+  // border-radius: 5px;
+  // border-style: solid;
+  // border-color: #2c3e50;
   color: #2c3e50;
   padding: 1.5rem;
   p {
     margin-bottom: 0;
   }
   width: 100%;
-  height: 145px;
+  // height: 145px;
 }
 
 #one-edit {
@@ -112,4 +112,30 @@
 
 .card-submit-button {
     border-radius: 4px !important;
+}
+
+.card-form {
+  margin-top: .7rem;
+}
+
+.hide-card-form {
+  display: none;
+}
+
+.card-hover:hover {
+  cursor: pointer;
+  .card-hover-one {
+    font-weight: bold;
+  }
+  .fa-4x {
+    font-size: 4.5em;
+  }
+}
+
+.paypal-button-one:hover img {
+  -webkit-transform:scale(1.1); /* Safari and Chrome */
+  -moz-transform:scale(1.1); /* Firefox */
+  -ms-transform:scale(1.1); /* IE 9 */
+  -o-transform:scale(1.1); /* Opera */
+   transform:scale(1.1);
 }
