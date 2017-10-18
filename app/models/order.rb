@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 
   include ParsePaypal
   include ProcessPaypal
+  include PaypalDetails
 
   after_initialize :set_defaults
 

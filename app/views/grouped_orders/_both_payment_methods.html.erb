@@ -2,20 +2,17 @@
   <div class="cc-payment-one">
     <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
     <div class="stripe-button stripe-option" id="stripe-button">
-      <%= form_tag grouped_charges_path do %>
-        <article>
-          <% if flash[:error].present? %>
-            <div id="error_explanation">
-              <p><%= flash[:error] %></p>
+      <%= form_tag stripe_post_path(@grouped_order), id: "payment-form" do %>
+        <div class="input-group">
+          <div class="form-row">
+            <div id="card-element">
             </div>
-          <% end %>
-        </article>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Angler District - Tackle"
-                data-amount="<%= @stripe_total %>"
-                data-locale="auto">
-        </script>
+            <div id="card-errors" role="alert"></div>
+          </div>
+          <div class="input-group-button">
+            <button class="button card-submit-button">Submit Payment</button>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -24,7 +21,7 @@
   <div class="paypal" id="paypal">
     <i class="fa fa-3x fa-paypal" aria-hidden="true"></i>
     <div class="paypal-button-one">
-      <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypal_create_path(@grouped_order) %>
+      <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypal-44px.png"), paypals_path(@grouped_order) %>
     </div>
   </div>
 </div>

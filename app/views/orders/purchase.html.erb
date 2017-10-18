@@ -1,77 +1,36 @@
 <div class="row font-color">
   <div class="row align-center">
-    <div class="column large-4 small-12 text-center one-form">
-      <h2>Shipping Information</h2>
-      <p>
-        Name: <%= @order.first_name %> <%= @order.last_name %>
-      </p>
-      <p>
-        Email: <%= @order.buyer.email %>
-      </p>
-      <p>
-        Address: <%= @order.address1 %> <%= @order.address2 %>
-      </p>
-      <p>
-        City, State, Zip: <%= @order.city %>, <%= @order.state %> <%= @order.zip_code %>
-      </p>
-      <%= link_to 'Edit', edit_order_path(@order), class: "button", id: "one-edit" %>
-    </div>
-    <div class="column large-8 small-12 text-center">
+    <div class="column large-5 small-12 text-center one-form">
       <div class="column large-12">
         <h3>Choose Payment Method:</h3>
         <div class="payment-method">
-          <% if @order.seller.paypal? == false %>
-            <div class="large-6 columns">
-              <div class="card-hover">
-                <h5 class="card-form card-hover-one">Credit Card</h5>
-                <div class="cc-payment-one card-form card-hover-two">
-                  <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
+          <% if @order.seller.paypal? && @order.seller.stripe? %>
+            <%= render 'payment_options/paypal_and_stripe_single_item' %>
           <% elsif @order.seller.stripe? %>
-            <div class="large-6 columns">
-              <div class="card-hover">
-                <h5 class="card-form card-hover-one">Credit Card</h5>
-                <div class="cc-payment-one card-form card-hover-two">
-                  <i class="fa fa-4x fa-credit-card" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <% if @order.seller.stripe? == false %>
-            <div class="large-6 columns align-middle">
-              <div class="paypal-one-lonely" id="paypal-lonely">
-                <div class="paypal-button-one">
-                  <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png", alt: "PayPal Logo"), paypal_path(@order) %>
-                </div>
-              </div>
-            </div>
+            <%= render 'payment_options/stripe_only_single_item' %>
           <% elsif @order.seller.paypal? %>
-            <div class="large-6 columns">
-              <div class="paypal-one" id="paypal">
-                <div class="paypal-button-one">
-                  <%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png", alt: "PayPal Logo"), paypal_path(@order) %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="card-form hide-card-form">
-          <%= form_tag stripe_post_path(@order), id: "payment-form" do %>
-            <div class="input-group">
-              <div class="form-row">
-                <div id="card-element">
-                </div>
-                <div id="card-errors" role="alert"></div>
-              </div>
-              <div class="input-group-button">
-                <button class="button card-submit-button">Submit Payment</button>
-              </div>
-            </div>
+            <%= render 'payment_options/paypal_only_single_item' %>
           <% end %>
         </div>
       </div>
+      <div class="large-12">
+        <h2>Shipping Information</h2>
+        <p>
+          Name: <%= @order.first_name %> <%= @order.last_name %>
+        </p>
+        <p>
+          Email: <%= @order.buyer.email %>
+        </p>
+        <p>
+          Address: <%= @order.address1 %> <%= @order.address2 %>
+        </p>
+        <p>
+          City, State, Zip: <%= @order.city %>, <%= @order.state %> <%= @order.zip_code %>
+        </p>
+        <%= link_to 'Edit', edit_order_path(@order), class: "button", id: "one-edit" %>
+      </div>
+    </div>
+    <div class="column large-7 small-12 text-center">
       <div class="column large-12">
         <h2>
           Order Details

@@ -1,23 +1,37 @@
 <div class="row font-color">
   <div class="row align-center">
-    <div class="column large-4 small-12 text-center one-form">
-      <h2>Shipping Information</h2>
-      <p>
-        Name: <%= @grouped_order.first_name %> <%= @grouped_order.last_name %>
-      </p>
-      <p>
-        Email: <%= @grouped_order.buyer.email %>
-      </p>
-      <p>
-        Address: <%= @grouped_order.address1 %> <%= @grouped_order.address2 %>
-      </p>
-      <p>
-        City, State, Zip: <%= @grouped_order.city %>, <%= @grouped_order.state %> <%= @grouped_order.zip_code %>
-      </p>
-      <%= link_to 'Edit', edit_grouped_order_path(@grouped_order), class: "button", id: "one-edit" %>
+    <div class="column large-5 small-12 text-center one-form">
+      <div class="column large-12">
+        <h3>Choose Payment Method:</h3>
+        <div class="payment-method">
+          <% if @order.seller.paypal? && @order.seller.stripe? %>
+            <%= render 'payment_options/paypal_and_stripe_single_item' %>
+          <% elsif @order.seller.stripe? %>
+            <%= render 'payment_options/stripe_only_single_item' %>
+          <% elsif @order.seller.paypal? %>
+            <%= render 'payment_options/paypal_only_single_item' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="large-12">
+        <h2>Shipping Information</h2>
+        <p>
+          Name: <%= @order.first_name %> <%= @order.last_name %>
+        </p>
+        <p>
+          Email: <%= @order.buyer.email %>
+        </p>
+        <p>
+          Address: <%= @order.address1 %> <%= @order.address2 %>
+        </p>
+        <p>
+          City, State, Zip: <%= @order.city %>, <%= @order.state %> <%= @order.zip_code %>
+        </p>
+        <%= link_to 'Edit', edit_order_path(@order), class: "button", id: "one-edit" %>
+      </div>
     </div>
-    <div class="column large-8 small-12 text-center">
-      <div class="column large-12 order-details">
+    <div class="column large-7 small-12 text-center">
+      <div class="column large-12">
         <h2>
           Order Details
         </h2>
@@ -27,65 +41,9 @@
         <h5>
           Item Count - <span class="cart-count"><%=current_user.cart_count%></span>
         </h5>
-      </div>
-      <%= form_tag stripes_path(@grouped_order), id: "payment-form" do %>
-        <div class="input-group">
-          <div class="form-row">
-            <div id="card-element">
-            </div>
-            <div id="card-errors" role="alert"></div>
-          </div>
-          <div class="input-group-button">
-            <button class="button card-submit-button">Submit Payment</button>
-          </div>
+        <div class="large-12 columns text-center">
+          <%= render 'list_product' %>
         </div>
-      <% end %>
-      <div class="payment-method">
-        <% if @both_count > 0 %>
-          <%= render 'both_payment_methods' %>
-        <% elsif @stripe_count > 0  && @paypal_count > 0%>
-          <%= render 'both_payment_methods' %>
-        <% elsif @stripe_count > 0  && @paypal_count > 0%>
-          <%= render 'stripe_payment_method' %>
-        <% elsif @paypal_count %>
-          <%= render 'paypal_payment_method' %>
-        <% end %>
-      </div>
-      <div class="large-12 columns text-center">
-        <% @grouped_order.orders.each do |product| %>
-          <div class="cart-box-go">
-            <span id="cart-item-go">
-              <%= link_to product_path(product.product) do %>
-                <%= image_tag(product.product.image.thumb) %>
-              <% end %>
-            </span>
-            <span>
-              <h4><%= link_to product.product.name, product_path(product.product), id: "title-link-go" %></h4>
-              <h6><%= number_to_currency(product.product.price) %></h6>
-              <p>
-                Seller: <%= product.product.user.profile_name %>
-              </p>
-            </span>
-            <span>
-              <%= link_to "", id: "purchase-button", data: {target: product.product.cart_action(current_user.try :id), addUrl: add_to_cart_path(product.product), removeUrl: remove_from_cart_path(product.product)} do %>
-                <% if product.product.cart_action(current_user.try :id) == 'Remove from' %>
-                  <i class="fa fa-times"></i>
-                  <span><%=product.product.cart_action(current_user.try :id)%></span> Cart
-                <% else %>
-                  <i class="fa fa-shopping-cart"></i>
-                  <span><%=product.product.cart_action(current_user.try :id)%></span> <span>Cart</span>
-                <% end %>
-              <%end%>
-              <% if product.product.accept_stripe? && product.product.accept_paypal? %>
-                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-paypal" id="js-paypal-button" aria-hidden="true"></i></p>
-              <% elsif product.product.accept_paypal? %>
-                <p class="payment-options" id="js-paypal-button"><i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i></p>
-              <% elsif product.product.accept_stripe? %>
-                <p class="payment-options"><i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-discover" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i> <i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i></p>
-              <% end %>
-            </span>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>

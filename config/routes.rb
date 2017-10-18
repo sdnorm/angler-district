@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # paypal payments
   get 'route-paypal/:id', to: 'paypal/route_charge#index', as: :route_paypal_order
   get 'paypal-payment/:id/create', to: 'paypal/single_item_order#index', as: :paypal
-  get 'paypal-order/:id/paypal_charged', to: 'single_item_order#show', as: :paypal_show
+  get 'paypal-order/:id/paypal_charged', to: 'paypal/single_item_order#show', as: :paypal_show
   get 'paypal-payments/:id/create', to: 'paypal/route_multi_item#index', as: :paypals
   get 'paypal-payment2/:id/create', to: 'paypal/two_item_order#index', as: :two_item_paypal_order
   get 'paypal-payment3/:id/create', to: 'paypal/three_item_order#index', as: :three_item_paypal_order

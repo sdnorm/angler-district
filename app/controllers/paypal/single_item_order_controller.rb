@@ -60,17 +60,15 @@ class Paypal::SingleItemOrderController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    details = Order.get_paypal_details(params[:token])
+    details = PaypalDetails.get(params[:token]) # paypal_details(params[:token])
     @order.update_attributes(
       express_token: params[:token],
-      express_payer_id: details["PAYERID"],
-      paypal_first_name: details["FIRSTNAME"],
-      paypal_last_name: details["LASTNAME"],
+      express_payer_id: details["PayerID"],
+      # paypal_first_name: details["FIRSTNAME"],
+      # paypal_last_name: details["LASTNAME"],
       purchased: true,
       purchased_at: Time.now
     )
-    # paypal_token = params[:token]
-    # @order.purchase(paypal_token)
     @order.product.set_inventory_to_zero
     remove_from_cart(@order.product.slug)
     flash[:notice] = "Payment Submitted Successfully!"
