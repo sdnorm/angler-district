@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :stripe do
+    get 'account_connection/index'
+  end
+
   # paypal payments
   get 'route-paypal/:id', to: 'paypal/route_charge#index', as: :route_paypal_order
   get 'paypal-payment/:id/create', to: 'paypal/single_item_order#index', as: :paypal
@@ -73,6 +77,11 @@ Rails.application.routes.draw do
   patch 'user_profile/:id', to: 'user_profiles#update'
   put 'user_profile/:id', to: 'user_profiles#update'
   delete 'user_profile/:id', to: 'user_profiles#destroy'
+
+  # Stripe Account Connection
+
+  get 'sellers/stripe/authorize', to: 'stripe/account_connection#index', as: :first_stripe_step
+  get 'sellers/stripe/token', to: 'stripe/account_connection#confirmation', as: :confirm_stripe
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

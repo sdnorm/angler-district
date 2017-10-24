@@ -13,10 +13,14 @@ class UserProfilesController < ApplicationController
 
   def show
     @user = current_user
-    if @user.paypal_email_the_same == true
-      @paypal_email = @user.email
+    if params[:code].present? && params[:state].present?
+      redirect_to confirm_stripe_url(code: params[:code], state: params[:state])
     else
-      @paypal_email = @user.paypal_email
+      if @user.paypal_email_the_same == true
+        @paypal_email = @user.email
+      else
+        @paypal_email = @user.paypal_email
+      end
     end
   end
 

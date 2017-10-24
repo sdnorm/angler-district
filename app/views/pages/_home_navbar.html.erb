@@ -31,8 +31,8 @@
           </li>
           <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
         <%else%>
-          <li><div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, id: "title-link" %></div></li>
-          <li><%= link_to "Log In", new_user_session_path, class: "button main-button" %></li>
+          <li><div class="nav-link"><%= link_to "Sign Up", new_user_registration_path(anchor: "sign-up"), id: "title-link" %></div></li>
+          <li><%= link_to "Log In", new_user_session_path(anchor: "sign-in"), class: "button main-button" %></li>
         <%end%>
       </ul>
     </div>

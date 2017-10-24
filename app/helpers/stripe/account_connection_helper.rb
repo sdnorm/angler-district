@@ -1,0 +1,2 @@
+module Stripe::AccountConnectionHelper
+end
