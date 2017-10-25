@@ -9,9 +9,9 @@
 
 // $(function(){ $(document).foundation(); });
 
-$(document).on('turbolinks:load', () ->
-  $(document).foundation()
-)
+$(document).on('turbolinks:load', function() {
+  return $(document).foundation();
+});
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
