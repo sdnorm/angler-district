@@ -5,9 +5,13 @@
 //=
 //= require_tree .
 
-$(document).foundation();
+// $(document).foundation();
 
 // $(function(){ $(document).foundation(); });
+
+$(document).on('turbolinks:load', () ->
+  $(document).foundation()
+)
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
