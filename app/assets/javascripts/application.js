@@ -5,7 +5,9 @@
 //=
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(document).foundation();
+
+// $(function(){ $(document).foundation(); });
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
