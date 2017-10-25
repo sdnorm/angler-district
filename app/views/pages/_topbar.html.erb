@@ -11,19 +11,14 @@
     <div class="top-bar-right">
       <ul class="dropdown vertical medium-horizontal menu" id="main-drop" data-responsive-menu="drilldown medium-dropdown"  data-parent-link="true" data-back-button="<li class='js-drilldown-back'><a tabindex='0'>Back</a></li>">
         <%if signed_in?%>
-          <li class="has-submenu">
-            <a href="#">My Stuff</a>
-            <ul class="submenu menu vertical nav-drop" data-submenu>
-              <li id="drop-main-item">
-                <%= link_to "Orders", user_orders_path %>
-              </li>
-              <li id="drop-main-item">
-                <%= link_to "Profile", user_profile_path %>
-              </li>
-              <li id="drop-main-item">
-                <%= link_to "Listed Products", all_user_products_path %>
-              </li>
-            </ul>
+          <li>
+            <a style="cursor:pointer" onclick="openNav()">My Stuff</a>
+            <div id="mySidenav" class="sidenav">
+              <span href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="cursor:pointer">&times;</span>
+              <%= link_to "Orders", user_orders_path %>
+              <%= link_to "Profile", user_profile_path %>
+              <%= link_to "Listed Products", all_user_products_path %>
+            </div>
           </li>
           <li>
             <%= link_to cart_path do%>
@@ -37,7 +32,6 @@
           <li><div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, id: "title-link" %></div></li>
           <li><%= link_to "Log In", new_user_session_path, class: "button main-button" %></li>
         <%end%>
-        
       </ul>
     </div>
   </div>

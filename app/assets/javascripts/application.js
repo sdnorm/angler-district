@@ -5,29 +5,7 @@
 //=
 //= require_tree .
 
-// $(document).foundation();
-
-// $(function(){ $(document).foundation(); });
-
-$(document).on('turbolinks:load', function() {
-  return $(document).foundation();
-});
-
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  // document.getElementById("main").style.marginLeft = "250px";
-  document.body.style.backgroundColor = "#ecf0f1";
-  document.getElementById("ham-menu").style.display = "none";
-  document.getElementById("close-menu").style.display = "inline";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  // document.getElementById("main").style.marginLeft= "0";
-  document.body.style.backgroundColor = "white";
-  document.getElementById("ham-menu").style.display = "inline";
-  document.getElementById("close-menu").style.display = "none";
-}
+$(function(){ $(document).foundation(); });
 
 $(function($){
   $.fn.masonry = function(params){

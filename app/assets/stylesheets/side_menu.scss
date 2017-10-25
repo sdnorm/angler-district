@@ -2,26 +2,26 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 10;
-  margin-top: 82.5px;
-  left: 0;
-  background-color: #bdc3c7;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #BEC3C6;
   overflow-x: hidden;
-  // transition: 0.5s;
-  // padding-top: 60px;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #ecf0f1;
+  color: #818181;
   display: block;
-  // transition: 0.3s
+  transition: 0.3s;
 }
 
-.sidenav a:hover, .offcanvas a:focus{
-  color: #d35400;
+.sidenav a:hover {
+  color: #f1f1f1;
 }
 
 .sidenav .closebtn {
@@ -32,34 +32,21 @@
   margin-left: 50px;
 }
 
-#main {
-  transition: margin-left .5s;
-  // padding: 16px;
-}
-
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 
-.logo-menu {
-  font-size:30px;
-  cursor:pointer;
+.top-bar .sidenav a:hover {
+  background-color: #BEC3C6;
 }
 
-.side-bar {
-  button {
-    width: 100%;
-    background: #2c3e50;
-    color: #ecf0f1;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-  }
-  button:hover {
-    background: #14679E;
-  }
-  margin-top: 1rem;
+.top-bar .sidenav span:hover {
+  text-decoration: none;
+  background-color: #BEC3C6;
+  color: #E9C547;
 }
-// #logo-name {
-//   padding-left: .75rem;
-// }
