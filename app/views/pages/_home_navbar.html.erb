@@ -34,35 +34,35 @@
       </div>
   </div>
   <div class="show-for-small-only">
-      <div class="top-bar-right top-bar-color">
+    <div class="top-bar-right top-bar-color">
 
-        <% if signed_in? %>
-          <a onclick="openSignedNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-        <% else %>
-          <a onclick="openNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-        <% end %>
+      <% if signed_in? %>
+        <a onclick="openSignedNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+      <% else %>
+        <a onclick="openNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+      <% end %>
 
-        <% if signed_in? %>
-        <div id="signedSideNav" class="sidenav">
-          <span href="javascript:void(0)" class="closebtn" onclick="closeSignedNav()">&times;</span>
-          <%= link_to cart_path do%>
-            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            My Cart
-            (<span class="cart-count"><%=current_user.cart_count%></span>)
-          <%end%>
-          <%= link_to "Orders", user_orders_path %>
-          <%= link_to "Profile", user_profile_path %>
-          <%= link_to "Listed Products", all_user_products_path %>
-          <%=link_to "Logout", destroy_user_session_path, method: :delete%>
-        </div>
-        <% else %>
-          <div id="mySidenav" class="sidenav">
-            <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
-            <div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, id: "title-link" %></div>
-            <%= link_to "Log In", new_user_session_path, class: "button main-button" %>
-          </div>
-        <% end %>
-
+      <% if signed_in? %>
+      <div id="signedSideNav" class="sidenav">
+        <span href="javascript:void(0)" class="closebtn" onclick="closeSignedNav()">&times;</span>
+        <%= link_to cart_path do%>
+          <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+          My Cart
+          (<span class="cart-count"><%=current_user.cart_count%></span>)
+        <%end%>
+        <%= link_to "Orders", user_orders_path %>
+        <%= link_to "Profile", user_profile_path %>
+        <%= link_to "Listed Products", all_user_products_path %>
+        <%=link_to "Logout", destroy_user_session_path, method: :delete%>
       </div>
+      <% else %>
+        <div id="mySidenav" class="sidenav">
+          <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
+          <div class="nav-link"><%= link_to "Sign Up", new_user_registration_path, id: "title-link" %></div>
+          <%= link_to "Log In", new_user_session_path, class: "button main-button" %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 </div>
