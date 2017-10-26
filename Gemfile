@@ -9,6 +9,8 @@ end
 
 gem 'httparty'
 
+gem 'inline_svg'
+
 gem 'awesome_print', require: 'ap'
 
 # gem 'quiet_assets', group: :development
