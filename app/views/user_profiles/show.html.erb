@@ -26,10 +26,7 @@
           <% if @user.provider == "stripe_connect" %>
             <i class="fa fa-2x fa-cc-stripe str-con" aria-hidden="true"></i> <span>Account Connected!</span>
           <% else %>
-          <%= link_to first_stripe_step_path, class: "stripe-connect dark" do %>
-            <span>Your Stripe account needs to be connected.</span>
-          <% end %>
-            <%= link_to user_stripe_connect_omniauth_authorize_path('stripe_user[email]' => @user.email, 'stripe_user[first_name]' => @user.first_name, 'stripe_user[url]' => 'http://www.anglerdistrict.com'), class: "stripe-connect dark" do %>
+            <%= link_to first_stripe_step_path, class: "stripe-connect dark" do %>
               <span>Your Stripe account needs to be connected.</span>
             <% end %>
           <% end %>
