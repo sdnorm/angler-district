@@ -85,14 +85,16 @@
     </div>
     <div class="bottom-footer">
       <div class="row hide-for-small-only">
-        <div class="large-5 columns text-left text-footer">
-          <span><%= link_to "Terms & Policies", terms_and_policies_path %></span>
-        </div>
-        <div class="large-2 columns text-center">
-          <%= image_tag('Angler - logo - Yellow-01.png', class: "nav-logo") %>
-        </div>
-        <div class="large-5 columns text-right text-footer">
-          <span>&copy; <%= Date.today.year %> Angler District, LLC</span>
+        <div class="large-12 columns">
+          <div class="large-5 columns text-left text-footer">
+            <span><%= link_to "Terms & Policies", terms_and_policies_path %></span>
+          </div>
+          <div class="large-2 columns text-center">
+            <%= image_tag('Angler - logo - Yellow-01.png', class: "nav-logo") %>
+          </div>
+          <div class="large-5 columns text-right text-footer">
+            <span>&copy; <%= Date.today.year %> Angler District, LLC</span>
+          </div>
         </div>
       </div>
       <div class="row show-for-small-only">

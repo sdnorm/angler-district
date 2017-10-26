@@ -1,9 +1,13 @@
-<div class="row text-center profile-page">
-  <h2>You are editing your profile.</h2>
+<div class="row profile-page">
+  <div class="large-12 columns text-center">
+    <h2>You are editing your profile.</h2>
+  </div>
 </div>
 
 <div class="row">
-  <div class="user-p-form">
-    <%= render 'form', :locals => {:controller => 'user_profiles', :action => 'update'} %>
+  <div class="large-12 columns">
+    <div class="user-p-form">
+      <%= render 'form', :locals => {:controller => 'user_profiles', :action => 'update'} %>
+    </div>
   </div>
 </div>

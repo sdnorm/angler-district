@@ -1,41 +1,43 @@
 <div class="row">
-  <div class="text-center">
+  <div class="large-12 columns text-center">
     <h1>My Profile</h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-6 small-12 columns text-center user-info">
-    <p>Profile Name: <span><%= @user.profile_name %></span></p>
-    <p>First Name: <span><%= @user.first_name %></span></p>
-    <p>Last Name: <span><%= @user.last_name %></span></p>
-    <p>Email: <span><%= @user.email %></span></p>
-    <p>Address: <span><%= @user.address1 %> <%= @user.address2 %></span></p>
-    <p>City: <span><%= @user.city %></span></p>
-    <p>State: <span><%= @user.state %></span></p>
-    <p>Zip Code: <span><%= @user.zip_code %></span></p>
-  </div>
-  <div class="large-6 small-12 columns text-center profile-links">
-    <p id="edit-links"><%= link_to "Edit Profile", edit_user_profile_path(@user) %></p>
-    <p id="edit-links"><%= link_to "Change your password", edit_user_registration_path %></p>
-    <hr />
-    <div class="get-your-money">
-      <h4>Get Your Money:</h4>
-      <p>
-        <% if @user.provider == "stripe_connect" %>
-          <i class="fa fa-2x fa-cc-stripe str-con" aria-hidden="true"></i> <span>Account Connected!</span>
-        <% else %>
-        <%= link_to first_stripe_step_path, class: "stripe-connect dark" do %>
-          <span>Your Stripe account needs to be connected.</span>
-        <% end %>
-          <%= link_to user_stripe_connect_omniauth_authorize_path('stripe_user[email]' => @user.email, 'stripe_user[first_name]' => @user.first_name, 'stripe_user[url]' => 'http://www.anglerdistrict.com'), class: "stripe-connect dark" do %>
+  <div class="large-12 columns">
+    <div class="large-6 small-12 columns text-center user-info">
+      <p>Profile Name: <span><%= @user.profile_name %></span></p>
+      <p>First Name: <span><%= @user.first_name %></span></p>
+      <p>Last Name: <span><%= @user.last_name %></span></p>
+      <p>Email: <span><%= @user.email %></span></p>
+      <p>Address: <span><%= @user.address1 %> <%= @user.address2 %></span></p>
+      <p>City: <span><%= @user.city %></span></p>
+      <p>State: <span><%= @user.state %></span></p>
+      <p>Zip Code: <span><%= @user.zip_code %></span></p>
+    </div>
+    <div class="large-6 small-12 columns text-center profile-links">
+      <p id="edit-links"><%= link_to "Edit Profile", edit_user_profile_path(@user) %></p>
+      <p id="edit-links"><%= link_to "Change your password", edit_user_registration_path %></p>
+      <hr />
+      <div class="get-your-money">
+        <h4>Get Your Money:</h4>
+        <p>
+          <% if @user.provider == "stripe_connect" %>
+            <i class="fa fa-2x fa-cc-stripe str-con" aria-hidden="true"></i> <span>Account Connected!</span>
+          <% else %>
+          <%= link_to first_stripe_step_path, class: "stripe-connect dark" do %>
             <span>Your Stripe account needs to be connected.</span>
           <% end %>
-        <% end %>
-      </p>
-      <p>
-        <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i><span> email: <%= @paypal_email %></span>
-      </p>
+            <%= link_to user_stripe_connect_omniauth_authorize_path('stripe_user[email]' => @user.email, 'stripe_user[first_name]' => @user.first_name, 'stripe_user[url]' => 'http://www.anglerdistrict.com'), class: "stripe-connect dark" do %>
+              <span>Your Stripe account needs to be connected.</span>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <i class="fa fa-2x fa-cc-paypal" aria-hidden="true"></i><span> email: <%= @paypal_email %></span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
