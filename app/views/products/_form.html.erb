@@ -46,10 +46,28 @@
       <%= f.label :image_3 %>
       <%= f.file_field :image3 %>
     </div>
-    <div class="field">
-      <%= f.label :image_4 %>
-      <%= f.file_field :image4 %>
+
+    <div class="file-upload">
+      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image 4</button>
+      <%= f.file_field :image4, class: "file-upload-input", onchange: "readURL(this);", accept: "image/*" %>
+      <div class="hide-for-small-only">
+        <div class="image-upload-wrap">
+          <div class="field">
+            <div class="drag-text" onclick="$('.file-upload-input').trigger( 'click' )">
+              <h4>Drag and drop a file or select add Image</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" />
+        <div class="image-title-wrap">
+          <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+        </div>
+      </div>
     </div>
+
   </div>
   <div class="large-12 text-center">
     <div class="actions">
