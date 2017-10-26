@@ -3,7 +3,8 @@ class ShippedOrderController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.shipped(current_user)
+    @title = "Things I've Shipped"
+    @orders = Order.seller_shipped(current_user)
   end
 
   def show

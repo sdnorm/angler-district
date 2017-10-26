@@ -39,7 +39,7 @@ class Order < ApplicationRecord
       seller_orders(user).not_shipped
     end
 
-    def shipped user
+    def seller_shipped user
       seller_orders(user).shipped
     end
 
