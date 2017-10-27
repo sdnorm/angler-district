@@ -270,125 +270,20 @@
   }
 }
 
-.file-upload {
-  background-color: #ffffff;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 5px;
+.file-upload-inputs {
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.file-upload-btn {
+.wide-button {
   width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #303E4F;
-  border: none;
-  padding: 10px;
   border-radius: 5px !important;
-  // border-bottom: 4px solid #15824B;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  // font-weight: 700;
-  padding: 0.85em 1em;
 }
 
-.file-upload-btn:hover {
-  background: #E9C547;
-  color: #303E4F;
-  transition: all .2s ease;
-  cursor: pointer;
+.product-submit {
+  margin-top: 35px;
 }
 
-.file-upload-btn:active {
-  border: 0;
-  transition: all .2s ease;
-}
-
-.file-upload-content {
-  display: none;
-  text-align: center;
-}
-
-.file-upload-input {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  max-width: 1%;
-  height: 1%;
-  outline: none;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.image-upload-wrap {
-  margin-top: 20px;
-  border: 4px dashed #303E4F;
-  border-radius: 5px;
-  position: relative;
-}
-
-.image-dropping,
-.image-upload-wrap:hover {
-  background-color: #303E4F;
-  border: 4px dashed #ffffff;
-}
-
-.image-title-wrap {
-  padding: 0 15px 15px 15px;
-  color: #222;
-}
-
-.drag-text {
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: -.75em;
-}
-
-.drag-text h4 {
-  font-weight: 100;
-  text-transform: uppercase;
-  color: #303E4F;
-  // padding: 60px 0;
-}
-
-.drag-text:hover {
-  h4 {
-    color: #E9C547;
-  }
-}
-
-.file-upload-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.remove-image {
-  width: 200px;
-  margin: 0;
-  color: #fff;
-  background: #cd4535;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #b02818;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.remove-image:hover {
-  background: #c13b2a;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.remove-image:active {
-  border: 0;
-  transition: all .2s ease;
+.rounded-input {
+  border-radius: 5px !important;
 }
