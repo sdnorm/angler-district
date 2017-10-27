@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  include Response
+  include ExceptionHandler
+
   def current_user_cart
     "cart#{current_user.id}"
   end
