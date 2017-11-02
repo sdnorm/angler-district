@@ -1,2 +1,50 @@
-<h1>PurchasedOrder#show</h1>
-<p>Find me in app/views/purchased_order/show.html.erb</p>
+<p>
+  <%= @order.inspect %>
+</p>
+
+<div class="row">
+  <div class="large-12 columns">
+    <%= link_to purchased_orders_path do %>
+      <div class="back-link">
+        <i class="fa fa-arrow-left fa-3x" aria-hidden="true"><span class="general-back">  Back To Purchased Orders</span></i>
+      </div>
+    <% end %>
+    <div class="large-6 columns">
+      <div class="large-centered order-detail-section">
+        <h2>Ship To Address:</h2>
+        <div id="unstyled-list">
+          <ul>
+            <li>
+              <%= @order.buyer.first_name %> <%= @order.buyer.last_name %>
+            </li>
+            <li>
+              <%= @order.address1 %> <%= @order.address2 %>
+            </li>
+            <li>
+              <%= @order.city %>
+            </li>
+            <li>
+              <%= @order.state %>
+            </li>
+            <li>
+              <%= @order.zip_code %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="large-centered order-detail-section">
+        <h2>Order:</h2>
+        <p>
+          <%= @order.product.name %> - <%= number_to_currency(@order.product.price) %>
+        </p>
+        <% if @order.product.shipping > 0 %>
+          <p>
+            Shipping: <%= @order.product.shipping %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

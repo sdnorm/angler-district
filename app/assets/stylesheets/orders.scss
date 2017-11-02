@@ -158,3 +158,23 @@
   color: #E9C547;
   text-decoration: underline;
 }
+
+.order-detail-section {
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  border-color: #303E4F;
+  border-style: solid;
+  border-width: 3px;
+  max-width: 95%;
+  padding: 6px;
+  li {
+    font-size: 2em;
+  }
+  p {
+    font-size: 2em;
+  }
+}
+
+#unstyled-list ul li {
+  list-style: none;
+}
