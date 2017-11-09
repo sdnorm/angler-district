@@ -1,5 +1,16 @@
 class Product < ApplicationRecord
 
+  enum condition: {
+    brand_new: 0,
+    mint: 1,
+    excellent: 2,
+    very_good: 3,
+    good: 4,
+    fair: 5,
+    poor: 6,
+    non_functioning: 7
+  }
+
   before_save :price_to_cents
   before_save :shipping_to_cents
 

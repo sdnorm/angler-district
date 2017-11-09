@@ -1,152 +1,142 @@
-<%= form_for(product) do |f| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="large-12 columns">
+  <%= form_for(product) do |f| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="large-6 small-12 columns text-center">
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "rounded-input" %>
+      </div>
+      <div class="field">
+        <%= f.label :category %>
+        <%= f.collection_select :category_id, @categories, :id, :name, class: "rounded-input" %>
+      </div>
+      <div class="field">
+        <%= f.label :condition %>
+        <%= f.select(:condition, Product.conditions.keys.map {|condition| [condition.titleize,condition]}) %>
+      </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "rounded-input" %>
+      </div>
+      <div class="field">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: "rounded-input" %>
+      </div>
+      <div class="field">
+        <%= f.label :shipping %>
+        <%= f.text_field :shipping, class: "rounded-input" %>
+      </div>
+      <div class="actions hide-for-small-only product-submit">
+        <%= f.submit class:"button wide-button" %>
+      </div>
+    </div>
+
+    <div class="large-6 small-12 columns text-center file-upload-inputs">
+
+      <div class="file-upload file-upload-inputs">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Display Image</button>
+        <%= f.file_field :display_image, class: "file-upload-input", onchange: "readURL(this);", accept: "image/*" %>
+        <div class="hide-for-small-only">
+          <div class="image-upload-wrap">
+            <div class="field">
+              <div class="drag-text" onclick="$('.file-upload-input').trigger( 'click' )">
+                <h4>Select an Image</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-upload-content">
+          <img class="file-upload-image" src="#" alt="your image" />
+          <div class="image-title-wrap">
+            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-upload2 file-upload-inputs">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input2').trigger( 'click' )">Add Image 1</button>
+        <%= f.file_field :image2, class: "file-upload-input2", onchange: "readURL2(this);", accept: "image/*" %>
+        <div class="hide-for-small-only">
+          <div class="image-upload-wrap2">
+            <div class="field">
+              <div class="drag-text" onclick="$('.file-upload-input2').trigger( 'click' )">
+                <h4>Select an Image</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-upload-content2">
+          <img class="file-upload-image2" src="#" alt="your image" />
+          <div class="image-title-wrap2">
+            <button type="button" onclick="removeUpload2()" class="remove-image2">Remove <span class="image-title2">Uploaded Image</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-upload3 file-upload-inputs">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input3').trigger( 'click' )">Add Image 2</button>
+        <%= f.file_field :image3, class: "file-upload-input3", onchange: "readURL3(this);", accept: "image/*" %>
+        <div class="hide-for-small-only">
+          <div class="image-upload-wrap3">
+            <div class="field">
+              <div class="drag-text" onclick="$('.file-upload-input3').trigger( 'click' )">
+                <h4>Select an Image</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-upload-content3">
+          <img class="file-upload-image3" src="#" alt="your image" />
+          <div class="image-title-wrap3">
+            <button type="button" onclick="removeUpload3()" class="remove-image3">Remove <span class="image-title3">Uploaded Image</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-upload4 file-upload-inputs">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input4').trigger( 'click' )">Add Image 3</button>
+        <%= f.file_field :image4, class: "file-upload-input4", onchange: "readURL4(this);", accept: "image/*" %>
+        <div class="hide-for-small-only">
+          <div class="image-upload-wrap4">
+            <div class="field">
+              <div class="drag-text" onclick="$('.file-upload-input4').trigger( 'click' )">
+                <h4>Select an Image</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-upload-content4">
+          <img class="file-upload-image4" src="#" alt="your image" />
+          <div class="image-title-wrap4">
+            <button type="button" onclick="removeUpload4()" class="remove-image4">Remove <span class="image-title4">Uploaded Image</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="spacer">
+
+      </div>
+
+    </div>
+
+    <div class="large-12 columns show-for-small-only">
+      <div class="actions">
+        <%= f.submit class:"button wide-button" %>
+      </div>
     </div>
   <% end %>
-  <div class="large-6 small-12 columns text-center">
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "rounded-input" %>
-    </div>
-    <div class="field">
-      <%= f.label :category %>
-      <%= f.collection_select :category_id, @categories, :id, :name, class: "rounded-input" %>
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "rounded-input" %>
-    </div>
-    <div class="field">
-      <%= f.label :price %>
-      <%= f.text_field :price, class: "rounded-input" %>
-    </div>
-    <div class="actions hide-for-small-only product-submit">
-      <%= f.submit class:"button wide-button" %>
-    </div>
-  </div>
 
-  <div class="large-6 small-12 columns text-center file-upload-inputs">
-
-    <div class="file-upload file-upload-inputs">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Display Image</button>
-      <%= f.file_field :display_image, class: "file-upload-input", onchange: "readURL(this);", accept: "image/*" %>
-      <div class="hide-for-small-only">
-        <div class="image-upload-wrap">
-          <div class="field">
-            <div class="drag-text" onclick="$('.file-upload-input').trigger( 'click' )">
-              <h4>Select an Image</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload-content">
-        <img class="file-upload-image" src="#" alt="your image" />
-        <div class="image-title-wrap">
-          <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="file-upload1 file-upload-inputs">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input1').trigger( 'click' )">Add Image 1</button>
-      <%= f.file_field :image1, class: "file-upload-input1", onchange: "readURL1(this);", accept: "image/*" %>
-      <div class="hide-for-small-only">
-        <div class="image-upload-wrap1">
-          <div class="field">
-            <div class="drag-text" onclick="$('.file-upload-input1').trigger( 'click' )">
-              <h4>Select an Image</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload-content1">
-        <img class="file-upload-image1" src="#" alt="your image" />
-        <div class="image-title-wrap1">
-          <button type="button" onclick="removeUpload1()" class="remove-image1">Remove <span class="image-title1">Uploaded Image</span></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="file-upload2 file-upload-inputs">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input2').trigger( 'click' )">Add Image 2</button>
-      <%= f.file_field :image2, class: "file-upload-input2", onchange: "readURL2(this);", accept: "image/*" %>
-      <div class="hide-for-small-only">
-        <div class="image-upload-wrap2">
-          <div class="field">
-            <div class="drag-text" onclick="$('.file-upload-input2').trigger( 'click' )">
-              <h4>Select an Image</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload-content2">
-        <img class="file-upload-image2" src="#" alt="your image" />
-        <div class="image-title-wrap2">
-          <button type="button" onclick="removeUpload2()" class="remove-image2">Remove <span class="image-title2">Uploaded Image</span></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="file-upload3 file-upload-inputs">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input3').trigger( 'click' )">Add Image 3</button>
-      <%= f.file_field :image3, class: "file-upload-input3", onchange: "readURL3(this);", accept: "image/*" %>
-      <div class="hide-for-small-only">
-        <div class="image-upload-wrap3">
-          <div class="field">
-            <div class="drag-text" onclick="$('.file-upload-input3').trigger( 'click' )">
-              <h4>Select an Image</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload-content3">
-        <img class="file-upload-image3" src="#" alt="your image" />
-        <div class="image-title-wrap3">
-          <button type="button" onclick="removeUpload3()" class="remove-image3">Remove <span class="image-title3">Uploaded Image</span></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="file-upload4 file-upload-inputs">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input4').trigger( 'click' )">Add Image 4</button>
-      <%= f.file_field :image4, class: "file-upload-input4", onchange: "readURL4(this);", accept: "image/*" %>
-      <div class="hide-for-small-only">
-        <div class="image-upload-wrap4">
-          <div class="field">
-            <div class="drag-text" onclick="$('.file-upload-input4').trigger( 'click' )">
-              <h4>Select an Image</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload-content4">
-        <img class="file-upload-image4" src="#" alt="your image" />
-        <div class="image-title-wrap4">
-          <button type="button" onclick="removeUpload4()" class="remove-image4">Remove <span class="image-title4">Uploaded Image</span></button>
-        </div>
-      </div>
-    </div>
-    <div class="spacer">
-
-    </div>
-
-  </div>
-
-  <div class="large-12 columns show-for-small-only">
-    <div class="actions">
-      <%= f.submit class:"button wide-button" %>
-    </div>
-  </div>
-<% end %>
+</div>
