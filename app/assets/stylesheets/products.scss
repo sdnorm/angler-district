@@ -286,3 +286,36 @@
 .rounded-input {
   border-radius: 5px !important;
 }
+
+.show-product-link {
+  font-size: 200%;
+  margin-bottom: 0 !important;
+  a {
+    color: #303E4F;
+  }
+}
+
+.show-product-link a:hover {
+  color: #f1c40f;
+  text-decoration: underline;
+  background: #ECF0F1;
+}
+
+.product-back-link {
+  margin-bottom: 0 !important;
+  font-size: 200%;
+  a {
+    color: #303E4F;
+  }
+}
+
+.product-back-link a:hover {
+  color: #f1c40f;
+  text-decoration: underline;
+  background: #ECF0F1;
+}
+
+.link-divider {
+  font-size: 200%;
+  margin-bottom: 0 !important;
+}

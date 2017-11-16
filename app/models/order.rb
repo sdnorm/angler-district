@@ -1,5 +1,12 @@
 class Order < ApplicationRecord
 
+  enum carrier: {
+    UPS: 0,
+    FedEx: 1,
+    USPS: 2,
+    Other: 3
+  }
+
   include ParsePaypal
   include ProcessPaypal
   include PaypalDetails

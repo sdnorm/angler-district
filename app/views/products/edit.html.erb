@@ -1,7 +1,28 @@
+<div class="row">
+  <div class="large-12 columns text-center">
+    <div>
+      <span class="general-back">
+        <span class="product-back-link">
+          <%= link_to all_user_products_path do %>
+            Back To My Products
+          <% end %>
+        </span>
+        <span class="link-divider">|</span>
+        <span class="show-product-link">
+          <%= link_to product_path(@product) do %>
+            Product Detail Page
+          <% end %>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns text-center">
+    <h1>Editing Product</h1>
+  </div>
+</div>
 
-  <h1>Editing Product</h1>
-
+<div class="row expanded">
   <%= render 'form', product: @product %>
-
-  <%= link_to 'Show', @product %> |
-  <%= link_to 'Back', products_path %>
+</div>

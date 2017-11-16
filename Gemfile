@@ -1,27 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-rails', groups: [:development, :test]
-
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'httparty'
-
 gem 'inline_svg'
-
 gem 'awesome_print', require: 'ap'
 
 # gem 'quiet_assets', group: :development
 gem "pry-rails", group:"development"
-
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-foundation'
-
 gem 'sidekiq'
 gem 'mailgun-ruby', '~>1.1.4'
-
 gem 'rails_12factor'
 gem 'money'
 gem 'devise'

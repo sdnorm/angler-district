@@ -36,13 +36,17 @@
         <%= f.label :shipping %>
         <%= f.text_field :shipping, class: "rounded-input" %>
       </div>
+      <div class="field">
+        <%= f.label :quantity %>
+        <%= f.text_field :inventory, class: "rounded-input" %>
+      </div>
       <div class="actions hide-for-small-only product-submit">
         <%= f.submit class:"button wide-button" %>
       </div>
     </div>
 
     <div class="large-6 small-12 columns text-center file-upload-inputs">
-
+      <%= image_tag(@product.display_image.thumb) %>
       <div class="file-upload file-upload-inputs">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Display Image</button>
         <%= f.file_field :display_image, class: "file-upload-input", onchange: "readURL(this);", accept: "image/*" %>
@@ -64,6 +68,7 @@
         </div>
       </div>
 
+      <%= image_tag(@product.image2.thumb) %>
       <div class="file-upload2 file-upload-inputs">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input2').trigger( 'click' )">Add Image 1</button>
         <%= f.file_field :image2, class: "file-upload-input2", onchange: "readURL2(this);", accept: "image/*" %>
@@ -85,6 +90,7 @@
         </div>
       </div>
 
+      <%= image_tag(@product.image3.thumb) %>
       <div class="file-upload3 file-upload-inputs">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input3').trigger( 'click' )">Add Image 2</button>
         <%= f.file_field :image3, class: "file-upload-input3", onchange: "readURL3(this);", accept: "image/*" %>
@@ -106,6 +112,7 @@
         </div>
       </div>
 
+      <%= image_tag(@product.image4.thumb) %>
       <div class="file-upload4 file-upload-inputs">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input4').trigger( 'click' )">Add Image 3</button>
         <%= f.file_field :image4, class: "file-upload-input4", onchange: "readURL4(this);", accept: "image/*" %>

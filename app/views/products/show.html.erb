@@ -120,13 +120,13 @@
       <h1><%= @product.name %></h1>
     </div>
     <div class="large-12 columns">
-      <h3 class='product-price'><%= number_to_currency(@product.price_in_cents/100.0) %></h3>
+      <h3 class='product-price'><%= number_to_currency(@product.price) %></h3>
     </div>
     <div class="large-12 columns">
       <p>
         <span id="product-text-title">Sold by: </span>
         <span id="product-text">
-          <%= @seller.profile_name %>  &nbsp&nbsp|&nbsp&nbsp  <%= @reputation %>
+          <%= @seller.profile_name %> - <%= @reputation %>
         </span>
       </p>
     </div>
@@ -141,12 +141,12 @@
     <div class="large-12 columns">
       <div class="large-6 columns" style="padding: 0;">
         <p>
-          <span id="product-text-title">Shipping: </span><span id="product-text"></span>
+          <span id="product-text-title">Shipping: <%= number_to_currency(@product.shipping) unless @product.shipping == 0%></span><span id="product-text"></span>
         </p>
       </div>
       <div class="large-6 columns" style="padding: 0;">
         <p>
-          <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition %></span>
+          <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition.titleize unless @product.condition == nil %></span>
         </p>
       </div>
     </div>

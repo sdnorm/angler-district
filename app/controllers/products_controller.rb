@@ -120,7 +120,8 @@ class ProductsController < ApplicationController
         :image3,
         :image4,
         :category_id,
-        :condition
+        :condition,
+        :quantity
       )
     end
 
