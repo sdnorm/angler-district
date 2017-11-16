@@ -41,152 +41,143 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row" style="margin-top: 1rem;">
-  <div class="large-7 columns text-right">
-    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-auto-play="false">
-      <ul class="orbit-container">
-        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></button>
-        <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i></button>
-        <% unless @product.display_image.file.nil? %>
-          <li class="is-active orbit-slide text-center">
-            <%= image_tag(@product.display_image.large) %>
-          </li>
-        <% end %>
-        <% unless @product.image.file.nil? %>
-          <li class="orbit-slide text-center">
-            <%= image_tag(@product.image.large) %>
-          </li>
-        <% end %>
-        <% unless @product.image2.file.nil? %>
-          <li class="orbit-slide text-center">
-            <%= image_tag(@product.image2.large) %>
-          </li>
-        <% end %>
-        <% unless @product.image3.file.nil? %>
-          <li class="orbit-slide text-center">
-            <%= image_tag(@product.image3.large) %>
-          </li>
-        <% end %>
-        <% unless @product.image4.file.nil? %>
-          <li class="orbit-slide text-center">
-            <%= image_tag(@product.image4.large) %>
-          </li>
-        <% end %>
-      </ul>
-      <nav class="orbit-bullets">
-        <% unless @product.display_image.file.nil? %>
-          <button class="is-active" data-slide="0" id="pr-img-bullet">
-            <span class="show-for-sr">First slide details.</span>
-            <span class="show-for-sr">Current Slide</span>
-            <%= image_tag(@product.display_image.thumb) %>
-          </button>
-        <% end %>
-        <% unless @product.image.file.nil? %>
-          <button data-slide="1" id="pr-img-bullet"><span class="show-for-sr">Second slide details.</span>
-            <%= image_tag(@product.image.thumb) %>
-          </button>
-        <% end %>
-        <% unless @product.image2.file.nil? %>
-          <button data-slide="2" id="pr-img-bullet"><span class="show-for-sr">Third slide details.</span>
-            <%= image_tag(@product.image2.thumb) %>
-          </button>
-        <% end %>
-        <% unless @product.image3.file.nil? %>
-          <button data-slide="3" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
-            <%= image_tag(@product.image3.thumb) %>
-          </button>
-        <% end %>
-        <% unless @product.image4.file.nil? %>
-          <button data-slide="4" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
-            <%= image_tag(@product.image4.thumb) %>
-          </button>
-        <% end %>
-      </nav>
-    </div>
-  </div>
-  <div class="large-5 columns">
-    <div class="large-12 columns text-right product-social">
-      Share this item! |
-      <%= link_to "http://pinterest.com/pin/create/button/?url=#{product_url(@product)}&media=#{}&description=Buy #{@product.name} at www.AnglerDistrict.com", formtarget: "_blank" do %>
-        <i class="fa fa-2x fa-pinterest" id="product-social" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}", formtarget: "_blank" do %>
-        <i class="fa fa-2x fa-facebook-official" id="product-social" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to "https://twitter.com/home?status=Selling520this%20#{@product.name}%20through%20AnglerDistrict.com%20#{product_url(@product)}", formtarget: "_blank" do%>
-        <i class="fa fa-2x fa-twitter" id="product-social" aria-hidden="true"></i>
-      <% end %>
-    </div>
-    <div class="large-12 columns">
-      <h1><%= @product.name %></h1>
-    </div>
-    <div class="large-12 columns">
-      <h3 class='product-price'><%= number_to_currency(@product.price) %></h3>
-    </div>
-    <div class="large-12 columns">
-      <p>
-        <span id="product-text-title">Sold by: </span>
-        <span id="product-text">
-          <%= @seller.profile_name %> - <%= @reputation %>
-        </span>
-      </p>
-    </div>
-    <div class="large-12 columns">
-      <p>
-        <span id="product-text-title">Description: </span>
-        <span id="product-text">
-          <%= @product.description %>
-        </span>
-      </p>
-    </div>
-    <div class="large-12 columns">
-      <div class="large-6 columns" style="padding: 0;">
-        <p>
-          <span id="product-text-title">Shipping: <%= number_to_currency(@product.shipping) unless @product.shipping == 0%></span><span id="product-text"></span>
-        </p>
-      </div>
-      <div class="large-6 columns" style="padding: 0;">
-        <p>
-          <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition.titleize unless @product.condition == nil %></span>
-        </p>
-      </div>
-    </div>
-    <div class="large-12 columns payment-methods">
-      <p>
-        <span id="product-text-title">Accepted Payment Methods: </span>
-        <% if @product.accept_paypal? %>
-          <i class="fa fa-3x fa-cc-paypal" aria-hidden="true"></i>
-        <% end %>
-        <% if @product.accept_stripe? %>
-          <i class="fa fa-3x fa-credit-card" aria-hidden="true"></i>
-        <% end %>
-      </p>
-      <p>
-
-      </p>
-    </div>
-    <div class="large-12 columns purchase-options">
-      <%if signed_in? && current_user.id == @product.user_id %>
-        <%= link_to 'Edit', edit_product_path(@product) %>
-      <% elsif signed_in? %>
-        <%= link_to "", class: "purchase-button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
-          <% if @cart_action == 'Remove from' %>
-            <i class="fa fa-times"></i>
-            <span><%=@cart_action%></span> Cart
-          <% else %>
-            <i class="fa fa-shopping-cart"></i>
-            <span><%=@cart_action%></span> Cart
+  <div class="large-12">
+    <div class="large-7 columns text-right">
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-auto-play="false">
+        <ul class="orbit-container">
+          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></button>
+          <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i></button>
+          <% unless @product.display_image.file.nil? %>
+            <li class="is-active orbit-slide text-center">
+              <%= image_tag(@product.display_image.large) %>
+            </li>
           <% end %>
-        <%end%>
-      <% else %>
-        <p class="products-path">
-          <%= link_to "Want to add it to your cart or purchase?", new_user_session_path %>
-        </p>
-      <%end%>
+          <% unless @product.image2.file.nil? %>
+            <li class="orbit-slide text-center">
+              <%= image_tag(@product.image2.large) %>
+            </li>
+          <% end %>
+          <% unless @product.image3.file.nil? %>
+            <li class="orbit-slide text-center">
+              <%= image_tag(@product.image3.large) %>
+            </li>
+          <% end %>
+          <% unless @product.image4.file.nil? %>
+            <li class="orbit-slide text-center">
+              <%= image_tag(@product.image4.large) %>
+            </li>
+          <% end %>
+        </ul>
+        <nav class="orbit-bullets">
+          <% unless @product.display_image.file.nil? %>
+            <button class="is-active" data-slide="0" id="pr-img-bullet">
+              <span class="show-for-sr">First slide details.</span>
+              <span class="show-for-sr">Current Slide</span>
+              <%= image_tag(@product.display_image.thumb) %>
+            </button>
+          <% end %>
+          <% unless @product.image2.file.nil? %>
+            <button data-slide="1" id="pr-img-bullet"><span class="show-for-sr">Third slide details.</span>
+              <%= image_tag(@product.image2.thumb) %>
+            </button>
+          <% end %>
+          <% unless @product.image3.file.nil? %>
+            <button data-slide="2" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
+              <%= image_tag(@product.image3.thumb) %>
+            </button>
+          <% end %>
+          <% unless @product.image4.file.nil? %>
+            <button data-slide="3" id="pr-img-bullet"><span class="show-for-sr">Fourth slide details.</span>
+              <%= image_tag(@product.image4.thumb) %>
+            </button>
+          <% end %>
+        </nav>
+      </div>
     </div>
-    <div class="large-12 columns">
-      <p class="products-path">
-        <%= link_to "Back To all Products", products_path %>
-      </p>
+    <div class="large-5 columns">
+      <div class="large-12 columns text-right product-social">
+        Share this item! |
+        <%= link_to "http://pinterest.com/pin/create/button/?url=#{product_url(@product)}&media=#{}&description=Buy #{@product.name} at www.AnglerDistrict.com", formtarget: "_blank" do %>
+          <i class="fa fa-2x fa-pinterest" id="product-social" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}", formtarget: "_blank" do %>
+          <i class="fa fa-2x fa-facebook-official" id="product-social" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "https://twitter.com/home?status=Selling520this%20#{@product.name}%20through%20AnglerDistrict.com%20#{product_url(@product)}", formtarget: "_blank" do%>
+          <i class="fa fa-2x fa-twitter" id="product-social" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div class="large-12 columns">
+        <h1><%= @product.name %></h1>
+      </div>
+      <div class="large-12 columns">
+        <h3 class='product-price'><%= number_to_currency(@product.price) %></h3>
+      </div>
+      <div class="large-12 columns">
+        <p>
+          <span id="product-text-title">Sold by: </span>
+          <span id="product-text">
+            <%= @seller.profile_name %> - <%= @reputation %>
+          </span>
+        </p>
+      </div>
+      <div class="large-12 columns">
+        <p>
+          <span id="product-text-title">Description: </span>
+          <span id="product-text">
+            <%= @product.description %>
+          </span>
+        </p>
+      </div>
+      <div class="large-12 columns">
+        <div class="large-6 columns" style="padding: 0;">
+          <p>
+            <span id="product-text-title">Shipping: <%= number_to_currency(@product.shipping) unless @product.shipping == 0%></span><span id="product-text"></span>
+          </p>
+        </div>
+        <div class="large-6 columns" style="padding: 0;">
+          <p>
+            <span id="product-text-title">Condition: </span><span id="product-text"><%= @product.condition.titleize unless @product.condition == nil %></span>
+          </p>
+        </div>
+      </div>
+      <div class="large-12 columns payment-methods">
+        <p>
+          <span id="product-text-title">Accepted Payment Methods: </span>
+          <% if @product.accept_paypal? %>
+            <i class="fa fa-3x fa-cc-paypal" aria-hidden="true"></i>
+          <% end %>
+          <% if @product.accept_stripe? %>
+            <i class="fa fa-3x fa-credit-card" aria-hidden="true"></i>
+          <% end %>
+        </p>
+        <p>
+        </p>
+      </div>
+      <div class="large-12 columns purchase-options">
+        <%if signed_in? && current_user.id == @product.user_id %>
+          <%= link_to 'Edit', edit_product_path(@product) %>
+        <% elsif signed_in? %>
+          <%= link_to "", class: "purchase-button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+            <% if @cart_action == 'Remove from' %>
+              <i class="fa fa-times"></i>
+              <span><%=@cart_action%></span> Cart
+            <% else %>
+              <i class="fa fa-shopping-cart"></i>
+              <span><%=@cart_action%></span> Cart
+            <% end %>
+          <%end%>
+        <% else %>
+          <p class="products-path">
+            <%= link_to "Want to add it to your cart or purchase?", new_user_session_path %>
+          </p>
+        <%end%>
+      </div>
+      <div class="large-12 columns">
+        <p class="products-path">
+          <%= link_to "Back To all Products", products_path %>
+        </p>
+      </div>
     </div>
   </div>
 </div>
