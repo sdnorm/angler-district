@@ -13,3 +13,19 @@ function openSignedNav() {
 function closeSignedNav() {
   document.getElementById("signedSideNav").style.width = "0";
 }
+
+function openMobileNav() {
+  document.getElementById("mobileNav").style.width = "300px";
+}
+
+function closeMobileNav() {
+  document.getElementById("mobileNav").style.width = "0";
+}
+
+function openMobileSignedNav() {
+  document.getElementById("signedMobileNav").style.width = "300px";
+}
+
+function closeMobileSignedNav() {
+  document.getElementById("signedMobileNav").style.width = "0";
+}

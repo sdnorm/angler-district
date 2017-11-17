@@ -1,15 +1,28 @@
-<p>
-  <%= @order.inspect %>
-</p>
-
 <div class="row">
   <div class="large-12 columns">
-    <%= link_to purchased_orders_path do %>
-      <div class="back-link">
-        <i class="fa fa-arrow-left fa-3x" aria-hidden="true"><span class="general-back">  Back To Purchased Orders</span></i>
+    <div class="small-12 large-6 columns">
+      <%= link_to purchased_orders_path do %>
+        <div class="back-link">
+          <i class="fa fa-arrow-left fa-3x" aria-hidden="true"><span class="general-back">  Back To Purchased Orders</span></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="large-6 show-for-large-only">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="order-detail-block">
+      <div class="order-detail-section">
+        <h2>Order Status:</h2>
       </div>
-    <% end %>
-    <div class="large-6 columns">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="small-12 large-6 columns order-detail-block">
       <div class="large-centered order-detail-section">
         <h2>Ship To Address:</h2>
         <div id="unstyled-list">
@@ -33,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="large-6 columns">
+    <div class="large-6 medium-12 columns order-detail-block">
       <div class="large-centered order-detail-section">
         <h2>Order:</h2>
         <p>
