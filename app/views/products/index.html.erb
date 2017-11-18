@@ -22,13 +22,17 @@
   <div class="medium-9 small-12 columns">
     <% @products.each do |product| %>
       <div class="large-4 small-6 columns float-left">
-        <div class="main-products">
-          <%= link_to product do %>
-            <h4 class="text-center"><%= product.name %></h4>
-            <%= image_tag(product.display_image.display, class: "main-display-product-image") %>
-            <h5 class="home-page-product"><%= number_to_currency(product.price_in_cents/100.0) %></h5>
-          <% end %>
-        </div>
+        <%= link_to product do %>
+          <div class="card" style="width: 100%;">
+            <div class="card-divider">
+              <%= product.name %>
+            </div>
+            <%= image_tag(product.display_image.display) %>
+            <div class="card-section">
+              <h4><%= number_to_currency(product.price_in_cents/100.0) %></h4>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
     <div class="large-12 columns text-center pagination">
