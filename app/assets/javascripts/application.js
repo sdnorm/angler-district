@@ -5,4 +5,14 @@
 //= require_tree .
 
 // $(function(){ $(document).foundation(); });
+
 $(document).foundation();
+
+
+function openMobileSignedNav() {
+  document.getElementById("signedMobileNav").style.width = "300px";
+}
+
+function closeMobileSignedNav() {
+  document.getElementById("signedMobileNav").style.width = "0";
+}
