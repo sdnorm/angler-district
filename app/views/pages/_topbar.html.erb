@@ -77,10 +77,16 @@
     <%= image_tag('Angler - logo - Yellow-01.png', class: "nav-logo") %>
   <% end %>
   <% if signed_in? %>
-    <a onclick="openMobileSignedNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
+    <a onclick="testShit()" class="mobile-menu-btn"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
   <% else %>
     <a onclick="openMobileNav()" class="mobile-menu-btn"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
   <% end %>
+
+  <script>
+    function testShit() {
+      console.log("fuck this stupid shit");
+    }
+  </script>
 
   <% if signed_in? %>
   <div id="signedMobileNav" class="sidenav">
