@@ -10,7 +10,7 @@
         <%if signed_in?%>
           <li>
             <a onclick="openNav()">My Stuff</a>
-            <div id="mySidenav" class="sidenav">
+            <div id="side-nav" class="side-nav">
               <span href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="cursor:pointer">&times;</span>
               <%= link_to cart_path do%>
                 <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
