@@ -1,4 +1,4 @@
-.sidenav {
+.side-nav {
   height: 100%;
   width: 0;
   position: fixed;
@@ -11,7 +11,7 @@
   padding-top: 60px;
 }
 
-.sidenav a {
+.side-nav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -20,11 +20,11 @@
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.side-nav a:hover {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+.side-nav .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -33,19 +33,19 @@
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {
+  .side-nav {
     padding-top: 15px;
   }
-  .sidenav a {
+  .side-nav a {
     font-size: 18px;
   }
 }
 
-.top-bar .sidenav a:hover {
+.top-bar .side-nav a:hover {
   background-color: #BEC3C6;
 }
 
-.top-bar .sidenav span:hover {
+.top-bar .side-nav span:hover {
   text-decoration: none;
   background-color: #BEC3C6;
   color: #E9C547;
