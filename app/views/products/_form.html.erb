@@ -43,6 +43,7 @@
       <div class="actions hide-for-small-only product-submit">
         <%= f.submit class:"button wide-button" %>
       </div>
+      <%= link_to "Delete Product", product, method: :delete, data: {confirm: "You sure you want to delete this product?"}, class:"button wide-button" %>
     </div>
 
     <div class="large-4 small-12 columns text-center file-upload-inputs">
