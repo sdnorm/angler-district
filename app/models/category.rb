@@ -3,7 +3,7 @@ class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :products, through: :product_categories
+  has_many :products#, through: :product_categories
   has_many :product_categories
 
   scope :reels, -> { where(name: "Reels").includes(:products) }

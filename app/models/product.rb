@@ -38,7 +38,7 @@ class Product < ApplicationRecord
   has_many :order_products
   has_many :orders, through: :order_products
   has_many :product_categories
-  has_many :categories, through: :product_categories
+  has_many :categories#, through: :product_categories
   belongs_to :brand
 
   scope :user_products, -> (user) {

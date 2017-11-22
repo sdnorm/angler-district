@@ -2,6 +2,8 @@ class CartsController < ApplicationController
 
   before_action :authenticate_user!
 
+  include FindRelatedItems
+
   def show
     @cart_ids = $redis.smembers current_user_cart
     # check for product inventory amount, disable if 0
@@ -10,6 +12,7 @@ class CartsController < ApplicationController
     @total = @cart_products.sum { |product| product.price }
     # @disabled_cart_products =
     # @cart_action = @cart_products.cart_action
+    @related_products = find_related_items(@cart_products)
   end
 
   def add
