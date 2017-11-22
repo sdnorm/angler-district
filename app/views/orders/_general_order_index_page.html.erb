@@ -18,11 +18,17 @@
       </tr>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.id %></td>
-        <td><%= order.product.name %></td>
-        <td><%= order.shipped %></td>
-        <td><%= order.tracking_number %></td>
-        <td><%= link_to "Order Details", order_path(order) %></td>
+        <td class="text-center"><%= order.id %></td>
+        <td class="text-center"><%= order.product.name %></td>
+        <td class="text-center">
+          <% if order.shipped == false %>
+            Not Yet
+          <% else %>
+            Yes
+          <% end %>
+        </td>
+        <td class="text-center"><%= order.tracking_number %></td>
+        <td class="text-center"><%= link_to "Order Details", order_path(order) %></td>
       </tr>
     <% end %>
     </table>

@@ -1,1 +1,36 @@
-<%= render 'orders/general_order_index_page' %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="large-4 medium-12 colums">
+      <%= render 'pages/back_to_orders' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <h1><%= @title %></h1>
+    <table class="order-table unstriped">
+      <tr>
+        <th>Order Number</th>
+        <th>Item</th>
+        <th>Shipped</th>
+        <th>Tracking Number</th>
+        <th>Go To Order</th>
+      </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="text-center"><%= order.id %></td>
+        <td class="text-center"><%= order.product.name %></td>
+        <td class="text-center">
+          <% if order.shipped == false %>
+            Not Yet
+          <% else %>
+            Yes
+          <% end %>
+        </td>
+        <td class="text-center"><%= order.tracking_number %></td>
+        <td class="text-center"><%= link_to "Order Details", edit_to_ship_order_path(order) %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

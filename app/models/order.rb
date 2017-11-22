@@ -7,10 +7,6 @@ class Order < ApplicationRecord
     Other: 3
   }
 
-  include ParsePaypal
-  include ProcessPaypal
-  include PaypalDetails
-
   after_initialize :set_defaults
 
   def set_defaults
@@ -66,54 +62,6 @@ class Order < ApplicationRecord
       end
     end
 
-    def update_paypal token
-      details = get_paypal_details(token)
-      parse_paypal(details.body)
-      self.express_payer_id = details["PAYER_ID"]
-      self.paypal_first_name = details["first_name"]
-      self.paypal_last_name = details["last_name"]
-    end
   end
-
-  def purchase(token)
-    # process_purchase(self)
-    # transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-    # seller_amount = 9
-    # EXPRESS_GATEWAY.purchase(1000, express_purchase_options)
-    seller_amount = self.product.price_in_cents + self.product.shipping_in_cents
-    uri = URI.parse("https://api-3t.sandbox.paypal.com/nvp")
-    request = Net::HTTP::Post.new(uri)
-    request.set_form_data(
-      "USER" => ENV["PAYPAL_USERNAME"],
-      "PWD" => ENV["PAYPAL_PASSWORD"],
-      "SIGNATURE" => ENV["PAYPAL_SIGNATURE"],
-      "METHOD" => "DoExpressCheckoutPayment",
-      "VERSION" => "93",
-      "TOKEN" => self.express_token,
-      "PAYERID" => self.express_payer_id,
-      "PAYMENTREQUEST_0_AMT" => seller_amount,
-      "PAYMENTREQUEST_0_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_0_SELLERPAYPALACCOUNTID" => "seller-ad@email.com",#User.find(self.seller_id).paypal_email
-      "PAYMENTREQUEST_0_PAYMENTREQUESTID" => "Order#{self.id}-PAYMENT0",
-      "PAYMENTREQUEST_1_AMT" => 1,
-      "PAYMENTREQUEST_1_CURRENCYCODE" => "USD",
-      "PAYMENTREQUEST_1_SELLERPAYPALACCOUNTID" => "spencerdnorman-facilitator@gmail.com",
-      "PAYMENTREQUEST_1_PAYMENTREQUESTID" => "Order#{self.id}-PAYMENT1"
-    )
-    req_options = {
-      use_ssl: uri.scheme == "https",
-      verify_mode: OpenSSL::SSL::VERIFY_NONE,
-    }
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-    self.update_attributes(purchased_at: Time.now, purchased: true) if parse_paypal(response.body)["ACK"] == "SUCCESS"
-    # response.success?
-    # update_paypal(parse_paypal(response)["TOKEN"])
-  end
-
-  def process_purchase(order)
-    processed_response = process_paypal
-    parse_paypal(processed_response)
-  end
+  
 end

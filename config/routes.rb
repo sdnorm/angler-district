@@ -11,26 +11,6 @@ Rails.application.routes.draw do
     get 'account_connection/index'
   end
 
-  # paypal payments
-  get 'route-paypal/:id', to: 'paypal/route_charge#index', as: :route_paypal_order
-  get 'paypal-payment/:id/create', to: 'paypal/single_item_order#index', as: :paypal
-  get 'paypal-order/:id/paypal_charged', to: 'paypal/single_item_order#show', as: :paypal_show
-  get 'paypal-payments/:id/create', to: 'paypal/route_multi_item#index', as: :paypals
-  get 'paypal-payment2/:id/create', to: 'paypal/two_item_order#index', as: :two_item_paypal_order
-  get 'paypal-payment3/:id/create', to: 'paypal/three_item_order#index', as: :three_item_paypal_order
-  get 'paypal-payment4/:id/create', to: 'paypal/four_item_order#index', as: :four_item_paypal_order
-  get 'paypal-payment5/:id/create', to: 'paypal/five_item_order#index', as: :five_item_paypal_order
-  get 'paypal-payment6/:id/create', to: 'paypal/six_item_order#index', as: :six_item_paypal_order
-  get 'paypal-payment7/:id/create', to: 'paypal/seven_item_order#index', as: :seven_item_paypal_order
-  get 'paypal-payment8/:id/create', to: 'paypal/eight_item_order#index', as: :eight_item_paypal_order
-  get 'paypal-payment9/:id/create', to: 'paypal/nine_item_order#index', as: :nine_item_paypal_order
-  get 'paypal-orders/:id/create', to: 'paypal/more_than_9_items_order#index', as: :more_than_nine_items_paypal_order
-  get 'paypal-orders/:id/paypal_charged', to: 'paypalroute_multi_item#show', as: :multiple_paypal_show
-
-  get 'paypal/success', to: 'pages#paypal_success', as: :paypal_success
-  get 'paypal/failure', to: 'pages#paypal_failure', as: :paypal_failure
-  get 'paypal/ipn', to: 'pages#paypal_ipn', as: :paypal_ipn
-
   #stripe payments
   post 's-payments/charged-order/:id', to: 'stripe/multi_item_charges#create', as: :stripes_post
   post 's-payment/charged-order/:id', to: 'stripe/single_item_charges#create', as: :stripe_post
@@ -53,12 +33,14 @@ Rails.application.routes.draw do
   # User Orders
   get 'shipped_orders', to: 'shipped_order#index', as: :shipped_orders
   get 'shipped_order/:id', to: 'shipped_order#show', as: :shipped_order
-  get 'to_ship_orders', to: 'to_ship_order#index',as: :to_ship_orders
-  get 'to_ship_order/:id', to: 'to_ship_order#show', as: :to_ship_order
   get 'purchased_orders', to: 'purchased_order#index', as: :purchased_orders
   get 'purchased_order/:id', to: 'purchased_order#show', as: :purchased_order
   get 'my-orders', to: 'orders#index', as: :user_orders
   get 'sold-orders', to: 'orders#sold_orders', as: :sold_orders
+
+  # get 'to_ship_orders', to: 'to_ship_order#index',as: :to_ship_orders
+  # get 'to_ship_order/:id', to: 'to_ship_order#show', as: :to_ship_order
+  resources :to_ship_order
 
   # Brand Names
   get 'brands/index', to: 'brands#index', as: :brands

@@ -13,17 +13,6 @@ Rails.application.configure do
     authentication:       'plain'
   }
 
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
-    paypal_options = {
-      mode: "sandbox",
-      login: ENV["PAYPAL_USERNAME"],
-      password: ENV["PAYPAL_PASSWORD"],
-      signature: ENV["PAYPAL_SIGNATURE"]
-    }
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  end
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 

@@ -1,2 +1,0 @@
-module Paypal::RouteChargeHelper
-end

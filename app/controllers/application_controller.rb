@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def authorize_seller
+    # order = Order.find(@order)
+    if @order.seller != current_user
+      redirect_back(fallback_location: root_path)# notice: "You are not the seller of this order."
+    end
+  end
+
   include Response
   include ExceptionHandler
 

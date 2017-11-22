@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   def home
   end
 
@@ -26,12 +27,4 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def paypal_success
-  end
-
-  def paypal_failure
-  end
-
-  def paypal_ipn
-  end
 end

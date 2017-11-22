@@ -1,8 +1,5 @@
 class GroupedOrder < ApplicationRecord
 
-  include ParsePaypal
-  include ProcessPaypal
-
   validates :address1, :city, :state, :zip_code, :first_name, :last_name, presence: true
 
   has_many :products
