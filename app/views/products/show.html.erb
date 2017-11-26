@@ -179,3 +179,20 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="large-12 columns">
+    <h5>Similar Items:</h5>
+  </div>
+</div>
+<div class="row">
+    <% @related_products.each do |product| %>
+      <div class="card">
+        <div class="card-section">
+          <%= image_tag(product.first.display_image.display) %>
+        </div>
+        <div class="card-section">
+          <p><%= product.first.name %></p>
+        </div>
+      </div>
+    <% end %>
+</div>

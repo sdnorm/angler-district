@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   ]
   before_action :check_user, only: [:edit, :update, :destroy]
 
+  include FindRelatedItems
+
   # GET /products
   # GET /products.json
   def index
@@ -20,6 +22,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cart_ids = $redis.smembers current_user_cart
     @cart_action = @product.cart_action current_user.try :id
     seller = User.find(@product.user_id)
     @seller = seller
@@ -28,6 +31,8 @@ class ProductsController < ApplicationController
     else
       @reputation = "No ratings yet"
     end
+    @cart_products = Product.where(slug: @cart_ids)
+    @related_products = find_related_items(@cart_products)
   end
 
   # GET /products/new
