@@ -18,19 +18,27 @@
       <%= render 'products/products_side_bar' %>
     </div>
   </div>
+  <br />
   <div class="medium-9 small-12 columns">
     <% @products.each do |product| %>
       <div class="large-4 small-6 columns">
         <%= link_to product do %>
-          <div class="card" style="width: 100%;">
+          <div class="card-custom">
+            <%= image_tag(product.display_image.display, class: "card-image") %>
+            <div class="container">
+              <h3><%= product.name %></h3>
+              <h4><b><%= number_to_currency(product.price_in_cents/100.0) %></b></h4>
+            </div>
+          </div>
+          <!-- <div class="card" style="width: 100%;">
             <div class="card-divider">
               <%= product.name %>
             </div>
-            <%= image_tag(product.display_image.display) %>
+            <%= image_tag(product.display_image.display, class: "card-image") %>
             <div class="card-section">
               <h4><%= number_to_currency(product.price_in_cents/100.0) %></h4>
             </div>
-          </div>
+          </div> -->
         <% end %>
       </div>
     <% end %>
