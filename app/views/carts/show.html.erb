@@ -72,14 +72,14 @@
   </div>
 </div>
 <div class="row">
-    <% @related_products.each do |product| %>
-      <div class="card">
-        <div class="card-section">
-          <%= image_tag(product.first.display_image.display) %>
-        </div>
-        <div class="card-section">
-          <p><%= product.first.name %></p>
-        </div>
+  <% @related_products.each do |product| %>
+    <div class="card">
+      <div class="card-section">
+        <%= image_tag(product.first.display_image.display) %>
       </div>
-    <% end %>
+      <div class="card-section">
+        <p><%= product.first.name %></p>
+      </div>
+    </div>
+  <% end unless @related_products.nil? %>
 </div>
