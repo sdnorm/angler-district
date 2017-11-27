@@ -14,7 +14,7 @@ module FindRelatedItems
       end
       @category_ids.each do |category|
         @related_products.push(Category.find(category).products.order("RANDOM()").limit(3))
-      end
+      end unless @category_ids.nil?
     end
     @related_products
   end
