@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       @reputation = "No ratings yet"
     end
     @cart_products = Product.where(slug: @cart_ids)
-    @related_products = find_related_items(@cart_products)
+    @related_products = find_related_items(@product)
   end
 
   # GET /products/new

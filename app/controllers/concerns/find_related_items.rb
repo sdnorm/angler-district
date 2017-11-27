@@ -2,19 +2,22 @@ module FindRelatedItems
 
   def find_related_items products
     @related_products ||= Array.new
-    puts "thing to inspect"
-    puts products.inspect
-    puts "end"
-    if products.length == 1
-      find_categories(products.first)
-      @related_products.push(Category.find(category).products.order("RANDOM()").limit(3))
+    # puts products.class if products.class.to_s == "Product"
+    case products.class.to_s
+    when "Product"
+      @related_products.push(Category.find(products.category_id).products.order("RANDOM()").limit(3)) unless products.category_id.nil?
     else
-      products.each do |product|
-        find_categories(product)
+      if products.length == 1
+        # find_categories(products.first)
+        @related_products.push(Category.find(products.first.category_id).products.order("RANDOM()").limit(3))
+      else
+        products.each do |product|
+          find_categories(product)
+        end
+        @category_ids.each do |category|
+          @related_products.push(Category.find(category).products.order("RANDOM()").limit(3))
+        end unless @category_ids.nil?
       end
-      @category_ids.each do |category|
-        @related_products.push(Category.find(category).products.order("RANDOM()").limit(3))
-      end unless @category_ids.nil?
     end
     @related_products
   end
