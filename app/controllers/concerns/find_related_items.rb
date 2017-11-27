@@ -9,7 +9,7 @@ module FindRelatedItems
     else
       if products.length == 1
         # find_categories(products.first)
-        @related_products.push(Category.find(products.first.category_id).products.order("RANDOM()").limit(3))
+        @related_products.push(Category.find(products.first.category_id).products.order("RANDOM()").limit(3)) unless products.first.category_id.nil?
       else
         products.each do |product|
           find_categories(product)
