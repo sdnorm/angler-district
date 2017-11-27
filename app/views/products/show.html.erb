@@ -186,7 +186,8 @@
       </div>
     </div>
     <div class="row">
-        <% @related_products.each do |product| %>
+      <% @related_products.each do |product| %>
+        <%= link_to product_path(product.first) do %>
           <div class="card">
             <div class="card-section">
               <%= image_tag(product.first.display_image.display) %>
@@ -195,6 +196,7 @@
               <p><%= product.first.name %></p>
             </div>
           </div>
-        <% end unless @related_products.nil? %>
+        <% end %>
+      <% end unless @related_products.nil? %>
     </div>
 <% end %>

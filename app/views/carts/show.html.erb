@@ -48,10 +48,10 @@
         <span class="cart-count"><%=current_user.cart_count%></span> Product(s) Selected
       </p>
       <p>
-        Product(s) Total: <span class="cart-total"><%= number_to_currency(@total) %></span>
+        Product(s) Total: <span class="cart-total"><%= number_to_currency(@product_total) %></span>
       </p>
       <p>
-        Shipping: n/a
+        Shipping: <span class="cart-total"><%= number_to_currency(@shipping_total) %></span>
       </p>
       <h4>
         Total: <span class="cart-total"><%= number_to_currency(@total) %></span>
@@ -74,14 +74,16 @@
   </div>
   <div class="row">
     <% @related_products.each do |product| %>
-      <div class="card">
-        <div class="card-section">
-          <%= image_tag(product.first.display_image.display) %>
+      <%= link_to product_path(product.first) do %>
+        <div class="card">
+          <div class="card-section">
+            <%= image_tag(product.first.display_image.display) %>
+          </div>
+          <div class="card-section">
+            <p><%= product.first.name %></p>
+          </div>
         </div>
-        <div class="card-section">
-          <p><%= product.first.name %></p>
-        </div>
-      </div>
+      <% end %>
     <% end unless @related_products.nil? %>
   </div>
 <% end %>

@@ -9,7 +9,9 @@ class CartsController < ApplicationController
     # check for product inventory amount, disable if 0
     # @pre_cart_products =
     @cart_products = Product.where(slug: @cart_ids)
-    @total = @cart_products.sum { |product| product.price }
+    @product_total = @cart_products.sum { |product| product.price }
+    @shipping_total = @cart_products.sum { |product| product.shipping }
+    @total = @product_total + @shipping_total
     # @disabled_cart_products =
     # @cart_action = @cart_products.cart_action
     @related_products = find_related_items(@cart_products)
