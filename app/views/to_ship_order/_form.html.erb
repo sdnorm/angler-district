@@ -1,32 +1,36 @@
-<div class="row">
+
   <div class="large-12 columns">
-    <div class="input-group">
-      <%= form_tag(edit_to_ship_order_path, method: :get, remote: true) do |f| %>
-        <% if order.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-            <ul>
-            <% order.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
+    <%= form_tag(edit_to_ship_order_path, method: :post, remote: true) do |f| %>
+      <% if order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+          <ul>
+          <% order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="large-4 columns">
         <div class="field">
           <%= label_tag :tracking_number %>
           <%= text_field_tag :tracking_number, nil, class: "rounded-input input-group-field" %>
         </div>
+      </div>
+      <div class="large-4 columns">
         <div class="field">
           <%= label_tag :carrier %>
           <%= text_field_tag :carrier, nil, class: "rounded-input input-group-field" %>
         </div>
-        <div class="actions hide-for-small-only product-submit input-group-button">
+      </div>
+      <div class="large-4 columns">
+        <div class="field">
+          <label>&nbsp</label>
           <%= submit_tag nil, class:"button wide-button" %>
         </div>
+      </div>
       <% end %>
-    </div>
   </div>
-</div>
 
 
   <!-- <span class="input-group-label">$</span>

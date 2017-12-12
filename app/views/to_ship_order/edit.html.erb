@@ -1,12 +1,10 @@
 <div class="row">
   <%= render 'form', order: @order %>
-</div>
-<div class="row">
   <div class="large-12 columns">
-    <div class="small-12 large-6 columns">
-      <%= link_to purchased_orders_path do %>
+    <div class="small-12 large-7 columns">
+      <%= link_to to_ship_order_path do %>
         <div class="back-link">
-          <i class="fa fa-arrow-left fa-3x" aria-hidden="true"><span class="general-back">  Back To Purchased Orders</span></i>
+          <i class="fa fa-arrow-left fa-3x" aria-hidden="true"><span class="general-back">  Back To Orders That Need Shipping</span></i>
         </div>
       <% end %>
     </div>
@@ -78,7 +76,7 @@
         </p>
         <% if @order.product.shipping > 0 %>
           <p>
-            Shipping: <%= @order.product.shipping %>
+            Shipping: <%= number_to_currency(@order.product.shipping) %>
           </p>
         <% end %>
       </div>
