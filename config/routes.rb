@@ -38,6 +38,15 @@ Rails.application.routes.draw do
   get 'my-orders', to: 'orders#index', as: :user_orders
   get 'sold-orders', to: 'orders#sold_orders', as: :sold_orders
 
+  # get /products(.:format)                                products#index
+  # post /products(.:format)                                products#create
+  # get /products/new(.:format)                            products#new
+  # get /products/:id/edit(.:format)                       products#edit
+  # get /products/:id(.:format)                            products#show
+  # patch /products/:id(.:format)                            products#update
+  # put /products/:id(.:format)                            products#update
+  # delete /products/:id(.:format)                            products#destroy
+
   # get 'to_ship_orders', to: 'to_ship_order#index',as: :to_ship_orders
   # get 'to_ship_order/:id', to: 'to_ship_order#show', as: :to_ship_order
   resources :to_ship_order

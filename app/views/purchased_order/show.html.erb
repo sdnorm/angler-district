@@ -15,7 +15,28 @@
   <div class="large-12 columns">
     <div class="order-detail-block">
       <div class="order-detail-section">
-        <h2>Order Status:</h2>
+        <h3>Order Status:
+          <span>
+            <% if @order.shipped %>
+              Shipped
+            <% else %>
+              Not Shipped
+            <% end %>
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="order-detail-block">
+      <div class="order-detail-section">
+        <h3>Tracking Number:
+          <span>
+            <%= @order.tracking_number %>
+          </span>
+        </h3>
       </div>
     </div>
   </div>

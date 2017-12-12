@@ -10,6 +10,7 @@ class ToShipOrderController < ApplicationController
   end
 
   def show
+    @to_ship_order = @order
   end
 
   def edit
