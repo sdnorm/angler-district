@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # resources :brands
   namespace :api do
     namespace :v1 do
       get 'products/index'

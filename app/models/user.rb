@@ -69,19 +69,11 @@ class User < ApplicationRecord
   end
 
   def stripe?
-    if self.provider == "stripe_connect"
-      true
-    else
-      false
-    end
+    true if self.provider == "stripe_connect"
   end
 
   def paypal?
-    if self.paypal_email_the_same == true || self.paypal_email != nil
-      true
-    else
-      false
-    end
+    true if self.paypal_email_the_same == true || self.paypal_email != nil
   end
 
   class << self
